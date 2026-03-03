@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-label="Artwork 4">
+  <rect width="800" height="600" fill="#f5f2ff" />
+  <rect x="40" y="40" width="720" height="520" rx="22" fill="#ffffff" stroke="#d6ccef" stroke-width="2" />
+  <rect x="140" y="150" width="520" height="300" rx="30" fill="#dcd3f2" />
+  <path d="M160 360 Q260 240 360 320 T560 300 T640 360" fill="none" stroke="#8c7bc9" stroke-width="20" stroke-linecap="round" />
+  <text x="400" y="520" text-anchor="middle" fill="#7a6a9c" font-family="Arial, sans-serif" font-size="20">
+    Artwork 4
+  </text>
+</svg>

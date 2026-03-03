@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="720" viewBox="0 0 640 720" role="img" aria-label="Hero photo 2">
+  <rect width="640" height="720" fill="#f0f7ff" />
+  <rect x="70" y="70" width="500" height="580" rx="30" fill="#ffffff" stroke="#d5ddea" stroke-width="2" />
+  <circle cx="320" cy="250" r="86" fill="#d7e1f0" />
+  <rect x="200" y="380" width="240" height="20" rx="10" fill="#d7e1f0" />
+  <rect x="180" y="420" width="280" height="18" rx="9" fill="#e7edf7" />
+</svg>

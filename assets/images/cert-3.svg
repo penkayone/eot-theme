@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-label="Certificate 3">
+  <rect width="800" height="600" fill="#f3eef6" />
+  <rect x="40" y="40" width="720" height="520" rx="18" fill="#ffffff" stroke="#d2c7e0" stroke-width="2" />
+  <rect x="110" y="120" width="580" height="16" rx="8" fill="#d2c7e0" />
+  <rect x="110" y="170" width="420" height="12" rx="6" fill="#e2d9ee" />
+  <rect x="110" y="210" width="520" height="10" rx="5" fill="#e2d9ee" />
+  <rect x="110" y="240" width="500" height="10" rx="5" fill="#e2d9ee" />
+  <rect x="110" y="270" width="460" height="10" rx="5" fill="#e2d9ee" />
+  <rect x="110" y="360" width="220" height="14" rx="7" fill="#d2c7e0" />
+  <rect x="480" y="360" width="220" height="14" rx="7" fill="#d2c7e0" />
+  <text x="400" y="520" text-anchor="middle" fill="#7a6d8b" font-family="Arial, sans-serif" font-size="20">
+    Certificate 3
+  </text>
+</svg>

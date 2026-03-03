@@ -1,0 +1,272 @@
+{
+  "common": {
+    "brand": "EOT Online",
+    "brandAria": "EOT psychológ",
+    "navAria": "Hlavné menu",
+    "langAria": "Výber jazyka",
+    "menu": "Menu",
+    "lightboxPrev": "Predchádzajúci",
+    "lightboxNext": "Nasledujúci",
+    "lightboxClose": "Zavrieť"
+  },
+  "nav": {
+    "home": "Domov",
+    "about": "O mne",
+    "services": "Služby",
+    "contacts": "Rezervácia"
+  },
+  "footer": {
+    "note": "Podporná psychologická pomoc pre rusky hovoriacich v zahraničí.",
+    "disclaimer": "Informácie na stránke nenahrádzajú zdravotnú starostlivosť."
+  },
+  "meta": {
+    "ogImage": "https://example.com/og-image.jpg",
+    "index": {
+      "title": "EOT online pre rusky hovoriacich",
+      "description": "EOT online: úzkosť, adaptácia, vzťahy, sebaúcta.",
+      "canonical": "https://example.com/",
+      "ogTitle": "EOT online",
+      "ogDescription": "Podpora pri adaptácii a úzkosti.",
+      "ogUrl": "https://example.com/",
+      "twitterTitle": "EOT online",
+      "twitterDescription": "Jemná psychologická podpora."
+    },
+    "about": {
+      "title": "O mne — EOT psychológ",
+      "description": "Bio, prístup, skúsenosti, etika, certifikáty a tvorba.",
+      "canonical": "https://example.com/about",
+      "ogTitle": "O mne",
+      "ogDescription": "Skúsenosti, prístup a hodnoty.",
+      "ogUrl": "https://example.com/about",
+      "twitterTitle": "O mne",
+      "twitterDescription": "Bio, certifikáty a tvorba."
+    },
+    "services": {
+      "title": "Služby EOT online",
+      "description": "Individuálne sedenia, balík a úvodná konzultácia.",
+      "canonical": "https://example.com/services",
+      "ogTitle": "Služby EOT online",
+      "ogDescription": "Vyberte si formát spolupráce.",
+      "ogUrl": "https://example.com/services",
+      "twitterTitle": "Služby EOT online",
+      "twitterDescription": "Formáty a rezervácia."
+    },
+    "contacts": {
+      "title": "Rezervácia — EOT psychológ",
+      "description": "Kontaktujte ma alebo pošlite správu.",
+      "canonical": "https://example.com/contacts",
+      "ogTitle": "Rezervácia",
+      "ogDescription": "Telegram, WhatsApp, Facebook a formulár.",
+      "ogUrl": "https://example.com/contacts",
+      "twitterTitle": "Rezervácia EOT psychológa",
+      "twitterDescription": "Napíšte správu alebo žiadosť."
+    }
+  },
+  "index": {
+    "hero": {
+      "eyebrow": "Emocionálno-obrazová terapia",
+      "title": "Rusky hovoriaci psychológ a kouč v zahraničí",
+      "subtitle": "Provokatívne psychologické poradenstvo a koučing.",
+      "line1": "Emocionálno-obrazová terapia.",
+      "line2": "Hypnokoučing",
+      "line3": "Aromapsychológia, olfaktoterapia",
+      "note": "Práca s úzkosťou, sebaúctou, strachom z prejavu, nespavosťou, fóbiami, psychoblokmi, emocionálnymi traumami a ďalšími témami.",
+      "ctaPrimary": "Objednať sa",
+      "ctaSecondary": "Telegram kanál",
+      "badge1": "Dôverné",
+      "badge2": "Online",
+      "badge3": "Polymodálny prístup",
+      "imageAlt": "Fotografia psychológa"
+    },
+    "requests": {
+      "title": "S čím môžete prísť",
+      "items": {
+        "1": { "title": "Úzkosť a stres", "text": "Zníženie napätia a nájdenie opory." },
+        "2": { "title": "Adaptácia", "text": "Podpora pri životných zmenách." },
+        "3": { "title": "Vzťahy", "text": "Dialóg, hranice a blízkosť." },
+        "4": { "title": "Sebaúcta", "text": "Posilnenie sebaistoty." },
+        "5": { "title": "Únava", "text": "Obnova energie a kontakt so sebou." },
+        "6": { "title": "Rozhodnutia", "text": "Ujasnenie cieľov." }
+      }
+    },
+    "eot": {
+      "title": "Čo je EOT",
+      "subtitle": "Jemná práca s emóciami cez vnútorné obrazy.",
+      "steps": {
+        "1": { "title": "Krok 1. Kontakt", "text": "Ujasníme si požiadavku." },
+        "2": { "title": "Krok 2. Obraz", "text": "Nájdeme obraz emócie." },
+        "3": { "title": "Krok 3. Integrácia", "text": "Posilníme nové opory." }
+      },
+      "disclaimer": "EOT nie je zdravotná služba."
+    },
+    "process": {
+      "title": "Ako prebieha konzultácia",
+      "steps": {
+        "1": { "title": "Žiadosť", "text": "Napíšete správu." },
+        "2": { "title": "Zoznámenie", "text": "Ujasníme formát práce." },
+        "3": { "title": "Sedenie", "text": "Online stretnutie." },
+        "4": { "title": "Podpora", "text": "Odporúčania a ďalšie kroky." }
+      }
+    },
+    "reviews": {
+      "title": "Referencie",
+      "items": {
+        "1": { "text": "Po sedeniach viac pokoja.", "author": "Maria, Berlín" },
+        "2": { "text": "Veľmi citlivý prístup.", "author": "Igor, Varšava" },
+        "3": { "text": "Adaptácia bola ľahšia.", "author": "Elena, Praha" }
+      }
+    },
+    "servicesPreview": {
+      "title": "Služby",
+      "subtitle": "Vyberte si vhodný formát.",
+      "link": "Všetky služby",
+      "items": {
+        "1": { "title": "Individuálne sedenie", "text": "60 minút." },
+        "2": { "title": "Balík 4 sedenia", "text": "Podpora na mesiac." },
+        "3": { "title": "Úvodné stretnutie", "text": "10–15 minút." }
+      }
+    }
+  },
+  "about": {
+    "title": "O mne",
+    "bio": { "title": "Bio", "text": "Som psychológ a EOT praktk." },
+    "approach": { "title": "Prístup", "text": "Jemný a štruktúrovaný proces." },
+    "experience": { "title": "Skúsenosti", "text": "Prax, supervízie a vzdelávanie." },
+    "ethics": { "title": "Etika", "text": "Dôvernosť a rešpekt hraníc." },
+    "certs": {
+      "title": "Certifikáty",
+      "subtitle": "Potvrdenie vzdelania.",
+      "items": {
+        "1": { "alt": "Certifikát 1" },
+        "2": { "alt": "Certifikát 2" },
+        "3": { "alt": "Certifikát 3" },
+        "4": { "alt": "Certifikát 4" }
+      }
+    },
+    "art": {
+      "title": "Obrazy",
+      "subtitle": "Tvorba ako zdroj rovnováhy.",
+      "items": {
+        "1": { "alt": "Obraz 1" },
+        "2": { "alt": "Obraz 2" },
+        "3": { "alt": "Obraz 3" },
+        "4": { "alt": "Obraz 4" }
+      }
+    }
+  },
+  "services": {
+    "title": "Služby",
+    "subtitle": "Formáty práce bez medicínskych sľubov.",
+    "cta": "Objednať sa",
+    "disclaimer": "Psychologická pomoc nie je zdravotná služba.",
+    "items": {
+      "1": { "duration": "60 minút", "title": "Individuálne sedenie", "text": "Práca s jedným témou.", "price": "€60" },
+      "2": { "duration": "4 stretnutia", "title": "Balík 4 sedenia", "text": "Podpora na mesiac.", "price": "€220" },
+      "3": { "duration": "10–15 minút", "title": "Úvodné stretnutie", "text": "Krátke zoznámenie.", "price": "€0" }
+    }
+  },
+  "contacts": {
+    "title": "Sociálne siete",
+    "subtitle": "",
+    "channels": {
+      "title": "",
+      "telegram": "Telegram",
+      "instagram": "Instagram",
+      "youtube": "YouTube",
+      "facebook": "Facebook"
+    },
+    "form": {
+      "title": "Kontaktný formulár",
+      "nameLabel": "Meno",
+      "namePlaceholder": "Ako vás oslovovať",
+      "emailLabel": "Email",
+      "emailPlaceholder": "name@email.com",
+      "messageLabel": "Správa",
+      "messagePlaceholder": "Krátko opíšte požiadavku",
+      "submit": "Odoslať",
+      "success": "Ďakujem! Ozvem sa čoskoro.",
+      "errors": {
+        "name": "Prosím, uveďte meno.",
+        "email": "Zadajte správny email.",
+        "message": "Napíšte pár slov."
+      }
+    }
+  },
+  "booking": {
+    "title": "Rezervácia konzultácie",
+    "dateLabel": "",
+    "serviceLabel": "Vyberte službu",
+    "servicePlaceholder": "Nič nevybrané",
+    "chooseService": "Najprv vyberte službu.",
+    "packageHint": "Pre balík vyberte 4 dátumy a ku každému dátumu čas.",
+    "packageCounter": "Vybraných stretnutí",
+    "slotsLabel": "Dostupné sloty",
+    "loading": "Načítavam...",
+    "chooseDate": "Vyberte dátum",
+    "chooseSlot": "Vyberte slot pre rezerváciu",
+    "selectedPrefix": "Vybrali ste",
+    "noSlots": "Na zvolený dátum nie sú voľné sloty.",
+    "loadError": "Nepodarilo sa načítať sloty.",
+    "nameLabel": "Meno",
+    "namePlaceholder": "Ako vás oslovovať",
+    "emailLabel": "Email",
+    "emailPlaceholder": "name@email.com",
+    "phoneLabel": "Telefón",
+    "phonePlaceholder": "Len čísla",
+    "messageLabel": "Stručný dopyt",
+    "messagePlaceholder": "Napr.: úzkosť, adaptácia, vzťahy",
+    "submit": "Rezervovať",
+    "success": "Rezervácia potvrdená. Ozvem sa vám.",
+    "availableLabel": "Voľné",
+    "unavailableLabel": "Obsadené",
+    "previewNote": "Online rezervácia sa aktualizuje. Vyberte vhodný slot a napíšte do Telegramu pre potvrdenie.",
+    "previewCta": "Potvrdiť v Telegrame",
+    "openCalendar": "Otvoriť kalendár slotov",
+    "closeCalendar": "Skryť kalendár slotov",
+    "yearLabel": "Rok",
+    "monthLabel": "Mesiac",
+    "errors": {
+      "date": "Vyberte dátum.",
+      "time": "Vyberte čas.",
+      "service": "Najprv vyberte službu.",
+      "packageExact": "Pre balík 4 stretnutí vyberte presne 4 dátumy a 4 časy.",
+      "packageLimit": "Už sú vybrané 4 dátumy. Na zmenu vyberte dátum a nastavte nový čas.",
+      "name": "Uveďte meno.",
+      "email": "Zadajte správny email.",
+      "phone": "Telefón: len čísla a +, 7-15.",
+      "message": "Stručne opíšte požiadavku.",
+      "conflict": "Slot je už obsadený. Vyberte iný.",
+      "server": "Chyba servera. Skúste neskôr."
+    }
+  },
+  "schema": {
+    "name": "EOT psycholog online",
+    "description": "Psychologická podpora EOT pre rusky hovoriacich v zahraničí.",
+    "areaServed": "Worldwide",
+    "availableLanguage": ["ru", "sk"],
+    "url": "https://example.com/",
+    "image": "https://example.com/og-image.jpg",
+    "serviceType": "Emocionálno-obrazová terapia",
+    "offerCatalogName": "Online služby EOT",
+    "offers": [
+      {
+        "name": "Individuálne sedenie",
+        "description": "60 minút online sedenia.",
+        "price": "60",
+        "currency": "EUR"
+      },
+      {
+        "name": "Balík 4 sedenia",
+        "description": "Podpora a sprevádzanie.",
+        "price": "220",
+        "currency": "EUR"
+      },
+      {
+        "name": "Úvodné stretnutie",
+        "description": "Krátke zoznámenie.",
+        "price": "0",
+        "currency": "EUR"
+      }
+    ]
+  }
+}
