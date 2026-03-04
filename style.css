@@ -441,10 +441,14 @@ h3 {
   box-shadow: 0 10px 18px rgba(58, 123, 253, 0.2);
 }
 
-.booking-v2-day span {
+.booking-v2-day .weekday-label {
   display: block;
   font-size: 0.9rem;
   text-transform: lowercase;
+}
+
+.booking-v2-day .weekday-label-short {
+  display: none;
 }
 
 .booking-v2-day strong {
@@ -1608,7 +1612,7 @@ h3 {
     align-content: start;
     grid-template-rows: 2.2em 1fr 1.2em;
   }
-  .booking-v2-day span {
+  .booking-v2-day .weekday-label {
     font-size: clamp(0.5rem, 2.6vw, 0.78rem);
     line-height: 1.05;
     white-space: nowrap;
@@ -1623,7 +1627,16 @@ h3 {
     text-align: center;
     justify-self: stretch;
   }
-  .booking-v2-day.weekday-long span {
+  .booking-v2-day .weekday-label-long {
+    display: none;
+  }
+  .booking-v2-day .weekday-label-short {
+    display: block;
+  }
+  .booking-v2-day.weekday-long .weekday-label-long {
+    display: none;
+  }
+  .booking-v2-day.weekday-long .weekday-label-short {
     white-space: normal;
     overflow-wrap: anywhere;
     text-overflow: clip;
@@ -1666,9 +1679,6 @@ h3 {
   }
   .booking-v2-day {
     grid-template-rows: 2em 1fr 1.1em;
-  }
-  .booking-v2-day.weekday-long {
-    grid-template-rows: 2.35em 1fr 1.1em;
   }
 }
 

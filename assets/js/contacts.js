@@ -43,6 +43,8 @@
   const getLocale = () => (document.documentElement.lang === "sk" ? "sk-SK" : "ru-RU");
   const WEEKDAY_LONG_RU = ["воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"];
   const WEEKDAY_LONG_SK = ["nedeľa", "pondelok", "utorok", "streda", "štvrtok", "piatok", "sobota"];
+  const WEEKDAY_SHORT_RU = ["вс", "пн", "вт", "ср", "чт", "пт", "сб"];
+  const WEEKDAY_SHORT_SK = ["ne", "po", "ut", "st", "št", "pi", "so"];
 
   function getWeekdayLongLabel(date) {
     const dayIndex = date.getDay();
@@ -51,6 +53,15 @@
     const dictionaryLabel = dictionary[dayIndex];
     if (dictionaryLabel) return dictionaryLabel;
     return new Intl.DateTimeFormat(locale, { weekday: "long" }).format(date);
+  }
+
+  function getWeekdayShortLabel(date) {
+    const dayIndex = date.getDay();
+    const locale = getLocale();
+    const dictionary = locale === "sk-SK" ? WEEKDAY_SHORT_SK : WEEKDAY_SHORT_RU;
+    const dictionaryLabel = dictionary[dayIndex];
+    if (dictionaryLabel) return dictionaryLabel;
+    return new Intl.DateTimeFormat(locale, { weekday: "short" }).format(date);
   }
 
   const isValidName = (name) => /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ][A-Za-zА-Яа-яЁёІіЇїЄєҐґ\s'-]{1,59}$/.test(name);
@@ -146,6 +157,7 @@
     days.forEach((d) => {
       const date = new Date(`${d.date}T00:00:00`);
       const weekdayLong = getWeekdayLongLabel(date);
+      const weekdayShort = getWeekdayShortLabel(date);
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "booking-v2-day";
@@ -154,7 +166,8 @@
       if (weekdayLong.length > 8) btn.classList.add("weekday-long");
 
       btn.innerHTML = `
-        <span>${weekdayLong}</span>
+        <span class="weekday-label weekday-label-long">${weekdayLong}</span>
+        <span class="weekday-label weekday-label-short">${weekdayShort}</span>
         <strong>${String(date.getDate()).padStart(2, "0")}</strong>
         <small>${new Intl.DateTimeFormat(getLocale(), { month: "short" }).format(date)}</small>
       `;
