@@ -141,7 +141,7 @@
       if (d.date === state.selectedDate) btn.classList.add("selected");
 
       btn.innerHTML = `
-        <span>${new Intl.DateTimeFormat(getLocale(), { weekday: "long" }).format(date)}</span>
+        <span>${new Intl.DateTimeFormat(getLocale(), { weekday: "short" }).format(date)}</span>
         <strong>${String(date.getDate()).padStart(2, "0")}</strong>
         <small>${new Intl.DateTimeFormat(getLocale(), { month: "short" }).format(date)}</small>
       `;
