@@ -41,6 +41,17 @@
   const t = (key, fallback) => getNested(window.__I18N__ || {}, key) ?? fallback;
 
   const getLocale = () => (document.documentElement.lang === "sk" ? "sk-SK" : "ru-RU");
+  const WEEKDAY_LONG_RU = ["воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"];
+  const WEEKDAY_LONG_SK = ["nedeľa", "pondelok", "utorok", "streda", "štvrtok", "piatok", "sobota"];
+
+  function getWeekdayLongLabel(date) {
+    const dayIndex = date.getDay();
+    const locale = getLocale();
+    const dictionary = locale === "sk-SK" ? WEEKDAY_LONG_SK : WEEKDAY_LONG_RU;
+    const dictionaryLabel = dictionary[dayIndex];
+    if (dictionaryLabel) return dictionaryLabel;
+    return new Intl.DateTimeFormat(locale, { weekday: "long" }).format(date);
+  }
 
   const isValidName = (name) => /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ][A-Za-zА-Яа-яЁёІіЇїЄєҐґ\s'-]{1,59}$/.test(name);
   const isValidEmail = (email) => /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email);
@@ -134,13 +145,13 @@
 
     days.forEach((d) => {
       const date = new Date(`${d.date}T00:00:00`);
-      const weekdayLong = new Intl.DateTimeFormat(getLocale(), { weekday: "long" }).format(date);
+      const weekdayLong = getWeekdayLongLabel(date);
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "booking-v2-day";
       if (!d.has_slots) btn.disabled = true;
       if (d.date === state.selectedDate) btn.classList.add("selected");
-      if (/понедельник|воскресенье/i.test(weekdayLong)) btn.classList.add("weekday-long");
+      if (weekdayLong.length > 8) btn.classList.add("weekday-long");
 
       btn.innerHTML = `
         <span>${weekdayLong}</span>

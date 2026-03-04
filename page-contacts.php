@@ -45,13 +45,13 @@ get_header(); ?>
           </div>
 
           <div class="booking-v2-days" id="days-grid" aria-live="polite">
-            <button type="button" class="booking-v2-day selected"><span>пн</span><strong>01</strong><small>янв</small></button>
-            <button type="button" class="booking-v2-day"><span>вт</span><strong>02</strong><small>янв</small></button>
-            <button type="button" class="booking-v2-day"><span>ср</span><strong>03</strong><small>янв</small></button>
-            <button type="button" class="booking-v2-day"><span>чт</span><strong>04</strong><small>янв</small></button>
-            <button type="button" class="booking-v2-day"><span>пт</span><strong>05</strong><small>янв</small></button>
-            <button type="button" class="booking-v2-day"><span>сб</span><strong>06</strong><small>янв</small></button>
-            <button type="button" class="booking-v2-day"><span>вс</span><strong>07</strong><small>янв</small></button>
+            <button type="button" class="booking-v2-day selected weekday-long"><span>понедельник</span><strong>01</strong><small>янв</small></button>
+            <button type="button" class="booking-v2-day"><span>вторник</span><strong>02</strong><small>янв</small></button>
+            <button type="button" class="booking-v2-day"><span>среда</span><strong>03</strong><small>янв</small></button>
+            <button type="button" class="booking-v2-day"><span>четверг</span><strong>04</strong><small>янв</small></button>
+            <button type="button" class="booking-v2-day"><span>пятница</span><strong>05</strong><small>янв</small></button>
+            <button type="button" class="booking-v2-day"><span>суббота</span><strong>06</strong><small>янв</small></button>
+            <button type="button" class="booking-v2-day weekday-long"><span>воскресенье</span><strong>07</strong><small>янв</small></button>
           </div>
 
           <div class="booking-v2-slots">
