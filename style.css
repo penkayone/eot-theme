@@ -404,10 +404,8 @@ h3 {
 .booking-v2-days {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 8px;
-  max-height: 170px;
-  overflow: auto;
   padding-right: 4px;
+  gap: 8px;
 }
 
 .booking-v2-day {
@@ -419,35 +417,42 @@ h3 {
   display: grid;
   align-content: center;
   justify-items: center;
-  gap: 3px;
   cursor: pointer;
   transition: transform 0.15s ease, border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
+.booking-v2-day:not(:disabled) {
+  background: #c7ffd9;
+}
+
 .booking-v2-day:hover {
   border-color: rgba(58, 123, 253, 0.6);
-  background: rgba(58, 123, 253, 0.07);
+  background: #b3f5c9;
   transform: translateY(-1px);
+}
+.booking-v2-day:hover:disabled {
+    background: transparent;
+    cursor: no-drop;
 }
 
 .booking-v2-day.selected {
   border-color: #2f70ec;
-  background: rgba(58, 123, 253, 0.12);
+  background: #c7ffd9;
   box-shadow: 0 10px 18px rgba(58, 123, 253, 0.2);
 }
 
 .booking-v2-day span {
-  font-size: 0.72rem;
+  font-size: 0.9rem;
   text-transform: lowercase;
 }
 
 .booking-v2-day strong {
-  font-size: 1.1rem;
+  font-size: 1.7rem;
   line-height: 1;
 }
 
 .booking-v2-day small {
-  font-size: 0.72rem;
+  font-size: 0.9rem;
   text-transform: lowercase;
 }
 
@@ -568,6 +573,16 @@ h3 {
   min-height: 1.2em;
   font-size: 0.9rem;
   color: #1b56ca;
+}
+
+.booking-v2-feedback.is-error {
+  color: #c73030;
+}
+
+.booking-v2-empty {
+  margin: 0;
+  color: #5c6b81;
+  font-size: 0.95rem;
 }
 
 .card:hover {

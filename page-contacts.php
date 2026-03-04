@@ -42,24 +42,6 @@ get_header(); ?>
                 <ul id="service-menu" class="booking-v2-select-menu" role="listbox" hidden></ul>
               </div>
             </div>
-            <div class="booking-v2-field">
-              <span data-i18n="booking.yearLabel">Год</span>
-              <div class="booking-v2-select-wrap">
-                <button type="button" id="year-trigger" class="booking-v2-select-trigger" aria-haspopup="listbox" aria-expanded="false">
-                  2026
-                </button>
-                <ul id="year-menu" class="booking-v2-select-menu" role="listbox" hidden></ul>
-              </div>
-            </div>
-            <div class="booking-v2-field">
-              <span data-i18n="booking.monthLabel">Месяц</span>
-              <div class="booking-v2-select-wrap">
-                <button type="button" id="month-trigger" class="booking-v2-select-trigger" aria-haspopup="listbox" aria-expanded="false">
-                  Январь
-                </button>
-                <ul id="month-menu" class="booking-v2-select-menu" role="listbox" hidden></ul>
-              </div>
-            </div>
           </div>
 
           <div class="booking-v2-days" id="days-grid" aria-live="polite">

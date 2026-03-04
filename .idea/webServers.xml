@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="0785c04a-a60e-4a99-8884-ab95c965c704" name="1" url="http://185.114.247.232">
+        <fileTransfer rootFolder="/psyho/public_html/wp-content/themes/eot-theme" host="185.114.247.232" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
