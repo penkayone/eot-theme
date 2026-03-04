@@ -21,16 +21,36 @@ function eot_enqueue_assets() {
     wp_enqueue_script('eot-main', get_theme_file_uri('assets/js/main.js'), [], wp_get_theme()->get('Version'), true);
 
     if (is_page('contacts')) {
-        wp_enqueue_script('eot-contacts', get_theme_file_uri('assets/js/contacts.js'), ['eot-main'], wp_get_theme()->get('Version'), true);
+        wp_enqueue_style('eot-booking-overrides', get_theme_file_uri('assets/css/booking-plugin.css'), ['bc-booking'], wp_get_theme()->get('Version'));
     }
 
     wp_localize_script('eot-main', 'eotThemeData', [
         'i18nPath'    => get_theme_file_uri('assets/i18n/'),
         'assetsPath'  => get_theme_file_uri('assets/images/'),
-        'apiBookUrl'  => home_url('/backend/api/book.php'),
     ]);
 }
 add_action('wp_enqueue_scripts', 'eot_enqueue_assets');
+
+function eot_force_booking_assets() {
+    if (!is_page('contacts')) return;
+
+    if (!defined('BC_PLUGIN_URL') || !defined('BC_PLUGIN_VERSION')) return;
+
+    if (!wp_style_is('bc-booking', 'enqueued')) {
+        wp_enqueue_style('bc-booking', BC_PLUGIN_URL . 'assets/booking.css', [], BC_PLUGIN_VERSION);
+    }
+
+    if (!wp_script_is('bc-booking', 'enqueued')) {
+        wp_enqueue_script('bc-booking', BC_PLUGIN_URL . 'assets/booking.js', ['wp-api-fetch'], BC_PLUGIN_VERSION, true);
+        wp_localize_script('bc-booking', 'BC_BOOKING', [
+            'restUrl'    => esc_url_raw(rest_url('bc/v1')),
+            'nonce'      => wp_create_nonce('wp_rest'),
+            'isLoggedIn' => is_user_logged_in(),
+            'loginUrl'   => wp_login_url(get_permalink()),
+        ]);
+    }
+}
+add_action('wp_enqueue_scripts', 'eot_force_booking_assets', 20);
 
 function eot_image_url($filename) {
     return esc_url(get_theme_file_uri('assets/images/' . $filename));
