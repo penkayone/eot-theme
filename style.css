@@ -1600,6 +1600,7 @@ h3 {
   .booking-v2-day {
     height: auto;
     min-height: 0;
+    min-width: 0;
     aspect-ratio: 1 / 1;
     padding: clamp(3px, 1.2vw, 6px) clamp(2px, 1vw, 4px);
     gap: clamp(1px, 0.6vw, 3px);
@@ -1621,6 +1622,13 @@ h3 {
     width: 100%;
     text-align: center;
     justify-self: stretch;
+  }
+  .booking-v2-day.weekday-long span {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-overflow: clip;
+    font-size: clamp(0.44rem, 2.1vw, 0.64rem);
+    line-height: 1;
   }
   .booking-v2-day strong {
     font-size: clamp(0.9rem, 4vw, 1.3rem);
@@ -1658,6 +1666,9 @@ h3 {
   }
   .booking-v2-day {
     grid-template-rows: 2em 1fr 1.1em;
+  }
+  .booking-v2-day.weekday-long {
+    grid-template-rows: 2.35em 1fr 1.1em;
   }
 }
 

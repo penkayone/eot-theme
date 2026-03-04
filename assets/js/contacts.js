@@ -134,14 +134,16 @@
 
     days.forEach((d) => {
       const date = new Date(`${d.date}T00:00:00`);
+      const weekdayLong = new Intl.DateTimeFormat(getLocale(), { weekday: "long" }).format(date);
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "booking-v2-day";
       if (!d.has_slots) btn.disabled = true;
       if (d.date === state.selectedDate) btn.classList.add("selected");
+      if (/понедельник|воскресенье/i.test(weekdayLong)) btn.classList.add("weekday-long");
 
       btn.innerHTML = `
-        <span>${new Intl.DateTimeFormat(getLocale(), { weekday: "short" }).format(date)}</span>
+        <span>${weekdayLong}</span>
         <strong>${String(date.getDate()).padStart(2, "0")}</strong>
         <small>${new Intl.DateTimeFormat(getLocale(), { month: "short" }).format(date)}</small>
       `;
