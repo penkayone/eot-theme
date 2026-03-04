@@ -1,0 +1,250 @@
+/*
+ * Theme overrides for Booking Consult plugin (.bc-* classes).
+ * Adapts plugin output to the EOT theme design system.
+ */
+
+/* ── Wrapper ─────────────────────────────────────────── */
+.bc-wrap {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  color: var(--text);
+}
+
+/* Hide plugin's social links — theme already provides them */
+.bc-social {
+  display: none;
+}
+
+/* ── Card ────────────────────────────────────────────── */
+.bc-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  box-shadow: var(--shadow);
+}
+
+.bc-title {
+  font-family: inherit;
+  font-size: 1.5rem;
+  color: var(--text);
+  margin: 0 0 var(--space-2);
+  letter-spacing: -0.02em;
+}
+
+/* ── Alert ───────────────────────────────────────────── */
+.bc-alert {
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) 12px;
+  margin: var(--space-1) 0 var(--space-2);
+}
+
+.bc-alert a {
+  text-decoration: underline;
+}
+
+/* ── Grid layouts ────────────────────────────────────── */
+.bc-grid {
+  gap: var(--space-2);
+}
+
+.bc-grid-3 {
+  grid-template-columns: 1.4fr 1fr 1fr;
+}
+
+.bc-grid-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* ── Form fields ─────────────────────────────────────── */
+.bc-field label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.bc-field select,
+.bc-field input {
+  height: 44px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--soft);
+  padding: 0 12px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.bc-field select:focus,
+.bc-field input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--glow);
+  outline: none;
+}
+
+/* ── Calendar ────────────────────────────────────────── */
+.bc-calendar {
+  margin-top: var(--space-2);
+}
+
+.bc-calendar-grid {
+  gap: 10px;
+  max-height: 170px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+
+.bc-calendar-grid::-webkit-scrollbar {
+  width: 6px;
+}
+
+.bc-calendar-grid::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 3px;
+}
+
+.bc-day {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  height: 70px;
+  padding: 10px 8px;
+  box-shadow: 0 4px 12px rgba(29, 44, 74, 0.05);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.bc-day:hover:not(.is-disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(29, 44, 74, 0.1);
+  border-color: var(--accent);
+}
+
+.bc-day.is-active {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--glow);
+}
+
+.bc-day.is-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.bc-day-top {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.bc-day-bottom {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* ── Sections & subtitles ────────────────────────────── */
+.bc-section {
+  margin-top: var(--space-2);
+}
+
+.bc-subtitle {
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+/* ── Slots ───────────────────────────────────────────── */
+.bc-slots {
+  gap: 10px;
+}
+
+.bc-slot {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--soft);
+  color: var(--primary-dark);
+  font-weight: 600;
+  font-size: 0.875rem;
+  box-shadow: 0 4px 12px rgba(29, 44, 74, 0.05);
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.bc-slot:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--text);
+}
+
+.bc-slot.is-active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(58, 123, 253, 0.25);
+}
+
+.bc-empty {
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+
+/* ── Primary button ──────────────────────────────────── */
+.bc-btn-primary {
+  width: 100%;
+  margin-top: var(--space-2);
+  height: 48px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--primary);
+  color: #fff;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(58, 123, 253, 0.25);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.bc-btn-primary:hover:not(:disabled) {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 16px 36px rgba(58, 123, 253, 0.3);
+}
+
+.bc-btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ── Hint / feedback ─────────────────────────────────── */
+.bc-hint {
+  margin-top: 10px;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.bc-hint.is-error {
+  color: #b91c1c;
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  .bc-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .bc-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .bc-calendar-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
