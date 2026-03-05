@@ -72,7 +72,7 @@
       "line3": "Aromapsychológia, olfaktoterapia",
       "note": "Práca s úzkosťou, sebaúctou, strachom z prejavu, nespavosťou, fóbiami, psychoblokmi, emocionálnymi traumami a ďalšími témami.",
       "ctaPrimary": "Objednať sa",
-      "ctaSecondary": "Telegram kanál",
+      "ctaSecondary": "Recenzie",
       "badge1": "Dôverné",
       "badge2": "Online",
       "badge3": "Polymodálny prístup",
@@ -81,12 +81,12 @@
     "requests": {
       "title": "S čím môžete prísť",
       "items": {
-        "1": { "title": "Úzkosť a stres", "text": "Zníženie napätia a nájdenie opory." },
-        "2": { "title": "Adaptácia", "text": "Podpora pri životných zmenách." },
-        "3": { "title": "Vzťahy", "text": "Dialóg, hranice a blízkosť." },
-        "4": { "title": "Sebaúcta", "text": "Posilnenie sebaistoty." },
-        "5": { "title": "Únava", "text": "Obnova energie a kontakt so sebou." },
-        "6": { "title": "Rozhodnutia", "text": "Ujasnenie cieľov." }
+        "1": { "title": "Úzkosť", "text": "Zníženie vnútorného napätia, obnovenie opory." },
+        "2": { "title": "Sebahodnotenie", "text": "Posilnenie sebavedomia a sebavedomia." },
+        "3": { "title": "Strach z prejavenia sa", "text": "Prekonanie vnútorných bariér, získanie odvahy prejaviť sa a prezentovať svoje talenty." },
+        "4": { "title": "Nespavosť", "text": "Práca s príčinami porúch spánku, normalizácia režimu a získanie nočného pokoja." },
+        "5": { "title": "Psychické bloky", "text": "Odhalenie skrytých bariér a odstránenie vnútorných prekážok na ceste k vašim cieľom." },
+        "6": { "title": "Emocionálne traumy", "text": "Starostlivé spracovanie bolestivej skúsenosti a návrat psychickej integrity." }
       }
     },
     "eot": {

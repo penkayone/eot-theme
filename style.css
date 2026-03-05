@@ -465,6 +465,7 @@ h3 {
 .booking-v2-subtitle {
   margin: 0 0 6px;
   font-size: 1.05rem;
+  color: #1f7a31;
 }
 
 .booking-v2-slots-grid {
@@ -492,15 +493,15 @@ h3 {
 }
 
 .booking-v2-slot.free {
-  background: linear-gradient(135deg, #4f9aff 0%, #3a7bfd 100%);
+  background: linear-gradient(135deg, #49b765 0%, #2f9d4b 100%);
   color: #fff;
-  border-color: #2f6fdd;
-  box-shadow: 0 10px 16px rgba(58, 123, 253, 0.24);
+  border-color: #258642;
+  box-shadow: 0 10px 16px rgba(47, 157, 75, 0.28);
 }
 
 .booking-v2-slot.free:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 22px rgba(58, 123, 253, 0.32);
+  box-shadow: 0 14px 22px rgba(39, 140, 68, 0.38);
 }
 
 .booking-v2-slot.busy {
@@ -511,9 +512,9 @@ h3 {
 }
 
 .booking-v2-slot.selected {
-  border-color: #1b56ca;
-  outline: 3px solid rgba(58, 123, 253, 0.34);
-  box-shadow: 0 14px 24px rgba(58, 123, 253, 0.26);
+  border-color: #1f7a31;
+  outline: 3px solid rgba(73, 183, 101, 0.34);
+  box-shadow: 0 14px 24px rgba(47, 157, 75, 0.3);
 }
 
 .booking-v2-slot:active,
@@ -531,7 +532,7 @@ h3 {
 .booking-v2-selected {
   margin: 0;
   font-size: 1.12rem;
-  color: #143761;
+  color: #1f7a31;
   font-weight: 700;
 }
 
