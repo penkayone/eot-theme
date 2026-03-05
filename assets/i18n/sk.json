@@ -205,6 +205,8 @@
     "chooseDate": "Vyberte dátum",
     "chooseSlot": "Vyberte slot pre rezerváciu",
     "selectedPrefix": "Vybrali ste",
+    "dateSelectedToast": "Vybrali ste dátum {date}, teraz vyberte čas.",
+    "timeSelectedToast": "Vybrali ste čas {time}, teraz vyplňte formulár.",
     "noSlots": "Na zvolený dátum nie sú voľné sloty.",
     "loadError": "Nepodarilo sa načítať sloty.",
     "nameLabel": "Meno",

@@ -55,3 +55,10 @@ function eot_disable_emoji() {
     remove_action('admin_print_styles', 'print_emoji_styles');
 }
 add_action('init', 'eot_disable_emoji');
+
+function eot_hide_admin_sections() {
+    remove_menu_page('edit.php');
+    remove_menu_page('upload.php');
+    remove_menu_page('edit-comments.php');
+}
+add_action('admin_menu', 'eot_hide_admin_sections', 999);

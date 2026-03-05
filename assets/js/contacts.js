@@ -14,6 +14,7 @@
     slots: [],
     selectedSlot: null,
   };
+  let daySelectionToastTimer = null;
 
   const qs = (id) => document.getElementById(id);
   const safeStorage = {
@@ -62,6 +63,63 @@
     const dictionaryLabel = dictionary[dayIndex];
     if (dictionaryLabel) return dictionaryLabel;
     return new Intl.DateTimeFormat(locale, { weekday: "short" }).format(date);
+  }
+
+  function formatSelectedDate(dateString) {
+    if (!dateString) return "";
+    const date = new Date(`${dateString}T00:00:00`);
+    if (Number.isNaN(date.getTime())) return dateString;
+    return new Intl.DateTimeFormat(getLocale(), {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }).format(date);
+  }
+
+  function showSelectionToast(message) {
+    if (!document.body) return;
+
+    let toast = qs("booking-day-toast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "booking-day-toast";
+      toast.className = "booking-v2-toast";
+      toast.setAttribute("role", "status");
+      toast.setAttribute("aria-live", "polite");
+      document.body.appendChild(toast);
+    }
+
+    toast.textContent = message;
+
+    toast.classList.remove("is-visible");
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        toast.classList.add("is-visible");
+      });
+    });
+
+    if (daySelectionToastTimer) {
+      clearTimeout(daySelectionToastTimer);
+    }
+    daySelectionToastTimer = window.setTimeout(() => {
+      toast.classList.remove("is-visible");
+    }, 2000);
+  }
+
+  function showDaySelectionToast(dateString) {
+    const messageTemplate = t(
+      "booking.dateSelectedToast",
+      "Вы выбрали дату {date}, теперь выберите время."
+    );
+    showSelectionToast(messageTemplate.replace("{date}", formatSelectedDate(dateString)));
+  }
+
+  function showTimeSelectionToast(timeLabel) {
+    const messageTemplate = t(
+      "booking.timeSelectedToast",
+      "Вы выбрали время {time}, теперь заполните форму."
+    );
+    showSelectionToast(messageTemplate.replace("{time}", timeLabel || ""));
   }
 
   const isValidName = (name) => /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ][A-Za-zА-Яа-яЁёІіЇїЄєҐґ\s'-]{1,59}$/.test(name);
@@ -176,6 +234,7 @@
         if (!d.has_slots) return;
         state.selectedDate = d.date;
         state.selectedSlot = null;
+        showDaySelectionToast(d.date);
         await loadSlots();
         renderAll();
       });
@@ -217,6 +276,7 @@
 
       btn.addEventListener("click", () => {
         state.selectedSlot = slot;
+        showTimeSelectionToast(slot.label || "");
         renderSelectedInfo();
         renderSlots();
       });
@@ -239,7 +299,7 @@
       return;
     }
 
-    node.textContent = `${t("booking.selectedPrefix", "Вы выбрали")}: ${state.selectedDate} ${state.selectedSlot.label}`;
+    node.textContent = `${t("booking.selectedPrefix", "Вы выбрали")}: ${formatSelectedDate(state.selectedDate)} ${state.selectedSlot.label}`;
   }
 
   function renderAll() {

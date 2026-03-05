@@ -585,6 +585,35 @@ h3 {
   color: #c73030;
 }
 
+.booking-v2-toast {
+  position: fixed;
+  left: 50%;
+  top: 24px;
+  z-index: 2000;
+  width: min(92vw, 560px);
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: rgba(166, 243, 157, 0.72);
+  border: 1px solid rgba(104, 183, 95, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #0f3f17;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.4;
+  font-weight: 700;
+  box-shadow: 0 14px 36px rgba(44, 98, 34, 0.3);
+  opacity: 0;
+  transform: translate(-50%, -8px) scale(0.98);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.booking-v2-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
 .booking-v2-empty {
   margin: 0;
   color: #5c6b81;
@@ -1904,6 +1933,14 @@ h3 {
 @media (max-width: 768px) {
   .hero-arrow {
     display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .booking-v2-toast {
+    top: 12px;
+    width: calc(100vw - 24px);
+    padding: 12px 14px;
   }
 }
 
