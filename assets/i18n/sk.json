@@ -161,7 +161,7 @@
     "disclaimer": "Psychologická pomoc nie je zdravotná služba.",
     "items": {
       "1": { "duration": "60 minút", "title": "Individuálne sedenie", "text": "Práca s jedným témou.", "price": "€60" },
-      "2": { "duration": "4 stretnutia", "title": "Balík 4 sedenia", "text": "Podpora na mesiac.", "price": "€220" },
+      "2": { "duration": "4 hodiny", "title": "Seminár o obnovení vnútornej sily", "text": "Podpora na mesiac.", "price": "€220" },
       "3": { "duration": "10–15 minút", "title": "Úvodné stretnutie", "text": "Krátke zoznámenie.", "price": "€0" }
     }
   },
