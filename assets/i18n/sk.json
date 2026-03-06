@@ -140,7 +140,11 @@
         "1": { "alt": "Certifikát 1" },
         "2": { "alt": "Certifikát 2" },
         "3": { "alt": "Certifikát 3" },
-        "4": { "alt": "Certifikát 4" }
+        "4": { "alt": "Certifikát 4" },
+        "5": { "alt": "Certifikát 5" },
+        "6": { "alt": "Príloha k diplomu 1" },
+        "7": { "alt": "Príloha k diplomu 2" },
+        "8": { "alt": "Príloha k diplomu 3" }
       }
     },
     "art": {
@@ -150,7 +154,12 @@
         "1": { "alt": "Obraz 1" },
         "2": { "alt": "Obraz 2" },
         "3": { "alt": "Obraz 3" },
-        "4": { "alt": "Obraz 4" }
+        "4": { "alt": "Obraz 4" },
+        "5": { "alt": "Obraz 5" },
+        "6": { "alt": "Obraz 6" },
+        "7": { "alt": "Obraz 7" },
+        "8": { "alt": "Obraz 8" },
+        "9": { "alt": "Obraz 9" }
       }
     }
   },

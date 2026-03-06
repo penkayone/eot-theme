@@ -177,7 +177,6 @@ const createLightbox = () => {
         <button class="lightbox-nav" type="button" data-dir="next" aria-label="" data-i18n="common.lightboxNext" data-i18n-attr="aria-label">→</button>
       </div>
       <img src="" alt="" />
-      <p class="muted lightbox-caption"></p>
     </div>
   `;
   document.body.appendChild(overlay);
@@ -208,10 +207,8 @@ const updateLightbox = () => {
   if (!state.lightbox || !state.gallery) return;
   const data = state.gallery[state.galleryIndex];
   const img = state.lightbox.querySelector("img");
-  const caption = state.lightbox.querySelector(".lightbox-caption");
   img.src = data.src;
   img.alt = data.alt || "";
-  caption.textContent = data.alt || "";
 };
 
 const shiftLightbox = (delta) => {
