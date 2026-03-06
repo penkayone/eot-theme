@@ -14,7 +14,7 @@ get_header(); ?>
       <div class="grid cards-3">
         <article class="card service-card">
           <div class="service-meta">
-            <span class="badge" data-i18n="services.items.3.duration">10–15 минут</span>
+            <span class="badge" data-i18n="services.items.3.duration">30 минут</span>
           </div>
           <h2 data-i18n="services.items.3.title">Вводная встреча</h2>
           <p data-i18n="services.items.3.text">Короткое знакомство и уточнение запроса.</p>
@@ -23,7 +23,7 @@ get_header(); ?>
         </article>
         <article class="card service-card">
           <div class="service-meta">
-            <span class="badge" data-i18n="services.items.1.duration">60 минут</span>
+            <span class="badge" data-i18n="services.items.1.duration">60–90 минут</span>
           </div>
           <h2 data-i18n="services.items.1.title">Индивидуальная сессия</h2>
           <p data-i18n="services.items.1.text">Разбор одного запроса с опорой на ЭОТ.</p>
@@ -35,8 +35,8 @@ get_header(); ?>
             <span class="badge" data-i18n="services.items.2.duration">4 часа</span>
           </div>
           <h2 data-i18n="services.items.2.title">Семинар возрождения внутренней силы</h2>
-          <p data-i18n="services.items.2.text">Последовательная поддержка на месяц.</p>
-          <p class="price" data-i18n="services.items.2.price">&euro;220</p>
+          <p data-i18n="services.items.2.text">Тренировка практических навыков саморегуляции и снятия психоблоков. Индивидуальная и групповая работа в течение месяца. Две личных встречи. Три групповых сессии. Теоретические лекции в записи.</p>
+          <p class="price" data-i18n="services.items.2.price">&euro;300</p>
           <a class="btn btn-primary" href="<?php echo esc_url(home_url('/contacts/?service=package#booking')); ?>" data-i18n="services.cta">Записаться</a>
         </article>
       </div>

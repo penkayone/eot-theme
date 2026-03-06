@@ -39,7 +39,11 @@ const applyTranslations = (dictionary) => {
     const key = node.getAttribute("data-i18n");
     const value = getNestedValue(dictionary, key);
     if (value !== null && (!node.hasAttribute("data-i18n-attr") || node.hasAttribute("data-i18n-text"))) {
-      node.textContent = value;
+      if (node.hasAttribute("data-i18n-html")) {
+        node.innerHTML = value;
+      } else {
+        node.textContent = value;
+      }
     }
   });
 

@@ -121,9 +121,9 @@
       "subtitle": "Vyberte si vhodný formát.",
       "link": "Všetky služby",
       "items": {
-        "1": { "title": "Individuálne sedenie", "text": "60 minút." },
+        "1": { "title": "Individuálne sedenie", "text": "60–90 minút." },
         "2": { "title": "Balík 4 sedenia", "text": "Podpora na mesiac." },
-        "3": { "title": "Úvodné stretnutie", "text": "10–15 minút." }
+        "3": { "title": "Úvodné stretnutie", "text": "30 minút." }
       }
     }
   },
@@ -160,9 +160,9 @@
     "cta": "Objednať sa",
     "disclaimer": "Psychologická pomoc nie je zdravotná služba.",
     "items": {
-      "1": { "duration": "60 minút", "title": "Individuálne sedenie", "text": "Práca s jedným témou.", "price": "€60" },
-      "2": { "duration": "4 hodiny", "title": "Seminár o obnovení vnútornej sily", "text": "Podpora na mesiac.", "price": "€220" },
-      "3": { "duration": "10–15 minút", "title": "Úvodné stretnutie", "text": "Krátke zoznámenie.", "price": "€0" }
+      "1": { "duration": "60–90 minút", "title": "Individuálne sedenie", "text": "Práca s jedným témou.", "price": "€60" },
+      "2": { "duration": "4 hodiny", "title": "Seminár o obnovení vnútornej sily", "text": "Tréning praktických zručností sebaregulácie a uvoľnenia psychických blokov. Individuálna aj skupinová práca počas jedného mesiaca. Dve osobné stretnutia. Tri skupinové sedenia. Teoretické prednášky v zázname.", "price": "€300" },
+      "3": { "duration": "30 minút", "title": "Úvodné stretnutie", "text": "Krátke zoznámenie.", "price": "€0" }
     }
   },
   "contacts": {
