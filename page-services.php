@@ -32,9 +32,9 @@ get_header(); ?>
         </article>
         <article class="card service-card">
           <div class="service-meta">
-            <span class="badge" data-i18n="services.items.2.duration">4 встречи</span>
+            <span class="badge" data-i18n="services.items.2.duration">4 часа</span>
           </div>
-          <h2 data-i18n="services.items.2.title">Пакет 4 сессии</h2>
+          <h2 data-i18n="services.items.2.title">Семинар возрождения внутренней силы</h2>
           <p data-i18n="services.items.2.text">Последовательная поддержка на месяц.</p>
           <p class="price" data-i18n="services.items.2.price">&euro;220</p>
           <a class="btn btn-primary" href="<?php echo esc_url(home_url('/contacts/?service=package#booking')); ?>" data-i18n="services.cta">Записаться</a>

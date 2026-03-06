@@ -72,7 +72,7 @@
       "line3": "Aromapsychológia, olfaktoterapia",
       "note": "Práca s úzkosťou, sebaúctou, strachom z prejavu, nespavosťou, fóbiami, psychoblokmi, emocionálnymi traumami a ďalšími témami.",
       "ctaPrimary": "Objednať sa",
-      "ctaSecondary": "Telegram kanál",
+      "ctaSecondary": "Recenzie",
       "badge1": "Dôverné",
       "badge2": "Online",
       "badge3": "Polymodálny prístup",
@@ -81,16 +81,16 @@
     "requests": {
       "title": "S čím môžete prísť",
       "items": {
-        "1": { "title": "Úzkosť a stres", "text": "Zníženie napätia a nájdenie opory." },
-        "2": { "title": "Adaptácia", "text": "Podpora pri životných zmenách." },
-        "3": { "title": "Vzťahy", "text": "Dialóg, hranice a blízkosť." },
-        "4": { "title": "Sebaúcta", "text": "Posilnenie sebaistoty." },
-        "5": { "title": "Únava", "text": "Obnova energie a kontakt so sebou." },
-        "6": { "title": "Rozhodnutia", "text": "Ujasnenie cieľov." }
+        "1": { "title": "Úzkosť", "text": "Zníženie vnútorného napätia, obnovenie opory." },
+        "2": { "title": "Sebahodnotenie", "text": "Posilnenie sebavedomia a sebavedomia." },
+        "3": { "title": "Strach z prejavenia sa", "text": "Prekonanie vnútorných bariér, získanie odvahy prejaviť sa a prezentovať svoje talenty." },
+        "4": { "title": "Nespavosť", "text": "Práca s príčinami porúch spánku, normalizácia režimu a získanie nočného pokoja." },
+        "5": { "title": "Psychické bloky", "text": "Odhalenie skrytých bariér a odstránenie vnútorných prekážok na ceste k vašim cieľom." },
+        "6": { "title": "Emocionálne traumy", "text": "Starostlivé spracovanie bolestivej skúsenosti a návrat psychickej integrity." }
       }
     },
     "eot": {
-      "title": "Čo je EOT",
+      "title": "Čo je emocionálno-obrazová terapia?",
       "subtitle": "Jemná práca s emóciami cez vnútorné obrazy.",
       "steps": {
         "1": { "title": "Krok 1. Kontakt", "text": "Ujasníme si požiadavku." },
@@ -161,7 +161,7 @@
     "disclaimer": "Psychologická pomoc nie je zdravotná služba.",
     "items": {
       "1": { "duration": "60 minút", "title": "Individuálne sedenie", "text": "Práca s jedným témou.", "price": "€60" },
-      "2": { "duration": "4 stretnutia", "title": "Balík 4 sedenia", "text": "Podpora na mesiac.", "price": "€220" },
+      "2": { "duration": "4 hodiny", "title": "Seminár o obnovení vnútornej sily", "text": "Podpora na mesiac.", "price": "€220" },
       "3": { "duration": "10–15 minút", "title": "Úvodné stretnutie", "text": "Krátke zoznámenie.", "price": "€0" }
     }
   },
@@ -200,11 +200,13 @@
     "chooseService": "Najprv vyberte službu.",
     "packageHint": "Pre balík vyberte 4 dátumy a ku každému dátumu čas.",
     "packageCounter": "Vybraných stretnutí",
-    "slotsLabel": "Dostupné sloty",
+    "slotsLabel": "Dostupný čas",
     "loading": "Načítavam...",
     "chooseDate": "Vyberte dátum",
     "chooseSlot": "Vyberte slot pre rezerváciu",
     "selectedPrefix": "Vybrali ste",
+    "dateSelectedToast": "Vybrali ste dátum {date}, teraz vyberte čas.",
+    "timeSelectedToast": "Vybrali ste čas {time}, teraz vyplňte formulár.",
     "noSlots": "Na zvolený dátum nie sú voľné sloty.",
     "loadError": "Nepodarilo sa načítať sloty.",
     "nameLabel": "Meno",

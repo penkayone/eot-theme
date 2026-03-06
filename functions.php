@@ -16,12 +16,24 @@ function eot_theme_setup() {
 add_action('after_setup_theme', 'eot_theme_setup');
 
 function eot_enqueue_assets() {
-    wp_enqueue_style('eot-style', get_stylesheet_uri(), [], wp_get_theme()->get('Version'));
+    $theme_version = wp_get_theme()->get('Version');
+    $main_js_ver = file_exists(get_theme_file_path('assets/js/main.js')) ? (string) filemtime(get_theme_file_path('assets/js/main.js')) : $theme_version;
+    $contacts_js_ver = file_exists(get_theme_file_path('assets/js/contacts.js')) ? (string) filemtime(get_theme_file_path('assets/js/contacts.js')) : $theme_version;
 
-    wp_enqueue_script('eot-main', get_theme_file_uri('assets/js/main.js'), [], wp_get_theme()->get('Version'), true);
+    wp_enqueue_style('eot-style', get_stylesheet_uri(), [], $theme_version);
 
-    if (is_page('contacts')) {
-        wp_enqueue_script('eot-contacts', get_theme_file_uri('assets/js/contacts.js'), ['eot-main'], wp_get_theme()->get('Version'), true);
+    wp_enqueue_script('eot-main', get_theme_file_uri('assets/js/main.js'), [], $main_js_ver, true);
+
+    // Booking UI может быть выведен не только на slug=contacts, поэтому подключаем на всех singular.
+    if (is_singular()) {
+        wp_enqueue_script('eot-contacts', get_theme_file_uri('assets/js/contacts.js'), ['eot-main'], $contacts_js_ver, true);
+
+        wp_localize_script('eot-contacts', 'eotBookingData', [
+            'restUrl' => esc_url_raw(rest_url('bc/v1')),
+            'nonce' => wp_create_nonce('wp_rest'),
+            'isLoggedIn' => is_user_logged_in(),
+            'loginUrl' => wp_login_url(is_singular() ? get_permalink() : home_url('/')),
+        ]);
     }
 
     wp_localize_script('eot-main', 'eotThemeData', [
@@ -43,3 +55,10 @@ function eot_disable_emoji() {
     remove_action('admin_print_styles', 'print_emoji_styles');
 }
 add_action('init', 'eot_disable_emoji');
+
+function eot_hide_admin_sections() {
+    remove_menu_page('edit.php');
+    remove_menu_page('upload.php');
+    remove_menu_page('edit-comments.php');
+}
+add_action('admin_menu', 'eot_hide_admin_sections', 999);

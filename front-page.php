@@ -24,22 +24,22 @@
         </div>
         <div class="button-row">
           <a class="btn btn-primary" href="<?php echo esc_url(home_url('/contacts/#booking')); ?>" data-i18n="index.hero.ctaPrimary">Записаться</a>
-          <a class="btn btn-outline" href="https://t.me/LaraLorein" data-i18n="index.hero.ctaSecondary">Telegram-канал</a>
+          <a class="btn btn-outline" href="https://t.me/larysamotz" data-i18n="index.hero.ctaSecondary">Отзывы</a>
         </div>
         <div class="hero-social-row">
           <a class="btn btn-social social-telegram" href="https://t.me/LaraLorein" target="_blank" rel="noopener noreferrer">
             <img class="social-icon" src="<?php echo eot_image_url('icon-telegram.svg'); ?>" alt="" aria-hidden="true" />
             <span>Telegram</span>
           </a>
-          <a class="btn btn-social social-instagram" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+          <a class="btn btn-social social-instagram" href="https://www.instagram.com/larisamomotova?utm_source=qr&igsh=ajR4dWpsMDJ2cHFw" target="_blank" rel="noopener noreferrer">
             <img class="social-icon" src="<?php echo eot_image_url('icon-instagram.svg'); ?>" alt="" aria-hidden="true" />
             <span>Instagram</span>
           </a>
-          <a class="btn btn-social social-youtube" href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+          <a class="btn btn-social social-youtube" href="https://youtube.com/@larysamomotova?si=Czm1zGo4rbFc5QG-" target="_blank" rel="noopener noreferrer">
             <img class="social-icon" src="<?php echo eot_image_url('icon-youtube.svg'); ?>" alt="" aria-hidden="true" />
             <span>YouTube</span>
           </a>
-          <a class="btn btn-social social-facebook" href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+          <a class="btn btn-social social-facebook" href="https://www.facebook.com/share/17xxhgL4zL/" target="_blank" rel="noopener noreferrer">
             <img class="social-icon" src="<?php echo eot_image_url('icon-facebook.svg'); ?>" alt="" aria-hidden="true" />
             <span>Facebook</span>
           </a>
@@ -111,7 +111,7 @@
   <section class="section" data-reveal>
     <div class="container">
       <div class="section-head">
-        <h2 data-i18n="index.eot.title">Что такое ЭОТ</h2>
+        <h2 data-i18n="index.eot.title">Что такое эмоционально-образная терапия?</h2>
         <p class="muted" data-i18n="index.eot.subtitle">
           Эмоционально-образная терапия помогает мягко работать с чувствами через внутренние образы.
         </p>
@@ -195,9 +195,9 @@
         </article>
         <article class="card service-card">
           <div class="service-meta">
-            <span class="badge" data-i18n="services.items.2.duration">4 встречи</span>
+            <span class="badge" data-i18n="services.items.2.duration">4 часа</span>
           </div>
-          <h3 data-i18n="services.items.2.title">Пакет 4 сессии</h3>
+          <h3 data-i18n="services.items.2.title">Семинар возрождения внутренней силы</h3>
           <p data-i18n="services.items.2.text">Последовательная поддержка на месяц.</p>
           <p class="price" data-i18n="services.items.2.price">&euro;220</p>
           <a class="btn btn-primary" href="<?php echo esc_url(home_url('/contacts/?service=package#booking')); ?>" data-i18n="services.cta">Записаться</a>
