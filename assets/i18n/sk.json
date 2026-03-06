@@ -19,6 +19,10 @@
     "note": "Podporná psychologická pomoc pre rusky hovoriacich v zahraničí.",
     "disclaimer": "Informácie na stránke nenahrádzajú zdravotnú starostlivosť."
   },
+  "error": {
+    "notFound": "Stránka sa nenašla.",
+    "backHome": "Na hlavnú stránku"
+  },
   "meta": {
     "ogImage": "https://example.com/og-image.jpg",
     "index": {
@@ -93,19 +97,19 @@
       "title": "Čo je emocionálno-obrazová terapia?",
       "description": "Emocionálno-obrazová terapia je moderná a účinná metóda psychologickej pomoci. Počas EOT sa človek učí pracovať so svojimi emóciami a vnútornými obrazmi, ktoré stoja za zložitými pocitmi, strachom, úzkosťou alebo stresom. Psychológ pomáha odhaliť príčiny diskomfortu a zmeniť vnútorné reakcie, vďaka čomu je terapia hlboká a výsledná.",
       "steps": {
-        "1": { "title": "Krok 1. Kontakt", "text": "Ujasníme si požiadavku." },
-        "2": { "title": "Krok 2. Obraz", "text": "Nájdeme obraz emócie." },
-        "3": { "title": "Krok 3. Integrácia", "text": "Posilníme nové opory." }
+        "1": { "title": "Krok 1. Kontakt", "text": "Emocionálno-obrazová terapia je moderná a účinná metóda psychologickej pomoci. V procese EOT sa človek učí pracovať so svojimi emóciami a vnútornými obrazmi, ktoré stoja za zložitými pocitmi, strachom, úzkosťou alebo stresom. Psychológ pomáha odhaliť príčiny diskomfortu a zmeniť vnútorné reakcie, čo robí terapiu hlbokou a výslednou." },
+        "2": { "title": "Krok 2. Obraz", "text": "Hlavnou črtou EOT je práca s pocitmi a stavmi na najhlbšej úrovni osobnosti. Spolu s psychológom klient skúma obrazy svojich emócií a diskomfortu, nachádza vnútorné zdroje na riešenie náročných situácií. Tento prístup je obzvlášť užitočný, keď sa zdá, že štandardné rozhovorové metódy neprinášajú výsledok a napätie, úzkosť alebo krivdy akoby „žili vo vnútri“." },
+        "3": { "title": "Krok 3. Integrácia", "text": "Príčinou telesného diskomfortu, bolesti, nevoľnosti alebo chronických ochorení bývajú často potlačené pocity a nevyriešené konflikty. EOT pomáha odhaliť a spracovať tieto skryté príčiny, aby človek lepšie porozumel svojim emóciám a uvoľnil vnútorné bloky. Vďaka práci s obrazmi a pocitmi EOT podporuje obnovu harmónie medzi psychikou a telom, čo sa prejavuje zlepšením pohody a ústupom psychosomatických symptómov." }
       },
       "disclaimer": "EOT nie je zdravotná služba."
     },
     "process": {
       "title": "Ako prebieha konzultácia",
       "steps": {
-        "1": { "title": "Žiadosť", "text": "Napíšete správu." },
-        "2": { "title": "Zoznámenie", "text": "Ujasníme formát práce." },
-        "3": { "title": "Sedenie", "text": "Online stretnutie." },
-        "4": { "title": "Podpora", "text": "Odporúčania a ďalšie kroky." }
+        "1": { "title": "Žiadosť", "text": "Na konzultáciu sa môžete objednať priamo na tejto stránke. Vojdite do sekcie „Rezervácia“, vyberte službu, dátum a čas a vyplňte svoje údaje." },
+        "2": { "title": "Zoznámenie", "text": "Na uvedený e-mail vám príde potvrdenie rezervácie." },
+        "3": { "title": "Sedenie", "text": "10 minút pred sedením vám príde na e-mail odkaz, cez ktorý sa pripojíte do Zoomu." },
+        "4": { "title": "Podpora", "text": "Platbu za služby vykonáte po stretnutí. Platba prebieha cez stránku <a class=\"inline-link\" href=\"https://gipnocouch.com\" target=\"_blank\" rel=\"noopener noreferrer\">gipnocouch.com</a>" }
       }
     },
     "reviews": {
@@ -129,10 +133,51 @@
   },
   "about": {
     "title": "O mne",
-    "bio": { "title": "Bio", "text": "Som psychológ a EOT praktk." },
-    "approach": { "title": "Prístup", "text": "Jemný a štruktúrovaný proces." },
-    "experience": { "title": "Skúsenosti", "text": "Prax, supervízie a vzdelávanie." },
-    "ethics": { "title": "Etika", "text": "Dôvernosť a rešpekt hraníc." },
+    "story": {
+      "title": "Moja cesta v profesii",
+      "p1": "Psychológiou sa zaujímam od detstva. V mladosti bolo povolanie psychológa zriedkavé. Študovala som na Doneckej štátnej univerzite odbor ekonómia, externe.",
+      "p2": "Pracovala som v závode ako ekonómka a komsorg. Od roku 1992 som podnikateľka: pôsobila som ako riaditeľka predajne a obchodná riaditeľka tehelne, som autorkou receptúr výrobkov, vynálezov, priemyselných vzorov a zlepšovacích návrhov v oblasti tehlovej výroby.",
+      "p3": "Do závodu som pozývala psychológov na tréningy, výskum a testovanie. Meditáciám a energetickým praktikám sa venujem od roku 1997. Od roku 2022 sa vzdelávam a praktizujem v oblasti koučingu a psychológie."
+    },
+    "practice": {
+      "title": "Skúsenosti a oblasti práce",
+      "intro": "Moje skúsenosti zahŕňajú:",
+      "items": {
+        "1": "Koučing a provokatívny koučing.",
+        "2": "Psychologické poradenstvo.",
+        "3": "Energetické praktiky, meditácie a zvukovú terapiu.",
+        "4": "Emocionálno-obrazovú terapiu (EOT).",
+        "5": "Aromakoučing, aromapsychológiu a olfaktoterapiu.",
+        "6": "Regresívnu hypnózu."
+      }
+    },
+    "educationPath": {
+      "title": "Vzdelávanie a školy",
+      "intro": "Vzdelávam sa u silných odborníkov a v profilových inštitúciách:",
+      "items": {
+        "1": "Oleg Šapovalov — integrálna parapsychológia, aikido.",
+        "2": "Svetlana Bugela — hypnokoučing, autohypnóza.",
+        "3": "Alunika Dobrovolskaja, Andrej Jacenko — autohypnóza.",
+        "4": "Alfried Längle — ročný program, kurzy o poruchách osobnosti a depresii.",
+        "5": "Alexander Stručajev — koučing.",
+        "6": "Akadémia exponenciálneho koučingu — granty.",
+        "7": "Andrej Trenogov — zrkadlová psychológia.",
+        "8": "Škola 3. vlny KBT Vjačeslava Jakovleva — polymodálny prístup v práci s psychickou traumou, PTSD a cPTSD.",
+        "9": "Anna Maria Are Buaye — olfaktoterapia, aromapsychológia, aromakoučing.",
+        "10": "Natália Stišova — obrazovo-poľový prístup a metóda konštelácií.",
+        "11": "Leonid Talpis — svetonázorový seminár, metóda \"Dva body\".",
+        "12": "Ksenia Ziganshina — kurz energetických praktík.",
+        "13": "Inštitút psychológie tvorivosti Pavla Piskareva — neurografika.",
+        "14": "Oksana Avdeeva — neurografika.",
+        "15": "Moskovský inštitút psychoanalýzy — provokatívny koučing a psychologické poradenstvo.",
+        "16": "Inštitút emocionálno-obrazovej terapie N. Lindeho — psychologické poradenstvo."
+      }
+    },
+    "creative": {
+      "title": "Tvorivosť a autorské praktiky",
+      "text": "Píšem básne, maľujem obrazy a tvorím piesne. Zaujímam sa o fyziológiu, suplementológiu, masáž a bioenergetiku. Praktizujem autorské sedenia „Energoscanner“.",
+      "education": "Mám stredoškolské zdravotnícke a vysokoškolské ekonomické vzdelanie."
+    },
     "certs": {
       "title": "Certifikáty",
       "subtitle": "Potvrdenie vzdelania.",

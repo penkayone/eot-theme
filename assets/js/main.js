@@ -26,7 +26,9 @@ const loadLanguage = async (lang) => {
     return translationsCache[lang];
   }
   const basePath = (window.eotThemeData && window.eotThemeData.i18nPath) || 'i18n/';
-  const response = await fetch(`${basePath}${lang}.json`);
+  const i18nVersion = (window.eotThemeData && window.eotThemeData.i18nVersion) || "";
+  const versionSuffix = i18nVersion ? `?v=${encodeURIComponent(String(i18nVersion))}` : "";
+  const response = await fetch(`${basePath}${lang}.json${versionSuffix}`);
   const data = await response.json();
   translationsCache[lang] = data;
   return data;

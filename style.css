@@ -214,6 +214,21 @@ h3 {
   overflow: hidden;
 }
 
+.about-grid .card ul {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 6px;
+}
+
+.about-grid .card p + ul {
+  margin-top: var(--space-1);
+}
+
+.about-education-note {
+  margin-top: var(--space-2);
+}
+
 .booking-card {
   overflow: visible;
 }
