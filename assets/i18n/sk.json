@@ -90,7 +90,7 @@
       }
     },
     "eot": {
-      "title": "Čo je EOT",
+      "title": "Čo je emocionálno-obrazová terapia?",
       "subtitle": "Jemná práca s emóciami cez vnútorné obrazy.",
       "steps": {
         "1": { "title": "Krok 1. Kontakt", "text": "Ujasníme si požiadavku." },
@@ -200,7 +200,7 @@
     "chooseService": "Najprv vyberte službu.",
     "packageHint": "Pre balík vyberte 4 dátumy a ku každému dátumu čas.",
     "packageCounter": "Vybraných stretnutí",
-    "slotsLabel": "Dostupné sloty",
+    "slotsLabel": "Dostupný čas",
     "loading": "Načítavam...",
     "chooseDate": "Vyberte dátum",
     "chooseSlot": "Vyberte slot pre rezerváciu",

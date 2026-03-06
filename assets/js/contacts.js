@@ -137,6 +137,70 @@
     return state.services.find((s) => String(s.id) === String(state.serviceId)) || null;
   }
 
+  function normalize(value) {
+    return String(value || "")
+      .trim()
+      .toLowerCase();
+  }
+
+  function detectServiceAlias(service, index = -1) {
+    const candidates = [service?.slug, service?.code, service?.key, service?.name, service?.title].map(normalize);
+    if (candidates.some((value) => value.includes("intro") || value.includes("ввод") || value.includes("uvod"))) {
+      return "intro";
+    }
+    if (candidates.some((value) => value.includes("individual") || value.includes("индив") || value.includes("individu"))) {
+      return "individual";
+    }
+    if (candidates.some((value) => value.includes("package") || value.includes("seminar") || value.includes("пакет"))) {
+      return "package";
+    }
+
+    if (index === 0) return "intro";
+    if (index === 1) return "individual";
+    if (index === 2) return "package";
+    return "";
+  }
+
+  function getLocalizedServiceTitle(service, index = -1) {
+    const alias = detectServiceAlias(service, index);
+    const keyByAlias = {
+      intro: "services.items.3.title",
+      individual: "services.items.1.title",
+      package: "services.items.2.title",
+    };
+    const key = keyByAlias[alias];
+    const localized = key ? t(key, "") : "";
+    if (localized) return localized;
+    return String(service?.title || service?.name || "").trim();
+  }
+
+  function resolveServiceIdFromQuery(rawValue) {
+    const value = normalize(rawValue);
+    if (!value || !state.services.length) return null;
+
+    // Accept direct numeric id or exact id-as-string first.
+    const direct = state.services.find((s) => String(s.id) === value);
+    if (direct) return String(direct.id);
+
+    // Try semantic fields from API (if present) and title substring.
+    const byField = state.services.find((s) => {
+      const candidates = [s.slug, s.code, s.key, s.name, s.title];
+      return candidates.some((candidate) => {
+        const normalizedCandidate = normalize(candidate);
+        return normalizedCandidate && (normalizedCandidate === value || normalizedCandidate.includes(value));
+      });
+    });
+    if (byField) return String(byField.id);
+
+    // Fallback to known website aliases and current card order.
+    const aliasIndexMap = { intro: 0, individual: 1, package: 2 };
+    if (aliasIndexMap[value] !== undefined && state.services[aliasIndexMap[value]]) {
+      return String(state.services[aliasIndexMap[value]].id);
+    }
+
+    return null;
+  }
+
   function api(path, options = {}) {
     if (!restUrl) {
       return Promise.reject(new Error("REST URL не настроен"));
@@ -171,13 +235,13 @@
     if (!serviceMenu || !serviceTrigger) return;
 
     serviceMenu.innerHTML = "";
-    state.services.forEach((service) => {
+    state.services.forEach((service, index) => {
       const li = document.createElement("li");
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "booking-v2-option";
       if (String(service.id) === String(state.serviceId)) btn.classList.add("selected");
-      btn.textContent = service.title;
+      btn.textContent = getLocalizedServiceTitle(service, index);
 
       btn.addEventListener("click", async (event) => {
         event.stopPropagation();
@@ -194,7 +258,11 @@
       serviceMenu.appendChild(li);
     });
 
-    serviceTrigger.textContent = selectedService()?.title || t("booking.servicePlaceholder", "Выберите услугу");
+    const currentService = selectedService();
+    const currentIndex = currentService ? state.services.findIndex((s) => String(s.id) === String(currentService.id)) : -1;
+    serviceTrigger.textContent = currentService
+      ? getLocalizedServiceTitle(currentService, currentIndex)
+      : t("booking.serviceLabel", "Выберите услугу");
   }
 
   function renderDays() {
@@ -318,11 +386,15 @@
       return;
     }
 
-    const fromUrl = new URLSearchParams(window.location.search).get("service_id");
+    const params = new URLSearchParams(window.location.search);
+    const fromUrlServiceId = params.get("service_id");
+    const fromUrlService = params.get("service");
     const fromStorage = safeStorage.get(SELECTED_SERVICE_KEY);
+    const fromUrlResolved =
+      resolveServiceIdFromQuery(fromUrlServiceId) || resolveServiceIdFromQuery(fromUrlService);
 
-    if (fromUrl && state.services.some((s) => String(s.id) === String(fromUrl))) {
-      state.serviceId = String(fromUrl);
+    if (fromUrlResolved) {
+      state.serviceId = String(fromUrlResolved);
     } else if (fromStorage && state.services.some((s) => String(s.id) === String(fromStorage))) {
       state.serviceId = String(fromStorage);
     } else {
@@ -456,7 +528,7 @@
 
       try {
         await submitBooking(payload);
-        setFeedback(t("booking.success", "Запись успешно отправлена."));
+        setFeedback(t("booking.success", "Запись подтверждена. Я свяжусь с вами через email."));
         form.reset();
         state.selectedSlot = null;
         await loadCalendar();
