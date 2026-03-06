@@ -112,23 +112,9 @@
     <div class="container">
       <div class="section-head">
         <h2 data-i18n="index.eot.title">Что такое эмоционально-образная терапия?</h2>
-        <p class="muted" data-i18n="index.eot.subtitle">
-          Эмоционально-образная терапия помогает мягко работать с чувствами через внутренние образы.
+        <p class="eot-description" data-i18n="index.eot.description">
+          Эмоционально-образная терапия - современный и эффективный метод психологической помощи.
         </p>
-      </div>
-      <div class="grid cards-3">
-        <article class="card">
-          <h3 data-i18n="index.eot.steps.1.title">Шаг 1. Контакт</h3>
-          <p data-i18n="index.eot.steps.1.text">Выясняем запрос и создаем безопасное пространство.</p>
-        </article>
-        <article class="card">
-          <h3 data-i18n="index.eot.steps.2.title">Шаг 2. Образ</h3>
-          <p data-i18n="index.eot.steps.2.text">Находим образ чувства и бережно работаем с ним.</p>
-        </article>
-        <article class="card">
-          <h3 data-i18n="index.eot.steps.3.title">Шаг 3. Интеграция</h3>
-          <p data-i18n="index.eot.steps.3.text">Закрепляем изменения и ищем новые опоры.</p>
-        </article>
       </div>
       <p class="disclaimer" data-i18n="index.eot.disclaimer">
         Эмоционально-образная терапия не является медицинской услугой и не заменяет помощь врача.
