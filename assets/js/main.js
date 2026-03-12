@@ -149,6 +149,17 @@ const buildSchema = (dictionary) => {
 const initReveal = () => {
   const items = document.querySelectorAll("[data-reveal]");
   if (!items.length) return;
+
+  const isSmallViewport =
+    typeof window.matchMedia === "function" && window.matchMedia("(max-width: 768px)").matches;
+  const prefersReducedMotion =
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (isSmallViewport || prefersReducedMotion) {
+    return;
+  }
+
   items.forEach((item) => item.classList.add("reveal"));
   if (!("IntersectionObserver" in window)) {
     items.forEach((item) => item.classList.add("visible"));
@@ -219,6 +230,39 @@ const shiftLightbox = (delta) => {
   updateLightbox();
 };
 
+const initCertificatesLayout = () => {
+  const certItems = document.querySelectorAll(".cert-gallery .cert-item");
+  if (!certItems.length) return;
+
+  certItems.forEach((item) => {
+    const img = item.querySelector("img");
+    if (!img) return;
+
+    const applyOrientation = () => {
+      const { naturalWidth, naturalHeight } = img;
+      if (!naturalWidth || !naturalHeight) return;
+
+      item.classList.remove("landscape", "portrait", "square");
+      const ratio = naturalWidth / naturalHeight;
+
+      if (ratio > 1.12) {
+        item.classList.add("landscape");
+      } else if (ratio < 0.9) {
+        item.classList.add("portrait");
+      } else {
+        item.classList.add("square");
+      }
+    };
+
+    if (img.complete) {
+      applyOrientation();
+      return;
+    }
+
+    img.addEventListener("load", applyOrientation, { once: true });
+  });
+};
+
 const initLightbox = () => {
   const galleries = document.querySelectorAll(".gallery");
   if (!galleries.length) return;
@@ -284,6 +328,7 @@ const init = async () => {
   initNavToggle();
   initLanguageSwitcher();
   initReveal();
+  initCertificatesLayout();
   initLightbox();
   initHeroSlider();
 
