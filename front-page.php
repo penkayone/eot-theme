@@ -147,7 +147,7 @@
         </article>
         <article class="card step-card">
           <span class="step-number">02</span>
-          <h3 data-i18n="index.process.steps.2.title">Знакомство</h3>
+          <h3 data-i18n="index.process.steps.2.title">Обратная связь</h3>
           <p data-i18n="index.process.steps.2.text">Уточняем запрос и формат работы.</p>
         </article>
         <article class="card step-card">
@@ -157,7 +157,7 @@
         </article>
         <article class="card step-card">
           <span class="step-number">04</span>
-          <h3 data-i18n="index.process.steps.4.title">Поддержка</h3>
+          <h3 data-i18n="index.process.steps.4.title">Оплата услуг</h3>
           <p data-i18n="index.process.steps.4.text">Даем рекомендации и план следующих шагов.</p>
         </article>
       </div>
@@ -190,7 +190,7 @@
           </div>
           <h3 data-i18n="services.items.1.title">Индивидуальная сессия</h3>
           <p data-i18n="services.items.1.text">Разбор одного запроса с опорой на ЭОТ.</p>
-          <p class="price" data-i18n="services.items.1.price">&euro;60</p>
+          <p class="price" data-i18n="services.items.1.price">&euro;60 в час</p>
           <a class="btn btn-primary" href="<?php echo esc_url(home_url('/contacts/?service=individual#booking')); ?>" data-i18n="services.cta">Записаться</a>
         </article>
         <article class="card service-card">

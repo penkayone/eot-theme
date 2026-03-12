@@ -103,9 +103,9 @@
       "title": "Ako prebieha konzultácia",
       "steps": {
         "1": { "title": "Žiadosť", "text": "Napíšete správu." },
-        "2": { "title": "Zoznámenie", "text": "Ujasníme formát práce." },
+        "2": { "title": "Spätná väzba", "text": "Ujasníme formát práce." },
         "3": { "title": "Sedenie", "text": "Online stretnutie." },
-        "4": { "title": "Podpora", "text": "Odporúčania a ďalšie kroky." }
+        "4": { "title": "Platba za služby", "text": "Odporúčania a ďalšie kroky." }
       }
     },
     "reviews": {
@@ -160,9 +160,9 @@
     "cta": "Objednať sa",
     "disclaimer": "Psychologická pomoc nie je zdravotná služba.",
     "items": {
-      "1": { "duration": "60 minút", "title": "Individuálne sedenie", "text": "Práca s jedným témou.", "price": "€60" },
-      "2": { "duration": "4 hodiny", "title": "Seminár o obnovení vnútornej sily", "text": "Podpora na mesiac.", "price": "€220" },
-      "3": { "duration": "10–15 minút", "title": "Úvodné stretnutie", "text": "Krátke zoznámenie.", "price": "€0" }
+      "1": { "duration": "60 minút", "title": "Individuálne sedenie", "text": "Práca s jedným témou.", "price": "€60 za hodinu" },
+      "2": { "duration": "4 hodiny", "title": "Seminár o obnovení vnútornej sily", "text": "Trénovanie praktických zručností sebakontroly a odstraňovania psychických blokov. Individuálna a skupinová práca počas mesiaca. Dve osobné stretnutia. Tri skupinové sedenia. Teoretické prednášky v nahrávkach.", "price": "€300" },
+      "3": { "duration": "30 minút", "title": "Úvodné stretnutie", "text": "Krátke zoznámenie.", "price": "€0" }
     }
   },
   "contacts": {
