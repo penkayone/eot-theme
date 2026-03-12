@@ -23,7 +23,7 @@
           <span class="badge" data-i18n="index.hero.badge3">Часовые пояса</span>
         </div>
         <div class="button-row">
-          <a class="btn btn-primary" href="<?php echo esc_url(home_url('/contacts/#booking')); ?>" data-i18n="index.hero.ctaPrimary">Записаться</a>
+          <a class="btn btn-primary btn-booking" href="<?php echo esc_url(home_url('/contacts/#booking')); ?>" data-i18n="index.hero.ctaPrimary">Записаться</a>
           <a class="btn btn-outline" href="https://t.me/larysamotz" data-i18n="index.hero.ctaSecondary">Отзывы</a>
         </div>
         <div class="hero-social-row">
@@ -136,7 +136,7 @@
         </article>
         <article class="card step-card">
           <span class="step-number">02</span>
-          <h3 data-i18n="index.process.steps.2.title">Знакомство</h3>
+          <h3 data-i18n="index.process.steps.2.title">Обратная связь</h3>
           <p data-i18n="index.process.steps.2.text">На указанную Вами почту прийдет письмо с подтверждением записи.</p>
         </article>
         <article class="card step-card">
@@ -146,7 +146,7 @@
         </article>
         <article class="card step-card">
           <span class="step-number">04</span>
-          <h3 data-i18n="index.process.steps.4.title">Поддержка</h3>
+          <h3 data-i18n="index.process.steps.4.title">Оплата услуг</h3>
           <p data-i18n="index.process.steps.4.text" data-i18n-html>Оплату учлуг Вы проводите после встречи. Оплата происходит через сайт <a class="inline-link" href="https://gipnocouch.com" target="_blank" rel="noopener noreferrer">gipnocouch.com</a></p>
         </article>
       </div>
@@ -171,7 +171,7 @@
           <h3 data-i18n="services.items.3.title">Вводная встреча</h3>
           <p data-i18n="services.items.3.text">Короткое знакомство и уточнение запроса.</p>
           <p class="price" data-i18n="services.items.3.price">&euro;0</p>
-          <a class="btn btn-primary" href="<?php echo esc_url(home_url('/contacts/?service=intro#booking')); ?>" data-i18n="services.cta">Записаться</a>
+          <a class="btn btn-primary btn-booking" href="<?php echo esc_url(home_url('/contacts/?service=intro#booking')); ?>" data-i18n="services.cta">Записаться</a>
         </article>
         <article class="card service-card">
           <div class="service-meta">
@@ -179,8 +179,8 @@
           </div>
           <h3 data-i18n="services.items.1.title">Индивидуальная сессия</h3>
           <p data-i18n="services.items.1.text">Разбор одного запроса с опорой на ЭОТ.</p>
-          <p class="price" data-i18n="services.items.1.price">&euro;60</p>
-          <a class="btn btn-primary" href="<?php echo esc_url(home_url('/contacts/?service=individual#booking')); ?>" data-i18n="services.cta">Записаться</a>
+          <p class="price" data-i18n="services.items.1.price">&euro;60 в час</p>
+          <a class="btn btn-primary btn-booking" href="<?php echo esc_url(home_url('/contacts/?service=individual#booking')); ?>" data-i18n="services.cta">Записаться</a>
         </article>
         <article class="card service-card">
           <div class="service-meta">
@@ -189,7 +189,7 @@
           <h3 data-i18n="services.items.2.title">Семинар возрождения внутренней силы</h3>
           <p data-i18n="services.items.2.text">Тренировка практических навыков саморегуляции и снятия психоблоков. Индивидуальная и групповая работа в течение месяца. Две личных встречи. Три групповых сессии. Теоретические лекции в записи.</p>
           <p class="price" data-i18n="services.items.2.price">&euro;300</p>
-          <a class="btn btn-primary" href="<?php echo esc_url(home_url('/contacts/?service=package#booking')); ?>" data-i18n="services.cta">Записаться</a>
+          <a class="btn btn-primary btn-booking" href="<?php echo esc_url(home_url('/contacts/?service=package#booking')); ?>" data-i18n="services.cta">Записаться</a>
         </article>
       </div>
     </div>

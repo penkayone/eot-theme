@@ -107,9 +107,9 @@
       "title": "Ako prebieha konzultácia",
       "steps": {
         "1": { "title": "Žiadosť", "text": "Na konzultáciu sa môžete objednať priamo na tejto stránke. Vojdite do sekcie „Rezervácia“, vyberte službu, dátum a čas a vyplňte svoje údaje." },
-        "2": { "title": "Zoznámenie", "text": "Na uvedený e-mail vám príde potvrdenie rezervácie." },
+        "2": { "title": "Spätná väzba", "text": "Na uvedený e-mail vám príde potvrdenie rezervácie." },
         "3": { "title": "Sedenie", "text": "10 minút pred sedením vám príde na e-mail odkaz, cez ktorý sa pripojíte do Zoomu." },
-        "4": { "title": "Podpora", "text": "Platbu za služby vykonáte po stretnutí. Platba prebieha cez stránku <a class=\"inline-link\" href=\"https://gipnocouch.com\" target=\"_blank\" rel=\"noopener noreferrer\">gipnocouch.com</a>" }
+        "4": { "title": "Platba za služby", "text": "Platbu za služby vykonáte po stretnutí. Platba prebieha cez stránku <a class=\"inline-link\" href=\"https://gipnocouch.com\" target=\"_blank\" rel=\"noopener noreferrer\">gipnocouch.com</a>" }
       }
     },
     "reviews": {
@@ -214,7 +214,7 @@
     "cta": "Objednať sa",
     "disclaimer": "Psychologická pomoc nie je zdravotná služba.",
     "items": {
-      "1": { "duration": "60–90 minút", "title": "Individuálne sedenie", "text": "Práca s jedným témou.", "price": "€60" },
+      "1": { "duration": "60–90 minút", "title": "Individuálne sedenie", "text": "Práca s jedným témou.", "price": "€60 za hodinu" },
       "2": { "duration": "4 hodiny", "title": "Seminár o obnovení vnútornej sily", "text": "Tréning praktických zručností sebaregulácie a uvoľnenia psychických blokov. Individuálna aj skupinová práca počas jedného mesiaca. Dve osobné stretnutia. Tri skupinové sedenia. Teoretické prednášky v zázname.", "price": "€300" },
       "3": { "duration": "30 minút", "title": "Úvodné stretnutie", "text": "Krátke zoznámenie.", "price": "€0" }
     }

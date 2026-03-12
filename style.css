@@ -741,6 +741,23 @@ h3 {
   transform: translateY(-1px);
 }
 
+.btn.btn-primary.btn-booking,
+.btn.btn-primary[data-i18n="index.hero.ctaPrimary"],
+.btn.btn-primary[data-i18n="services.cta"] {
+  background: linear-gradient(135deg, #49b765 0%, #2f9d4b 100%) !important;
+  border-color: #258642 !important;
+  color: #fff !important;
+  box-shadow: 0 10px 16px rgba(47, 157, 75, 0.28) !important;
+}
+
+.btn.btn-primary.btn-booking:hover,
+.btn.btn-primary[data-i18n="index.hero.ctaPrimary"]:hover,
+.btn.btn-primary[data-i18n="services.cta"]:hover {
+  background: linear-gradient(135deg, #2d9247 0%, #258642 100%) !important;
+  box-shadow: 0 14px 22px rgba(39, 140, 68, 0.38) !important;
+  transform: translateY(-2px) !important;
+}
+
 
 .btn-outline {
   border-color: rgba(58, 123, 253, 0.25);
