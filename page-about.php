@@ -74,56 +74,41 @@ get_header(); ?>
         <h2 data-i18n="about.certs.title">Сертификаты</h2>
         <p class="muted" data-i18n="about.certs.subtitle">Подтверждение обучения и повышения квалификации.</p>
       </div>
-      <div class="cert-sections">
-        <div class="cert-group">
-          <div class="gallery grid cert-grid cert-gallery" data-gallery="certs-main">
-            <button class="gallery-item cert-item landscape" type="button" data-full="<?php echo eot_image_url('cert-1.jpg'); ?>">
-              <img src="<?php echo eot_image_url('cert-1.jpg'); ?>" alt="" data-i18n-attr="alt" data-i18n="about.certs.items.1.alt" />
-            </button>
-            <button class="gallery-item cert-item landscape" type="button" data-full="<?php echo eot_image_url('cert-2.jpg'); ?>">
-              <img src="<?php echo eot_image_url('cert-2.jpg'); ?>" alt="" data-i18n-attr="alt" data-i18n="about.certs.items.2.alt" />
-            </button>
-            <button class="gallery-item cert-item landscape" type="button" data-full="<?php echo eot_image_url('cert-3.jpg'); ?>">
-              <img src="<?php echo eot_image_url('cert-3.jpg'); ?>" alt="" data-i18n-attr="alt" data-i18n="about.certs.items.3.alt" />
-            </button>
-            <button class="gallery-item cert-item landscape" type="button" data-full="<?php echo eot_image_url('cert-4.jpg'); ?>">
-              <img src="<?php echo eot_image_url('cert-4.jpg'); ?>" alt="" data-i18n-attr="alt" data-i18n="about.certs.items.4.alt" />
-            </button>
-            <button class="gallery-item cert-item landscape" type="button" data-full="<?php echo eot_image_url('cert-5.jpg'); ?>">
-              <img src="<?php echo eot_image_url('cert-5.jpg'); ?>" alt="" data-i18n-attr="alt" data-i18n="about.certs.items.5.alt" />
-            </button>
-            <button class="gallery-item cert-item landscape" type="button" data-full="<?php echo eot_image_url('cert-6.jpg'); ?>">
-              <img src="<?php echo eot_image_url('cert-6.jpg'); ?>" alt="" data-i18n-attr="alt" data-i18n="about.certs.items.6.alt" />
-            </button>
-            <button class="gallery-item cert-item landscape" type="button" data-full="<?php echo eot_image_url('cert-7.jpg'); ?>">
-              <img src="<?php echo eot_image_url('cert-7.jpg'); ?>" alt="" data-i18n-attr="alt" data-i18n="about.certs.items.7.alt" />
-            </button>
-            <button class="gallery-item cert-item landscape" type="button" data-full="<?php echo eot_image_url('cert-8.jpg'); ?>">
-              <img src="<?php echo eot_image_url('cert-8.jpg'); ?>" alt="" data-i18n-attr="alt" data-i18n="about.certs.items.8.alt" />
-            </button>
-            <button class="gallery-item cert-item landscape" type="button" data-full="<?php echo eot_image_url('cert-9.jpg'); ?>">
-              <img src="<?php echo eot_image_url('cert-9.jpg'); ?>" alt="" data-i18n-attr="alt" data-i18n="about.certs.items.9.alt" />
-            </button>
-          </div>
+      <div class="gallery cert-gallery cert-pairs" data-gallery="certs">
+        <?php
+        $paired_cert_pairs = [
+          ['main' => 1, 'appendix' => 11],
+          ['main' => 2, 'appendix' => 12],
+          ['main' => 3, 'appendix' => 13],
+        ];
+        $main_only_certs = [4, 5, 6, 7, 8, 9, 10];
+        ?>
+        <div class="cert-pairs-top">
+          <?php foreach ($paired_cert_pairs as $pair) :
+            $main = (int) $pair['main'];
+            ?>
+            <div class="cert-pair">
+              <button class="gallery-item cert-item cert-item-main landscape" type="button" data-full="<?php echo eot_image_url('cert-' . $main . '.jpg'); ?>">
+                <img src="<?php echo eot_image_url('cert-' . $main . '.jpg'); ?>" alt="" data-i18n-attr="alt" data-i18n="about.certs.items.<?php echo $main; ?>.alt" />
+              </button>
+              <?php if (isset($pair['appendix'])) :
+                $appendix = (int) $pair['appendix'];
+                ?>
+                <button class="gallery-item cert-item cert-item-appendix portrait" type="button" data-full="<?php echo eot_image_url('cert-' . $appendix . '.jpg'); ?>">
+                  <img src="<?php echo eot_image_url('cert-' . $appendix . '.jpg'); ?>" alt="" data-i18n-attr="alt" data-i18n="about.certs.items.<?php echo $appendix; ?>.alt" />
+                </button>
+              <?php endif; ?>
+            </div>
+          <?php endforeach; ?>
         </div>
-        <div class="cert-group">
-          <div class="gallery grid cert-grid cert-gallery cert-gallery-appendix" data-gallery="certs-appendix">
-            <button class="gallery-item cert-item portrait" type="button" data-full="<?php echo eot_image_url('cert-10.jpg'); ?>">
-              <img src="<?php echo eot_image_url('cert-10.jpg'); ?>" alt="" data-i18n-attr="alt" data-i18n="about.certs.items.10.alt" />
+        <div class="cert-main-grid">
+          <?php foreach ($main_only_certs as $main) :
+            $main = (int) $main;
+            ?>
+            <button class="gallery-item cert-item cert-item-main landscape" type="button" data-full="<?php echo eot_image_url('cert-' . $main . '.jpg'); ?>">
+              <img src="<?php echo eot_image_url('cert-' . $main . '.jpg'); ?>" alt="" data-i18n-attr="alt" data-i18n="about.certs.items.<?php echo $main; ?>.alt" />
             </button>
-            <button class="gallery-item cert-item portrait" type="button" data-full="<?php echo eot_image_url('cert-11.jpg'); ?>">
-              <img src="<?php echo eot_image_url('cert-11.jpg'); ?>" alt="" data-i18n-attr="alt" data-i18n="about.certs.items.11.alt" />
-            </button>
-            <button class="gallery-item cert-item portrait" type="button" data-full="<?php echo eot_image_url('cert-12.jpg'); ?>">
-              <img src="<?php echo eot_image_url('cert-12.jpg'); ?>" alt="" data-i18n-attr="alt" data-i18n="about.certs.items.12.alt" />
-            </button>
-            <button class="gallery-item cert-item portrait" type="button" data-full="<?php echo eot_image_url('cert-13.jpg'); ?>">
-              <img src="<?php echo eot_image_url('cert-13.jpg'); ?>" alt="" data-i18n-attr="alt" data-i18n="about.certs.items.13.alt" />
-            </button>
-            <button class="gallery-item cert-item portrait" type="button" data-full="<?php echo eot_image_url('cert-14.jpg'); ?>">
-              <img src="<?php echo eot_image_url('cert-14.jpg'); ?>" alt="" data-i18n-attr="alt" data-i18n="about.certs.items.14.alt" />
-            </button>
-          </div>
+          <?php endforeach; ?>
         </div>
       </div>
     </div>

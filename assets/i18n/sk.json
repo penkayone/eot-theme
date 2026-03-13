@@ -189,7 +189,12 @@
         "5": { "alt": "Certifikát 5" },
         "6": { "alt": "Príloha k diplomu 1" },
         "7": { "alt": "Príloha k diplomu 2" },
-        "8": { "alt": "Príloha k diplomu 3" }
+        "8": { "alt": "Príloha k diplomu 3" },
+        "9": { "alt": "Certifikát 9" },
+        "10": { "alt": "Certifikát 10" },
+        "11": { "alt": "Príloha k certifikátu 11" },
+        "12": { "alt": "Príloha k certifikátu 12" },
+        "13": { "alt": "Príloha k certifikátu 13" }
       }
     },
     "art": {

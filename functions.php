@@ -50,7 +50,15 @@ function eot_enqueue_assets() {
 add_action('wp_enqueue_scripts', 'eot_enqueue_assets');
 
 function eot_image_url($filename) {
-    return esc_url(get_theme_file_uri('assets/images/' . $filename));
+    $relative_path = 'assets/images/' . ltrim((string) $filename, '/');
+    $uri = get_theme_file_uri($relative_path);
+    $file_path = get_theme_file_path($relative_path);
+
+    if (file_exists($file_path)) {
+        $uri = add_query_arg('ver', (string) filemtime($file_path), $uri);
+    }
+
+    return esc_url($uri);
 }
 
 function eot_disable_emoji() {
