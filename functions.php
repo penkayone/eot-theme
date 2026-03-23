@@ -17,10 +17,14 @@ add_action('after_setup_theme', 'eot_theme_setup');
 
 function eot_enqueue_assets() {
     $theme_version = wp_get_theme()->get('Version');
+    $style_ver = file_exists(get_theme_file_path('style.css')) ? (string) filemtime(get_theme_file_path('style.css')) : $theme_version;
     $main_js_ver = file_exists(get_theme_file_path('assets/js/main.js')) ? (string) filemtime(get_theme_file_path('assets/js/main.js')) : $theme_version;
     $contacts_js_ver = file_exists(get_theme_file_path('assets/js/contacts.js')) ? (string) filemtime(get_theme_file_path('assets/js/contacts.js')) : $theme_version;
+    $i18n_ru_ver = file_exists(get_theme_file_path('assets/i18n/ru.json')) ? (int) filemtime(get_theme_file_path('assets/i18n/ru.json')) : 0;
+    $i18n_sk_ver = file_exists(get_theme_file_path('assets/i18n/sk.json')) ? (int) filemtime(get_theme_file_path('assets/i18n/sk.json')) : 0;
+    $i18n_version = (string) max((int) $theme_version, $i18n_ru_ver, $i18n_sk_ver);
 
-    wp_enqueue_style('eot-style', get_stylesheet_uri(), [], $theme_version);
+    wp_enqueue_style('eot-style', get_stylesheet_uri(), [], $style_ver);
 
     wp_enqueue_script('eot-main', get_theme_file_uri('assets/js/main.js'), [], $main_js_ver, true);
 
@@ -31,13 +35,12 @@ function eot_enqueue_assets() {
         wp_localize_script('eot-contacts', 'eotBookingData', [
             'restUrl' => esc_url_raw(rest_url('bc/v1')),
             'nonce' => wp_create_nonce('wp_rest'),
-            'isLoggedIn' => is_user_logged_in(),
-            'loginUrl' => wp_login_url(is_singular() ? get_permalink() : home_url('/')),
         ]);
     }
 
     wp_localize_script('eot-main', 'eotThemeData', [
         'i18nPath'    => get_theme_file_uri('assets/i18n/'),
+        'i18nVersion' => $i18n_version,
         'assetsPath'  => get_theme_file_uri('assets/images/'),
         'apiBookUrl'  => home_url('/backend/api/book.php'),
     ]);
@@ -45,7 +48,15 @@ function eot_enqueue_assets() {
 add_action('wp_enqueue_scripts', 'eot_enqueue_assets');
 
 function eot_image_url($filename) {
-    return esc_url(get_theme_file_uri('assets/images/' . $filename));
+    $relative_path = 'assets/images/' . ltrim((string) $filename, '/');
+    $uri = get_theme_file_uri($relative_path);
+    $file_path = get_theme_file_path($relative_path);
+
+    if (file_exists($file_path)) {
+        $uri = add_query_arg('ver', (string) filemtime($file_path), $uri);
+    }
+
+    return esc_url($uri);
 }
 
 function eot_disable_emoji() {

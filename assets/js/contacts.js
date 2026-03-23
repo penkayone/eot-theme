@@ -506,12 +506,6 @@
         return;
       }
 
-      if (!config.isLoggedIn) {
-        const loginUrl = config.loginUrl || "/wp-login.php";
-        setFeedback(`Для записи нужно войти: ${loginUrl}`, true);
-        return;
-      }
-
       const payload = {
         service_id: parseInt(state.serviceId, 10),
         starts_at: state.selectedSlot.starts_at,

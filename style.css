@@ -4,7 +4,7 @@ Theme URI: https://example.com
 Author: EOT
 Author URI: https://example.com
 Description: WordPress theme for EOT psychologist website with booking system and bilingual support (RU/SK).
-Version: 1.0.0
+Version: 1.0.1
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
@@ -74,6 +74,19 @@ img {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.inline-link {
+  color: var(--primary);
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1.5px;
+  font-weight: 600;
+}
+
+.inline-link:hover,
+.inline-link:focus-visible {
+  color: var(--primary-dark);
+  text-decoration-thickness: 2px;
 }
 
 button {
@@ -155,6 +168,14 @@ h3 {
   color: var(--muted);
 }
 
+.eot-description {
+  margin: 0;
+  max-width: 74ch;
+  color: var(--text);
+  line-height: 1.7;
+  font-size: clamp(1rem, 1.8vw, 1.1rem);
+}
+
 .small {
   font-size: 0.9rem;
 }
@@ -191,6 +212,21 @@ h3 {
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
   position: relative;
   overflow: hidden;
+}
+
+.about-grid .card ul {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 6px;
+}
+
+.about-grid .card p + ul {
+  margin-top: var(--space-1);
+}
+
+.about-education-note {
+  margin-top: var(--space-2);
 }
 
 .booking-card {
@@ -647,6 +683,12 @@ h3 {
   position: relative;
 }
 
+.eot-cards .card p {
+  margin: 0;
+  text-align: left;
+  font-size: clamp(1.08rem, 1.9vw, 1.10rem);
+}
+
 .step-number {
   display: inline-flex;
   align-items: center;
@@ -697,6 +739,23 @@ h3 {
 .btn-primary:hover {
   background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
   transform: translateY(-1px);
+}
+
+.btn.btn-primary.btn-booking,
+.btn.btn-primary[data-i18n="index.hero.ctaPrimary"],
+.btn.btn-primary[data-i18n="services.cta"] {
+  background: linear-gradient(135deg, #49b765 0%, #2f9d4b 100%) !important;
+  border-color: #258642 !important;
+  color: #fff !important;
+  box-shadow: 0 10px 16px rgba(47, 157, 75, 0.28) !important;
+}
+
+.btn.btn-primary.btn-booking:hover,
+.btn.btn-primary[data-i18n="index.hero.ctaPrimary"]:hover,
+.btn.btn-primary[data-i18n="services.cta"]:hover {
+  background: linear-gradient(135deg, #2d9247 0%, #258642 100%) !important;
+  box-shadow: 0 14px 22px rgba(39, 140, 68, 0.38) !important;
+  transform: translateY(-2px) !important;
 }
 
 
@@ -955,6 +1014,10 @@ h3 {
 
 .service-card {
   border: 1px solid rgba(58, 123, 253, 0.18);
+}
+
+.service-meta {
+  margin: 0 0 var(--space-1);
 }
 
 .service-card::before {
@@ -1793,6 +1856,66 @@ h3 {
   object-fit: cover;
 }
 
+.cert-pairs {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.cert-pairs-top {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.cert-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr);
+  gap: var(--space-2);
+  align-items: stretch;
+}
+
+.cert-main-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-2);
+}
+
+.cert-gallery .cert-item {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cert-gallery .cert-item img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  background: #f7fbff;
+  border-radius: var(--radius-sm);
+}
+
+.cert-gallery .cert-item.landscape img {
+  aspect-ratio: 4 / 3;
+}
+
+.cert-gallery .cert-item.portrait img {
+  aspect-ratio: 3 / 4.2;
+}
+
+.cert-gallery .cert-item.square img {
+  aspect-ratio: 1 / 1;
+}
+
+.cert-main-grid .cert-item img,
+.cert-main-grid .cert-item.portrait img,
+.cert-main-grid .cert-item.square img {
+  aspect-ratio: 4 / 3;
+}
+
 .lightbox {
   position: fixed;
   inset: 0;
@@ -1817,12 +1940,16 @@ h3 {
   padding: var(--space-3);
   display: grid;
   gap: var(--space-2);
+  max-height: calc(100dvh - 2 * var(--space-3));
+  overflow: auto;
   animation: scale-in 0.2s ease;
 }
 
 .lightbox-content img {
   width: 100%;
   height: auto;
+  max-height: calc(100dvh - 220px);
+  object-fit: contain;
   border-radius: var(--radius-sm);
 }
 
@@ -1937,9 +2064,55 @@ h3 {
   }
 }
 
+@media (min-width: 560px) {
+  .cert-pair {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  }
+
+  .cert-main-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .cert-main-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 559px) {
+  .cert-gallery .cert-item {
+    width: 100%;
+  }
+}
+
 @media (max-width: 768px) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
   .hero-arrow {
     display: none;
+  }
+
+  .eot-cards .card p {
+    font-size: clamp(1.02rem, 4vw, 1.12rem);
+    line-height: 1.68;
+  }
+
+  .lightbox {
+    padding: 12px;
+  }
+
+  .lightbox-content {
+    padding: var(--space-2);
+    max-height: calc(100dvh - 24px);
+  }
+
+  .lightbox-content img {
+    max-height: calc(100dvh - 180px);
   }
 }
 

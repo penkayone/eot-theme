@@ -26,7 +26,9 @@ const loadLanguage = async (lang) => {
     return translationsCache[lang];
   }
   const basePath = (window.eotThemeData && window.eotThemeData.i18nPath) || 'i18n/';
-  const response = await fetch(`${basePath}${lang}.json`);
+  const i18nVersion = (window.eotThemeData && window.eotThemeData.i18nVersion) || "";
+  const versionSuffix = i18nVersion ? `?v=${encodeURIComponent(String(i18nVersion))}` : "";
+  const response = await fetch(`${basePath}${lang}.json${versionSuffix}`);
   const data = await response.json();
   translationsCache[lang] = data;
   return data;
@@ -39,7 +41,11 @@ const applyTranslations = (dictionary) => {
     const key = node.getAttribute("data-i18n");
     const value = getNestedValue(dictionary, key);
     if (value !== null && (!node.hasAttribute("data-i18n-attr") || node.hasAttribute("data-i18n-text"))) {
-      node.textContent = value;
+      if (node.hasAttribute("data-i18n-html")) {
+        node.innerHTML = value;
+      } else {
+        node.textContent = value;
+      }
     }
   });
 
@@ -143,6 +149,17 @@ const buildSchema = (dictionary) => {
 const initReveal = () => {
   const items = document.querySelectorAll("[data-reveal]");
   if (!items.length) return;
+
+  const isSmallViewport =
+    typeof window.matchMedia === "function" && window.matchMedia("(max-width: 768px)").matches;
+  const prefersReducedMotion =
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (isSmallViewport || prefersReducedMotion) {
+    return;
+  }
+
   items.forEach((item) => item.classList.add("reveal"));
   if (!("IntersectionObserver" in window)) {
     items.forEach((item) => item.classList.add("visible"));
@@ -173,7 +190,6 @@ const createLightbox = () => {
         <button class="lightbox-nav" type="button" data-dir="next" aria-label="" data-i18n="common.lightboxNext" data-i18n-attr="aria-label">→</button>
       </div>
       <img src="" alt="" />
-      <p class="muted lightbox-caption"></p>
     </div>
   `;
   document.body.appendChild(overlay);
@@ -204,16 +220,47 @@ const updateLightbox = () => {
   if (!state.lightbox || !state.gallery) return;
   const data = state.gallery[state.galleryIndex];
   const img = state.lightbox.querySelector("img");
-  const caption = state.lightbox.querySelector(".lightbox-caption");
   img.src = data.src;
   img.alt = data.alt || "";
-  caption.textContent = data.alt || "";
 };
 
 const shiftLightbox = (delta) => {
   if (!state.gallery) return;
   state.galleryIndex = (state.galleryIndex + delta + state.gallery.length) % state.gallery.length;
   updateLightbox();
+};
+
+const initCertificatesLayout = () => {
+  const certItems = document.querySelectorAll(".cert-gallery .cert-item");
+  if (!certItems.length) return;
+
+  certItems.forEach((item) => {
+    const img = item.querySelector("img");
+    if (!img) return;
+
+    const applyOrientation = () => {
+      const { naturalWidth, naturalHeight } = img;
+      if (!naturalWidth || !naturalHeight) return;
+
+      item.classList.remove("landscape", "portrait", "square");
+      const ratio = naturalWidth / naturalHeight;
+
+      if (ratio > 1.12) {
+        item.classList.add("landscape");
+      } else if (ratio < 0.9) {
+        item.classList.add("portrait");
+      } else {
+        item.classList.add("square");
+      }
+    };
+
+    if (img.complete) {
+      applyOrientation();
+      return;
+    }
+
+    img.addEventListener("load", applyOrientation, { once: true });
+  });
 };
 
 const initLightbox = () => {
@@ -281,6 +328,7 @@ const init = async () => {
   initNavToggle();
   initLanguageSwitcher();
   initReveal();
+  initCertificatesLayout();
   initLightbox();
   initHeroSlider();
 
