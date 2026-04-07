@@ -12,6 +12,10 @@ function eot_get_default_language() {
     return 'ru';
 }
 
+function eot_get_theme_textdomain() {
+    return 'eot-theme';
+}
+
 function eot_is_supported_language($lang) {
     return in_array($lang, eot_get_supported_languages(), true);
 }
@@ -23,77 +27,102 @@ function eot_normalize_language($lang) {
 }
 
 function eot_get_current_lang() {
-    $lang = get_query_var('eot_lang');
+    if (function_exists('pll_current_language')) {
+        $lang = pll_current_language('slug');
 
-    if (!$lang && isset($_GET['lang'])) {
-        $lang = sanitize_key(wp_unslash($_GET['lang']));
+        if ($lang) {
+            return eot_normalize_language($lang);
+        }
     }
 
-    return eot_normalize_language($lang);
+    return eot_get_default_language();
 }
 
-function eot_is_sk_request() {
-    return eot_get_current_lang() === 'sk';
+function eot_is_polylang_active() {
+    return function_exists('pll_current_language') && function_exists('pll_home_url');
 }
 
-function eot_get_current_relative_path() {
-    global $wp;
+function eot_page_key_to_default_slug($key) {
+    $map = [
+        'about' => 'about',
+        'services' => 'services',
+        'contacts' => 'contacts',
+    ];
 
-    $path = isset($wp->request) ? (string) $wp->request : '';
-    $path = trim($path, '/');
+    return $map[$key] ?? '';
+}
 
-    if (strpos($path, 'sk/') === 0) {
-        $path = substr($path, 3);
-    } elseif ($path === 'sk') {
-        $path = '';
+function eot_get_page_id_by_key($key) {
+    if ($key === 'index') {
+        return (int) get_option('page_on_front');
     }
 
-    return $path;
+    $slug = eot_page_key_to_default_slug($key);
+    if ($slug === '') {
+        return 0;
+    }
+
+    $page = get_page_by_path($slug);
+
+    return $page instanceof WP_Post ? (int) $page->ID : 0;
+}
+
+function eot_get_translated_post_id($post_id, $lang = null) {
+    $post_id = (int) $post_id;
+    $lang = eot_normalize_language($lang ?: eot_get_current_lang());
+
+    if ($post_id <= 0) {
+        return 0;
+    }
+
+    if (function_exists('pll_get_post')) {
+        $translated_id = pll_get_post($post_id, $lang);
+
+        if ($translated_id) {
+            return (int) $translated_id;
+        }
+    }
+
+    return $post_id;
 }
 
 function eot_localized_url($path = '', $lang = null) {
     $lang = eot_normalize_language($lang ?: eot_get_current_lang());
     $path = trim((string) $path, '/');
-    $url_path = $path === '' ? '/' : '/' . $path . '/';
 
-    if ($lang === 'sk') {
-        $url_path = $path === '' ? '/sk/' : '/sk/' . $path . '/';
+    if ($path === '') {
+        return eot_is_polylang_active() ? pll_home_url($lang) : home_url('/');
     }
 
-    return home_url($url_path);
-}
+    $page_id = eot_get_page_id_by_key($path);
+    if ($page_id > 0) {
+        $translated_id = eot_get_translated_post_id($page_id, $lang);
 
-function eot_localized_current_url($lang = null, $include_query = false) {
-    $lang = eot_normalize_language($lang ?: eot_get_current_lang());
-    $url = eot_localized_url(eot_get_current_relative_path(), $lang);
-
-    if ($include_query && !empty($_GET)) {
-        $url = add_query_arg(wp_unslash($_GET), $url);
+        return get_permalink($translated_id);
     }
 
-    return $url;
-}
+    if (eot_is_polylang_active()) {
+        return trailingslashit(pll_home_url($lang)) . $path . '/';
+    }
 
-function eot_get_hreflang_map() {
-    return [
-        'ru' => eot_localized_current_url('ru'),
-        'sk' => eot_localized_current_url('sk'),
-        'x-default' => eot_localized_current_url('ru'),
-    ];
+    return home_url('/' . $path . '/');
 }
 
 function eot_page_key_from_context() {
-    if (is_front_page() || get_query_var('eot_front_page')) {
+    if (is_front_page()) {
         return 'index';
     }
 
-    if (is_page()) {
-        $slug = get_post_field('post_name', get_post());
-        $map = ['about' => 'about', 'services' => 'services', 'contacts' => 'contacts'];
+    if (is_page_template('page-about.php')) {
+        return 'about';
+    }
 
-        if (isset($map[$slug])) {
-            return $map[$slug];
-        }
+    if (is_page_template('page-services.php')) {
+        return 'services';
+    }
+
+    if (is_page_template('page-contacts.php')) {
+        return 'contacts';
     }
 
     if (is_404()) {
@@ -103,88 +132,223 @@ function eot_page_key_from_context() {
     return 'index';
 }
 
-function eot_get_i18n_dictionary($lang = null) {
-    static $cache = [];
+function eot_translate($text, $default = '', $lang = null) {
+    $text = (string) $text;
 
-    $lang = eot_normalize_language($lang ?: eot_get_current_lang());
-
-    if (isset($cache[$lang])) {
-        return $cache[$lang];
-    }
-
-    $path = get_theme_file_path('assets/i18n/' . $lang . '.json');
-
-    if (!file_exists($path)) {
-        $cache[$lang] = [];
-
-        return $cache[$lang];
-    }
-
-    $content = file_get_contents($path);
-    $data = json_decode((string) $content, true);
-    $cache[$lang] = is_array($data) ? $data : [];
-
-    return $cache[$lang];
-}
-
-function eot_get_nested_value($array, $key, $default = null) {
-    $value = $array;
-
-    foreach (explode('.', (string) $key) as $segment) {
-        if (!is_array($value) || !array_key_exists($segment, $value)) {
-            return $default;
-        }
-
-        $value = $value[$segment];
-    }
-
-    return $value;
-}
-
-function eot_get_meta_value($field, $lang = null, $page = null) {
-    $dictionary = eot_get_i18n_dictionary($lang);
-    $page = $page ?: eot_page_key_from_context();
-
-    return eot_get_nested_value($dictionary, 'meta.' . $page . '.' . $field);
-}
-
-function eot_get_global_meta_value($field, $lang = null) {
-    $dictionary = eot_get_i18n_dictionary($lang);
-
-    return eot_get_nested_value($dictionary, 'meta.' . $field);
-}
-
-function eot_t($key, $default = '', $lang = null) {
-    $value = eot_get_nested_value(eot_get_i18n_dictionary($lang), $key);
-
-    if ($value === null || is_array($value)) {
+    if ($text === '') {
         return (string) $default;
     }
 
-    return (string) $value;
+    $gettext = translate($text, eot_get_theme_textdomain());
+    if (is_string($gettext) && $gettext !== '' && $gettext !== $text) {
+        return $gettext;
+    }
+
+    $legacy = eot_get_legacy_translation($text, $lang);
+    if ($legacy !== '') {
+        return $legacy;
+    }
+
+    return $text !== '' ? $text : (string) $default;
 }
 
-function eot_add_language_rewrite_tags() {
-    add_rewrite_tag('%eot_lang%', '([a-z]{2})');
-    add_rewrite_tag('%eot_front_page%', '([0-1])');
-}
-add_action('init', 'eot_add_language_rewrite_tags');
+function eot_get_legacy_translations_map() {
+    static $map = null;
 
-function eot_add_language_rewrite_rules() {
-    add_rewrite_rule('^sk/?$', 'index.php?eot_lang=sk&eot_front_page=1', 'top');
-    add_rewrite_rule('^sk/about/?$', 'index.php?pagename=about&eot_lang=sk', 'top');
-    add_rewrite_rule('^sk/services/?$', 'index.php?pagename=services&eot_lang=sk', 'top');
-    add_rewrite_rule('^sk/contacts/?$', 'index.php?pagename=contacts&eot_lang=sk', 'top');
-}
-add_action('init', 'eot_add_language_rewrite_rules');
+    if ($map !== null) {
+        return $map;
+    }
 
-function eot_register_query_vars($vars) {
-    $vars[] = 'eot_lang';
-    $vars[] = 'eot_front_page';
+    global $wpdb;
 
-    return $vars;
+    $prefix = $wpdb->esc_like('options_eot_tr_');
+    $rows = $wpdb->get_results(
+        $wpdb->prepare(
+            "SELECT option_name, option_value
+             FROM {$wpdb->options}
+             WHERE option_name LIKE %s
+               AND (option_name LIKE %s OR option_name LIKE %s)",
+            $prefix . '%',
+            $prefix . '%\\_ru',
+            $prefix . '%\\_sk'
+        ),
+        ARRAY_A
+    );
+
+    $pairs = [];
+
+    foreach ($rows as $row) {
+        $option_name = (string) ($row['option_name'] ?? '');
+        $option_value = (string) ($row['option_value'] ?? '');
+
+        if (!preg_match('/^options_eot_tr_(.+)_(ru|sk)$/', $option_name, $matches)) {
+            continue;
+        }
+
+        $key = $matches[1];
+        $lang = $matches[2];
+
+        if (!isset($pairs[$key])) {
+            $pairs[$key] = ['ru' => '', 'sk' => ''];
+        }
+
+        $pairs[$key][$lang] = $option_value;
+    }
+
+    $map = [];
+
+    foreach ($pairs as $pair) {
+        $ru = trim((string) ($pair['ru'] ?? ''));
+        if ($ru === '') {
+            continue;
+        }
+
+        $map[$ru] = [
+            'ru' => $ru,
+            'sk' => (string) ($pair['sk'] ?? ''),
+        ];
+    }
+
+    return $map;
 }
-add_filter('query_vars', 'eot_register_query_vars');
+
+function eot_get_legacy_translation($text, $lang = null) {
+    $text = (string) $text;
+    $lang = eot_normalize_language($lang ?: eot_get_current_lang());
+
+    if ($text === '') {
+        return '';
+    }
+
+    $map = eot_get_legacy_translations_map();
+    if (!isset($map[$text])) {
+        return '';
+    }
+
+    $translated = (string) ($map[$text][$lang] ?? '');
+
+    if ($translated === '') {
+        return '';
+    }
+
+    return $translated;
+}
+
+function eot_get_meta_source_map() {
+    return [
+        'index' => [
+            'title' => 'ЭОТ онлайн для русскоязычных за границей',
+            'description' => 'Эмоционально-образная терапия онлайн: тревога, адаптация, отношения, самооценка. Бережный подход, конфиденциально.',
+            'ogTitle' => 'ЭОТ онлайн для русскоязычных за границей',
+            'ogDescription' => 'Поддержка в адаптации, тревоге и отношениях. Онлайн-консультации ЭОТ.',
+            'twitterTitle' => 'ЭОТ онлайн для русскоязычных за границей',
+            'twitterDescription' => 'Бережная психологическая поддержка и ЭОТ онлайн.',
+        ],
+        'about' => [
+            'title' => 'Обо мне — ЭОТ психолог онлайн',
+            'description' => 'Психолог, практик ЭОТ. Био, подход, опыт, этика, сертификаты и творчество.',
+            'ogTitle' => 'Обо мне — ЭОТ психолог',
+            'ogDescription' => 'Опыт, подход и ценности. Сертификаты и картины.',
+            'twitterTitle' => 'Обо мне — ЭОТ психолог',
+            'twitterDescription' => 'Био, подход, сертификаты и творчество.',
+        ],
+        'services' => [
+            'title' => 'Услуги ЭОТ психолога онлайн',
+            'description' => 'Индивидуальные сессии, пакетные встречи и вводная консультация. Форматы работы ЭОТ онлайн.',
+            'ogTitle' => 'Услуги ЭОТ онлайн',
+            'ogDescription' => 'Выберите формат: индивидуально, пакет, вводная встреча.',
+            'twitterTitle' => 'Услуги ЭОТ онлайн',
+            'twitterDescription' => 'Форматы работы и запись на консультацию.',
+        ],
+        'contacts' => [
+            'title' => 'Запись — ЭОТ психолог онлайн',
+            'description' => 'Свяжитесь удобным способом или оставьте сообщение через форму.',
+            'ogTitle' => 'Запись',
+            'ogDescription' => 'Telegram, WhatsApp, Facebook и форма связи.',
+            'twitterTitle' => 'Запись ЭОТ психолога',
+            'twitterDescription' => 'Написать сообщение или оставить заявку.',
+        ],
+    ];
+}
+
+function eot_get_meta_value($field, $lang = null, $page = null) {
+    $page = $page ?: eot_page_key_from_context();
+    $map = eot_get_meta_source_map();
+    $source = $map[$page][$field] ?? '';
+
+    return $source !== '' ? eot_translate($source, '', $lang) : '';
+}
+
+function eot_get_client_i18n_dictionary($lang = null) {
+    $lang = eot_normalize_language($lang ?: eot_get_current_lang());
+
+    return [
+        'common' => [
+            'lightboxPrev' => eot_translate('Предыдущая', '', $lang),
+            'lightboxNext' => eot_translate('Следующая', '', $lang),
+            'lightboxClose' => eot_translate('Закрыть', '', $lang),
+        ],
+        'services' => [
+            'items' => [
+                '1' => ['title' => eot_translate('Индивидуальная сессия', '', $lang)],
+                '2' => ['title' => eot_translate('Семинар возрождения внутренней силы', '', $lang)],
+                '3' => ['title' => eot_translate('Вводная встреча', '', $lang)],
+            ],
+        ],
+        'booking' => [
+            'serviceLabel' => eot_translate('Выберите услугу', '', $lang),
+            'chooseService' => eot_translate('Сначала выберите услугу.', '', $lang),
+            'chooseDay' => eot_translate('Выберите дату', '', $lang),
+            'chooseSlot' => eot_translate('Выберите слот для записи', '', $lang),
+            'selectedPrefix' => eot_translate('Вы выбрали', '', $lang),
+            'dateSelectedToast' => eot_translate('Вы выбрали дату {date}, теперь выберите время.', '', $lang),
+            'timeSelectedToast' => eot_translate('Вы выбрали время {time}, теперь заполните форму.', '', $lang),
+            'noDates' => eot_translate('Нет доступных дат', '', $lang),
+            'noSlots' => eot_translate('Нет доступных слотов', '', $lang),
+            'success' => eot_translate('Запись подтверждена. Я свяжусь с вами через email.', '', $lang),
+            'saving' => eot_translate('Сохраняю...', '', $lang),
+            'errors' => [
+                'service' => eot_translate('Сначала выберите услугу.', '', $lang),
+                'time' => eot_translate('Сначала выберите время.', '', $lang),
+                'name' => eot_translate('Укажите корректное имя.', '', $lang),
+                'email' => eot_translate('Введите корректный email.', '', $lang),
+                'phone' => eot_translate('Телефон: только цифры и +, 7-15.', '', $lang),
+                'message' => eot_translate('Кратко опишите запрос.', '', $lang),
+                'server' => eot_translate('Не удалось отправить запись. Попробуйте позже.', '', $lang),
+            ],
+        ],
+        'schema' => [
+            'name' => eot_translate('Психолог ЭОТ онлайн', '', $lang),
+            'description' => eot_translate('Психологическая поддержка методом эмоционально-образной терапии для русскоязычных за границей.', '', $lang),
+            'areaServed' => 'Worldwide',
+            'availableLanguage' => ['ru', 'sk'],
+            'url' => eot_localized_url('', $lang),
+            'image' => '',
+            'serviceType' => eot_translate('Эмоционально-образная терапия', '', $lang),
+            'offerCatalogName' => eot_translate('Онлайн-услуги ЭОТ', '', $lang),
+            'offers' => [
+                [
+                    'name' => eot_translate('Индивидуальная сессия', '', $lang),
+                    'description' => eot_translate('60 минут онлайн-сессии по методу ЭОТ.', '', $lang),
+                    'price' => '60',
+                    'currency' => 'EUR',
+                ],
+                [
+                    'name' => eot_translate('Пакет 4 сессии', '', $lang),
+                    'description' => eot_translate('Последовательная поддержка и сопровождение.', '', $lang),
+                    'price' => '220',
+                    'currency' => 'EUR',
+                ],
+                [
+                    'name' => eot_translate('Вводная встреча', '', $lang),
+                    'description' => eot_translate('Короткое знакомство и уточнение запроса.', '', $lang),
+                    'price' => '0',
+                    'currency' => 'EUR',
+                ],
+            ],
+        ],
+    ];
+}
 
 function eot_filter_language_attributes($output) {
     $lang = eot_get_current_lang();
@@ -198,18 +362,66 @@ function eot_filter_language_attributes($output) {
 }
 add_filter('language_attributes', 'eot_filter_language_attributes');
 
-function eot_front_page_template_for_sk($template) {
-    if (get_query_var('eot_front_page')) {
-        $front_template = locate_template('front-page.php');
+function eot_get_language_switcher_items() {
+    $items = [];
 
-        if ($front_template) {
-            return $front_template;
+    foreach (eot_get_supported_languages() as $slug) {
+        if (is_front_page()) {
+            $url = eot_localized_url('', $slug);
+        } elseif (is_singular()) {
+            $post_id = get_queried_object_id();
+            $translated_id = eot_get_translated_post_id($post_id, $slug);
+            $url = $translated_id ? get_permalink($translated_id) : eot_localized_url('', $slug);
+        } else {
+            $url = eot_localized_url('', $slug);
+        }
+
+        if (!isset($items[$slug])) {
+            $items[$slug] = [
+                'slug'    => $slug,
+                'name'    => strtoupper($slug),
+                'url'     => $url,
+                'current' => $slug === eot_get_current_lang(),
+            ];
         }
     }
 
-    return $template;
+    return $items;
 }
-add_filter('template_include', 'eot_front_page_template_for_sk');
+
+function eot_localized_current_url($lang = null, $include_query = false) {
+    $lang = eot_normalize_language($lang ?: eot_get_current_lang());
+
+    if (is_front_page()) {
+        $url = eot_localized_url('', $lang);
+    } elseif (is_singular()) {
+        $post_id = get_queried_object_id();
+        $translated_id = eot_get_translated_post_id($post_id, $lang);
+        $url = get_permalink($translated_id);
+    } else {
+        $url = eot_localized_url('', $lang);
+    }
+
+    if ($include_query && !empty($_GET)) {
+        $url = add_query_arg(wp_unslash($_GET), $url);
+    }
+
+    return $url;
+}
+
+function eot_get_hreflang_map() {
+    $map = [];
+
+    foreach (eot_get_language_switcher_items() as $slug => $item) {
+        $map[$slug] = $item['url'];
+    }
+
+    if (!isset($map['x-default'])) {
+        $map['x-default'] = eot_localized_current_url(eot_get_default_language());
+    }
+
+    return $map;
+}
 
 function eot_print_hreflang_tags() {
     if (is_404()) {
@@ -236,13 +448,6 @@ function eot_print_canonical_tag() {
     );
 }
 
-function eot_flush_rewrite_rules_on_theme_switch() {
-    eot_add_language_rewrite_tags();
-    eot_add_language_rewrite_rules();
-    flush_rewrite_rules();
-}
-add_action('after_switch_theme', 'eot_flush_rewrite_rules_on_theme_switch');
-
 function eot_filter_document_title($title) {
     $meta_title = eot_get_meta_value('title');
 
@@ -251,6 +456,7 @@ function eot_filter_document_title($title) {
 add_filter('pre_get_document_title', 'eot_filter_document_title');
 
 function eot_theme_setup() {
+    load_theme_textdomain(eot_get_theme_textdomain(), get_theme_file_path('languages'));
     add_theme_support('title-tag');
     add_theme_support('html5', ['search-form', 'comment-form', 'comment-list', 'gallery', 'caption']);
     add_theme_support('post-thumbnails');
@@ -266,9 +472,6 @@ function eot_enqueue_assets() {
     $style_ver = file_exists(get_theme_file_path('style.css')) ? (string) filemtime(get_theme_file_path('style.css')) : $theme_version;
     $main_js_ver = file_exists(get_theme_file_path('assets/js/main.js')) ? (string) filemtime(get_theme_file_path('assets/js/main.js')) : $theme_version;
     $contacts_js_ver = file_exists(get_theme_file_path('assets/js/contacts.js')) ? (string) filemtime(get_theme_file_path('assets/js/contacts.js')) : $theme_version;
-    $i18n_ru_ver = file_exists(get_theme_file_path('assets/i18n/ru.json')) ? (int) filemtime(get_theme_file_path('assets/i18n/ru.json')) : 0;
-    $i18n_sk_ver = file_exists(get_theme_file_path('assets/i18n/sk.json')) ? (int) filemtime(get_theme_file_path('assets/i18n/sk.json')) : 0;
-    $i18n_version = (string) max((int) $theme_version, $i18n_ru_ver, $i18n_sk_ver);
 
     wp_enqueue_style('eot-style', get_stylesheet_uri(), [], $style_ver);
 
@@ -286,11 +489,8 @@ function eot_enqueue_assets() {
 
     wp_localize_script('eot-main', 'eotThemeData', [
         'lang'        => eot_get_current_lang(),
-        'i18n'        => eot_get_i18n_dictionary(),
-        'i18nPath'    => get_theme_file_uri('assets/i18n/'),
-        'i18nVersion' => $i18n_version,
+        'i18n'        => eot_get_client_i18n_dictionary(),
         'assetsPath'  => get_theme_file_uri('assets/images/'),
-        'apiBookUrl'  => home_url('/backend/api/book.php'),
     ]);
 }
 add_action('wp_enqueue_scripts', 'eot_enqueue_assets');

@@ -15,13 +15,6 @@ const getNestedValue = (obj, key) =>
 
 const t = (key, fallback = "") => getNestedValue(state.dictionary, key) ?? fallback;
 
-const fetchPartial = async (selector, path) => {
-  const container = document.querySelector(selector);
-  if (!container || container.children.length > 0) return;
-  const response = await fetch(path);
-  container.innerHTML = await response.text();
-};
-
 const setActiveNav = () => {
   const currentPage = document.body.dataset.page;
   document.querySelectorAll(".nav-list a").forEach((link) => {
@@ -255,9 +248,6 @@ const initLightbox = () => {
 };
 
 const init = async () => {
-  await fetchPartial("#site-header", "partials/header.html");
-  await fetchPartial("#site-footer", "partials/footer.html");
-
   document.documentElement.lang = state.lang;
   window.__I18N__ = state.dictionary;
 
