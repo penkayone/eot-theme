@@ -7,42 +7,38 @@ get_header(); ?>
 <main>
   <section class="section">
     <div class="container">
-      <h1 data-i18n="services.title">Услуги</h1>
-      <p class="lead" data-i18n="services.subtitle">
-        Форматы работы под ваш запрос и график, без медицинских обещаний.
-      </p>
+      <h1><?php echo esc_html(eot_t('services.title')); ?></h1>
+      <p class="lead"><?php echo esc_html(eot_t('services.subtitle')); ?></p>
       <div class="grid cards-3">
         <article class="card service-card">
           <div class="service-meta">
-            <span class="badge" data-i18n="services.items.3.duration">30 минут</span>
+            <span class="badge"><?php echo esc_html(eot_t('services.items.3.duration')); ?></span>
           </div>
-          <h2 data-i18n="services.items.3.title">Вводная встреча</h2>
-          <p data-i18n="services.items.3.text">Короткое знакомство и уточнение запроса.</p>
-          <p class="price" data-i18n="services.items.3.price">&euro;0</p>
-          <a class="btn btn-primary btn-booking" href="<?php echo esc_url(home_url('/contacts/?service=intro#booking')); ?>" data-i18n="services.cta">Записаться</a>
+          <h2><?php echo esc_html(eot_t('services.items.3.title')); ?></h2>
+          <p><?php echo esc_html(eot_t('services.items.3.text')); ?></p>
+          <p class="price"><?php echo esc_html(eot_t('services.items.3.price')); ?></p>
+          <a class="btn btn-primary btn-booking" href="<?php echo esc_url(add_query_arg('service', 'intro', eot_localized_url('contacts')) . '#booking'); ?>"><?php echo esc_html(eot_t('services.cta')); ?></a>
         </article>
         <article class="card service-card">
           <div class="service-meta">
-            <span class="badge" data-i18n="services.items.1.duration">60–90 минут</span>
+            <span class="badge"><?php echo esc_html(eot_t('services.items.1.duration')); ?></span>
           </div>
-          <h2 data-i18n="services.items.1.title">Индивидуальная сессия</h2>
-          <p data-i18n="services.items.1.text">Разбор одного запроса с опорой на ЭОТ.</p>
-          <p class="price" data-i18n="services.items.1.price">&euro;60</p>
-          <a class="btn btn-primary btn-booking" href="<?php echo esc_url(home_url('/contacts/?service=individual#booking')); ?>" data-i18n="services.cta">Записаться</a>
+          <h2><?php echo esc_html(eot_t('services.items.1.title')); ?></h2>
+          <p><?php echo esc_html(eot_t('services.items.1.text')); ?></p>
+          <p class="price"><?php echo esc_html(eot_t('services.items.1.price')); ?></p>
+          <a class="btn btn-primary btn-booking" href="<?php echo esc_url(add_query_arg('service', 'individual', eot_localized_url('contacts')) . '#booking'); ?>"><?php echo esc_html(eot_t('services.cta')); ?></a>
         </article>
         <article class="card service-card">
           <div class="service-meta">
-            <span class="badge" data-i18n="services.items.2.duration">4 часа</span>
+            <span class="badge"><?php echo esc_html(eot_t('services.items.2.duration')); ?></span>
           </div>
-          <h2 data-i18n="services.items.2.title">Семинар возрождения внутренней силы</h2>
-          <p data-i18n="services.items.2.text">Тренировка практических навыков саморегуляции и снятия психоблоков. Индивидуальная и групповая работа в течение месяца. Две личных встречи. Три групповых сессии. Теоретические лекции в записи.</p>
-          <p class="price" data-i18n="services.items.2.price">&euro;300</p>
-          <a class="btn btn-primary btn-booking" href="<?php echo esc_url(home_url('/contacts/?service=package#booking')); ?>" data-i18n="services.cta">Записаться</a>
+          <h2><?php echo esc_html(eot_t('services.items.2.title')); ?></h2>
+          <p><?php echo esc_html(eot_t('services.items.2.text')); ?></p>
+          <p class="price"><?php echo esc_html(eot_t('services.items.2.price')); ?></p>
+          <a class="btn btn-primary btn-booking" href="<?php echo esc_url(add_query_arg('service', 'package', eot_localized_url('contacts')) . '#booking'); ?>"><?php echo esc_html(eot_t('services.cta')); ?></a>
         </article>
       </div>
-      <p class="disclaimer" data-i18n="services.disclaimer">
-        Психологическая помощь не является медицинской услугой.
-      </p>
+      <p class="disclaimer"><?php echo esc_html(eot_t('services.disclaimer')); ?></p>
     </div>
   </section>
 </main>

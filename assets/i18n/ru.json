@@ -28,40 +28,32 @@
     "index": {
       "title": "ЭОТ онлайн для русскоязычных за границей",
       "description": "Эмоционально-образная терапия онлайн: тревога, адаптация, отношения, самооценка. Бережный подход, конфиденциально.",
-      "canonical": "https://example.com/",
       "ogTitle": "ЭОТ онлайн для русскоязычных за границей",
       "ogDescription": "Поддержка в адаптации, тревоге и отношениях. Онлайн-консультации ЭОТ.",
-      "ogUrl": "https://example.com/",
       "twitterTitle": "ЭОТ онлайн для русскоязычных за границей",
       "twitterDescription": "Бережная психологическая поддержка и ЭОТ онлайн."
     },
     "about": {
       "title": "Обо мне — ЭОТ психолог онлайн",
       "description": "Психолог, практик ЭОТ. Био, подход, опыт, этика, сертификаты и творчество.",
-      "canonical": "https://example.com/about",
       "ogTitle": "Обо мне — ЭОТ психолог",
       "ogDescription": "Опыт, подход и ценности. Сертификаты и картины.",
-      "ogUrl": "https://example.com/about",
       "twitterTitle": "Обо мне — ЭОТ психолог",
       "twitterDescription": "Био, подход, сертификаты и творчество."
     },
     "services": {
       "title": "Услуги ЭОТ психолога онлайн",
       "description": "Индивидуальные сессии, пакетные встречи и вводная консультация. Форматы работы ЭОТ онлайн.",
-      "canonical": "https://example.com/services",
       "ogTitle": "Услуги ЭОТ онлайн",
       "ogDescription": "Выберите формат: индивидуально, пакет, вводная встреча.",
-      "ogUrl": "https://example.com/services",
       "twitterTitle": "Услуги ЭОТ онлайн",
       "twitterDescription": "Форматы работы и запись на консультацию."
     },
     "contacts": {
       "title": "Запись — ЭОТ психолог онлайн",
       "description": "Свяжитесь удобным способом или оставьте сообщение через форму.",
-      "canonical": "https://example.com/contacts",
       "ogTitle": "Запись",
       "ogDescription": "Telegram, WhatsApp, Facebook и форма связи.",
-      "ogUrl": "https://example.com/contacts",
       "twitterTitle": "Запись ЭОТ психолога",
       "twitterDescription": "Написать сообщение или оставить заявку."
     }

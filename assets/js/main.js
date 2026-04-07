@@ -1,68 +1,25 @@
-const DEFAULT_LANG = "ru";
-const STORAGE_KEY = "site-lang";
+const DEFAULT_LANG = (window.eotThemeData && window.eotThemeData.lang) || "ru";
 
 const state = {
   lang: DEFAULT_LANG,
-  dictionary: {},
+  dictionary: (window.eotThemeData && window.eotThemeData.i18n) || {},
   lightbox: null,
   gallery: null,
   galleryIndex: 0,
 };
 
-const translationsCache = {};
-
 const getNestedValue = (obj, key) =>
-  key.split(".").reduce((acc, part) => (acc && acc[part] !== undefined ? acc[part] : null), obj);
+  String(key)
+    .split(".")
+    .reduce((acc, part) => (acc && acc[part] !== undefined ? acc[part] : null), obj);
+
+const t = (key, fallback = "") => getNestedValue(state.dictionary, key) ?? fallback;
 
 const fetchPartial = async (selector, path) => {
   const container = document.querySelector(selector);
   if (!container || container.children.length > 0) return;
   const response = await fetch(path);
   container.innerHTML = await response.text();
-};
-
-const loadLanguage = async (lang) => {
-  if (translationsCache[lang]) {
-    return translationsCache[lang];
-  }
-  const basePath = (window.eotThemeData && window.eotThemeData.i18nPath) || 'i18n/';
-  const i18nVersion = (window.eotThemeData && window.eotThemeData.i18nVersion) || "";
-  const versionSuffix = i18nVersion ? `?v=${encodeURIComponent(String(i18nVersion))}` : "";
-  const response = await fetch(`${basePath}${lang}.json${versionSuffix}`);
-  const data = await response.json();
-  translationsCache[lang] = data;
-  return data;
-};
-
-const applyTranslations = (dictionary) => {
-  document.documentElement.lang = state.lang;
-
-  document.querySelectorAll("[data-i18n]").forEach((node) => {
-    const key = node.getAttribute("data-i18n");
-    const value = getNestedValue(dictionary, key);
-    if (value !== null && (!node.hasAttribute("data-i18n-attr") || node.hasAttribute("data-i18n-text"))) {
-      if (node.hasAttribute("data-i18n-html")) {
-        node.innerHTML = value;
-      } else {
-        node.textContent = value;
-      }
-    }
-  });
-
-  document.querySelectorAll("[data-i18n-attr]").forEach((node) => {
-    const attr = node.getAttribute("data-i18n-attr");
-    const key = node.getAttribute("data-i18n");
-    const value = getNestedValue(dictionary, key);
-    if (value !== null) {
-      node.setAttribute(attr, value);
-    }
-  });
-
-  const titleKey = `meta.${document.body.dataset.page}.title`;
-  const titleValue = getNestedValue(dictionary, titleKey);
-  if (titleValue) {
-    document.title = titleValue;
-  }
 };
 
 const setActiveNav = () => {
@@ -91,20 +48,14 @@ const initNavToggle = () => {
   });
 };
 
-const initLanguageSwitcher = () => {
-  document.querySelectorAll(".lang-btn").forEach((btn) => {
-    btn.addEventListener("click", async () => {
-      const lang = btn.dataset.lang;
-      await setLanguage(lang);
-    });
-  });
-  updateLangButtons();
-};
-
 const updateLangButtons = () => {
   document.querySelectorAll(".lang-btn").forEach((btn) => {
     btn.setAttribute("aria-pressed", btn.dataset.lang === state.lang ? "true" : "false");
   });
+};
+
+const initLanguageSwitcher = () => {
+  updateLangButtons();
 };
 
 const buildSchema = (dictionary) => {
@@ -185,17 +136,14 @@ const createLightbox = () => {
   overlay.innerHTML = `
     <div class="lightbox-content" role="dialog" aria-modal="true">
       <div class="lightbox-controls">
-        <button class="lightbox-nav" type="button" data-dir="prev" aria-label="" data-i18n="common.lightboxPrev" data-i18n-attr="aria-label">←</button>
-        <button class="lightbox-close" type="button" aria-label="" data-i18n="common.lightboxClose" data-i18n-attr="aria-label">✕</button>
-        <button class="lightbox-nav" type="button" data-dir="next" aria-label="" data-i18n="common.lightboxNext" data-i18n-attr="aria-label">→</button>
+        <button class="lightbox-nav" type="button" data-dir="prev" aria-label="${t("common.lightboxPrev", "Previous")}">←</button>
+        <button class="lightbox-close" type="button" aria-label="${t("common.lightboxClose", "Close")}">✕</button>
+        <button class="lightbox-nav" type="button" data-dir="next" aria-label="${t("common.lightboxNext", "Next")}">→</button>
       </div>
       <img src="" alt="" />
     </div>
   `;
   document.body.appendChild(overlay);
-  if (state.dictionary) {
-    applyTranslations(state.dictionary);
-  }
   return overlay;
 };
 
@@ -306,23 +254,16 @@ const initLightbox = () => {
   });
 };
 
-const setLanguage = async (lang) => {
-  state.lang = lang;
-  localStorage.setItem(STORAGE_KEY, lang);
-  state.dictionary = await loadLanguage(lang);
-  window.__I18N__ = state.dictionary;
-  applyTranslations(state.dictionary);
-  updateLangButtons();
-  buildSchema(state.dictionary);
-  document.dispatchEvent(new CustomEvent("languageChanged", { detail: { lang } }));
-};
-
 const init = async () => {
   await fetchPartial("#site-header", "partials/header.html");
   await fetchPartial("#site-footer", "partials/footer.html");
 
-  const savedLang = localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG;
-  await setLanguage(savedLang);
+  document.documentElement.lang = state.lang;
+  window.__I18N__ = state.dictionary;
+
+  updateLangButtons();
+  buildSchema(state.dictionary);
+  document.dispatchEvent(new CustomEvent("languageChanged", { detail: { lang: state.lang } }));
 
   setActiveNav();
   initNavToggle();

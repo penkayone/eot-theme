@@ -28,40 +28,32 @@
     "index": {
       "title": "EOT online pre rusky hovoriacich",
       "description": "EOT online: úzkosť, adaptácia, vzťahy, sebaúcta.",
-      "canonical": "https://example.com/",
       "ogTitle": "EOT online",
       "ogDescription": "Podpora pri adaptácii a úzkosti.",
-      "ogUrl": "https://example.com/",
       "twitterTitle": "EOT online",
       "twitterDescription": "Jemná psychologická podpora."
     },
     "about": {
       "title": "O mne — EOT psychológ",
       "description": "Bio, prístup, skúsenosti, etika, certifikáty a tvorba.",
-      "canonical": "https://example.com/about",
       "ogTitle": "O mne",
       "ogDescription": "Skúsenosti, prístup a hodnoty.",
-      "ogUrl": "https://example.com/about",
       "twitterTitle": "O mne",
       "twitterDescription": "Bio, certifikáty a tvorba."
     },
     "services": {
       "title": "Služby EOT online",
       "description": "Individuálne sedenia, balík a úvodná konzultácia.",
-      "canonical": "https://example.com/services",
       "ogTitle": "Služby EOT online",
       "ogDescription": "Vyberte si formát spolupráce.",
-      "ogUrl": "https://example.com/services",
       "twitterTitle": "Služby EOT online",
       "twitterDescription": "Formáty a rezervácia."
     },
     "contacts": {
       "title": "Rezervácia — EOT psychológ",
       "description": "Kontaktujte ma alebo pošlite správu.",
-      "canonical": "https://example.com/contacts",
       "ogTitle": "Rezervácia",
       "ogDescription": "Telegram, WhatsApp, Facebook a formulár.",
-      "ogUrl": "https://example.com/contacts",
       "twitterTitle": "Rezervácia EOT psychológa",
       "twitterDescription": "Napíšte správu alebo žiadosť."
     }
