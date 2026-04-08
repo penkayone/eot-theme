@@ -20,8 +20,6 @@
     </div>
   </div>
 </footer>
-
-<script type="application/ld+json" id="schema-json"></script>
 <?php wp_footer(); ?>
 </body>
 </html>

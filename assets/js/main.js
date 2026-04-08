@@ -51,45 +51,6 @@ const initLanguageSwitcher = () => {
   updateLangButtons();
 };
 
-const buildSchema = (dictionary) => {
-  const base = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: getNestedValue(dictionary, "schema.name"),
-    description: getNestedValue(dictionary, "schema.description"),
-    areaServed: getNestedValue(dictionary, "schema.areaServed"),
-    availableLanguage: getNestedValue(dictionary, "schema.availableLanguage"),
-    url: getNestedValue(dictionary, "schema.url"),
-    image: getNestedValue(dictionary, "schema.image"),
-    serviceType: getNestedValue(dictionary, "schema.serviceType"),
-  };
-
-  if (document.body.dataset.page === "services") {
-    const offers = getNestedValue(dictionary, "schema.offers");
-    if (Array.isArray(offers)) {
-      base.hasOfferCatalog = {
-        "@type": "OfferCatalog",
-        name: getNestedValue(dictionary, "schema.offerCatalogName"),
-        itemListElement: offers.map((offer) => ({
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: offer.name,
-            description: offer.description,
-          },
-          price: offer.price,
-          priceCurrency: offer.currency,
-        })),
-      };
-    }
-  }
-
-  const script = document.getElementById("schema-json");
-  if (script) {
-    script.textContent = JSON.stringify(base, null, 2);
-  }
-};
-
 const initReveal = () => {
   const items = document.querySelectorAll("[data-reveal]");
   if (!items.length) return;
@@ -252,7 +213,6 @@ const init = async () => {
   window.__I18N__ = state.dictionary;
 
   updateLangButtons();
-  buildSchema(state.dictionary);
   document.dispatchEvent(new CustomEvent("languageChanged", { detail: { lang: state.lang } }));
 
   setActiveNav();

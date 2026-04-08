@@ -132,51 +132,6 @@ function eot_page_key_from_context() {
     return 'index';
 }
 
-function eot_get_meta_source_map() {
-    return [
-        'index' => [
-            'title' => 'ЭОТ онлайн для русскоязычных за границей',
-            'description' => 'Эмоционально-образная терапия онлайн: тревога, адаптация, отношения, самооценка. Бережный подход, конфиденциально.',
-            'ogTitle' => 'ЭОТ онлайн для русскоязычных за границей',
-            'ogDescription' => 'Поддержка в адаптации, тревоге и отношениях. Онлайн-консультации ЭОТ.',
-            'twitterTitle' => 'ЭОТ онлайн для русскоязычных за границей',
-            'twitterDescription' => 'Бережная психологическая поддержка и ЭОТ онлайн.',
-        ],
-        'about' => [
-            'title' => 'Обо мне — ЭОТ психолог онлайн',
-            'description' => 'Психолог, практик ЭОТ. Био, подход, опыт, этика, сертификаты и творчество.',
-            'ogTitle' => 'Обо мне — ЭОТ психолог',
-            'ogDescription' => 'Опыт, подход и ценности. Сертификаты и картины.',
-            'twitterTitle' => 'Обо мне — ЭОТ психолог',
-            'twitterDescription' => 'Био, подход, сертификаты и творчество.',
-        ],
-        'services' => [
-            'title' => 'Услуги ЭОТ психолога онлайн',
-            'description' => 'Индивидуальные сессии, пакетные встречи и вводная консультация. Форматы работы ЭОТ онлайн.',
-            'ogTitle' => 'Услуги ЭОТ онлайн',
-            'ogDescription' => 'Выберите формат: индивидуально, пакет, вводная встреча.',
-            'twitterTitle' => 'Услуги ЭОТ онлайн',
-            'twitterDescription' => 'Форматы работы и запись на консультацию.',
-        ],
-        'contacts' => [
-            'title' => 'Запись — ЭОТ психолог онлайн',
-            'description' => 'Свяжитесь удобным способом или оставьте сообщение через форму.',
-            'ogTitle' => 'Запись',
-            'ogDescription' => 'Telegram, WhatsApp, Facebook и форма связи.',
-            'twitterTitle' => 'Запись ЭОТ психолога',
-            'twitterDescription' => 'Написать сообщение или оставить заявку.',
-        ],
-    ];
-}
-
-function eot_get_meta_value($field, $lang = null, $page = null) {
-    $page = $page ?: eot_page_key_from_context();
-    $map = eot_get_meta_source_map();
-    $source = $map[$page][$field] ?? '';
-
-    return $source !== '' ? __($source, eot_get_theme_textdomain()) : '';
-}
-
 function eot_get_client_i18n_dictionary($lang = null) {
     $lang = eot_normalize_language($lang ?: eot_get_current_lang());
 
@@ -306,52 +261,6 @@ function eot_localized_current_url($lang = null, $include_query = false) {
 
     return $url;
 }
-
-function eot_get_hreflang_map() {
-    $map = [];
-
-    foreach (eot_get_language_switcher_items() as $slug => $item) {
-        $map[$slug] = $item['url'];
-    }
-
-    if (!isset($map['x-default'])) {
-        $map['x-default'] = eot_localized_current_url(eot_get_default_language());
-    }
-
-    return $map;
-}
-
-function eot_print_hreflang_tags() {
-    if (is_404()) {
-        return;
-    }
-
-    foreach (eot_get_hreflang_map() as $hreflang => $url) {
-        printf(
-            '<link rel="alternate" hreflang="%1$s" href="%2$s" />' . "\n",
-            esc_attr($hreflang),
-            esc_url($url)
-        );
-    }
-}
-
-function eot_print_canonical_tag() {
-    if (is_404()) {
-        return;
-    }
-
-    printf(
-        '<link rel="canonical" href="%s" />' . "\n",
-        esc_url(eot_localized_current_url())
-    );
-}
-
-function eot_filter_document_title($title) {
-    $meta_title = eot_get_meta_value('title');
-
-    return is_string($meta_title) && $meta_title !== '' ? $meta_title : $title;
-}
-add_filter('pre_get_document_title', 'eot_filter_document_title');
 
 function eot_theme_setup() {
     load_theme_textdomain(eot_get_theme_textdomain(), get_theme_file_path('languages'));

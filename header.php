@@ -3,29 +3,13 @@ if (!defined('ABSPATH')) exit;
 
 $eot_page = eot_page_key_from_context();
 $eot_lang = eot_get_current_lang();
-$eot_current_url = eot_localized_current_url();
 $eot_languages = eot_get_language_switcher_items();
-$eot_meta_description = eot_get_meta_value('description', $eot_lang, $eot_page);
-$eot_meta_og_title = eot_get_meta_value('ogTitle', $eot_lang, $eot_page);
-$eot_meta_og_description = eot_get_meta_value('ogDescription', $eot_lang, $eot_page);
-$eot_meta_twitter_title = eot_get_meta_value('twitterTitle', $eot_lang, $eot_page);
-$eot_meta_twitter_description = eot_get_meta_value('twitterDescription', $eot_lang, $eot_page);
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
   <meta charset="<?php bloginfo('charset'); ?>" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="<?php echo esc_attr((string) $eot_meta_description); ?>" />
-  <meta property="og:title" content="<?php echo esc_attr((string) $eot_meta_og_title); ?>" />
-  <meta property="og:description" content="<?php echo esc_attr((string) $eot_meta_og_description); ?>" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="<?php echo esc_url($eot_current_url); ?>" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="<?php echo esc_attr((string) $eot_meta_twitter_title); ?>" />
-  <meta name="twitter:description" content="<?php echo esc_attr((string) $eot_meta_twitter_description); ?>" />
-  <?php eot_print_canonical_tag(); ?>
-  <?php eot_print_hreflang_tags(); ?>
   <?php wp_head(); ?>
 </head>
 <body data-page="<?php echo esc_attr($eot_page); ?>" <?php body_class(); ?>>
