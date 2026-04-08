@@ -4,22 +4,22 @@
   <section class="hero section">
     <div class="container hero-grid">
       <div class="hero-content">
-        <h1 class="hero-title"><?php echo esc_html(eot_translate('Русскоговорящий психолог, коуч за рубежом')); ?></h1>
-        <p class="hero-subtitle"><?php echo esc_html(eot_translate('Провокативное, психологическое консультирование и коучинг.')); ?></p>
+        <h1 class="hero-title"><?php echo esc_html__('Русскоговорящий психолог, коуч за рубежом', 'eot-theme'); ?></h1>
+        <p class="hero-subtitle"><?php echo esc_html__('Провокативное, психологическое консультирование и коучинг.', 'eot-theme'); ?></p>
         <ul class="hero-list">
-          <li><?php echo esc_html(eot_translate('Эмоционально-образная терапия.')); ?></li>
-          <li><?php echo esc_html(eot_translate('Гипнокоучинг')); ?></li>
-          <li><?php echo esc_html(eot_translate('Аромопсихология, ольфактотерапия')); ?></li>
+          <li><?php echo esc_html__('Эмоционально-образная терапия.', 'eot-theme'); ?></li>
+          <li><?php echo esc_html__('Гипнокоучинг', 'eot-theme'); ?></li>
+          <li><?php echo esc_html__('Аромопсихология, ольфактотерапия', 'eot-theme'); ?></li>
         </ul>
-        <p class="hero-text"><?php echo esc_html(eot_translate('Работаю с тревогой, самооценкой, страхом проявленности, бессонницей, фобиями, психоблоками, эмоциональными травмами и другими запросами.')); ?></p>
+        <p class="hero-text"><?php echo esc_html__('Работаю с тревогой, самооценкой, страхом проявленности, бессонницей, фобиями, психоблоками, эмоциональными травмами и другими запросами.', 'eot-theme'); ?></p>
         <div class="badges">
-          <span class="badge"><?php echo esc_html(eot_translate('Конфиденциально')); ?></span>
-          <span class="badge"><?php echo esc_html(eot_translate('Онлайн')); ?></span>
-          <span class="badge"><?php echo esc_html(eot_translate('Полимодальный подход')); ?></span>
+          <span class="badge"><?php echo esc_html__('Конфиденциально', 'eot-theme'); ?></span>
+          <span class="badge"><?php echo esc_html__('Онлайн', 'eot-theme'); ?></span>
+          <span class="badge"><?php echo esc_html__('Полимодальный подход', 'eot-theme'); ?></span>
         </div>
         <div class="button-row">
-          <a class="btn btn-primary btn-booking" href="<?php echo esc_url(eot_localized_url('contacts') . '#booking'); ?>"><?php echo esc_html(eot_translate('Записаться')); ?></a>
-          <a class="btn btn-outline" href="https://t.me/larysamotz"><?php echo esc_html(eot_translate('Отзывы')); ?></a>
+          <a class="btn btn-primary btn-booking" href="<?php echo esc_url(eot_localized_url('contacts') . '#booking'); ?>"><?php echo esc_html__('Записаться', 'eot-theme'); ?></a>
+          <a class="btn btn-outline" href="https://t.me/larysamotz"><?php echo esc_html__('Отзывы', 'eot-theme'); ?></a>
         </div>
         <div class="hero-social-row">
           <a class="btn btn-social social-telegram" href="https://t.me/LaraLorein" target="_blank" rel="noopener noreferrer">
@@ -43,19 +43,19 @@
       <div class="hero-media">
         <div class="hero-slider" data-slider>
           <div class="hero-slide active">
-            <img src="<?php echo eot_image_url('hero-1.jpg'); ?>" alt="<?php echo esc_attr(eot_translate('Фото психолога')); ?>" />
+            <img src="<?php echo eot_image_url('hero-1.jpg'); ?>" alt="<?php echo esc_attr__('Фото психолога', 'eot-theme'); ?>" />
           </div>
           <div class="hero-slide">
-            <img src="<?php echo eot_image_url('hero-2.jpg'); ?>" alt="<?php echo esc_attr(eot_translate('Фото психолога')); ?>" />
+            <img src="<?php echo eot_image_url('hero-2.jpg'); ?>" alt="<?php echo esc_attr__('Фото психолога', 'eot-theme'); ?>" />
           </div>
           <div class="hero-slide">
-            <img src="<?php echo eot_image_url('hero-3.jpg'); ?>" alt="<?php echo esc_attr(eot_translate('Фото психолога')); ?>" />
+            <img src="<?php echo eot_image_url('hero-3.jpg'); ?>" alt="<?php echo esc_attr__('Фото психолога', 'eot-theme'); ?>" />
           </div>
           <div class="hero-slide">
-            <img src="<?php echo eot_image_url('hero-4.jpg'); ?>" alt="<?php echo esc_attr(eot_translate('Фото психолога')); ?>" />
+            <img src="<?php echo eot_image_url('hero-4.jpg'); ?>" alt="<?php echo esc_attr__('Фото психолога', 'eot-theme'); ?>" />
           </div>
           <div class="hero-slide">
-            <img src="<?php echo eot_image_url('hero-5.jpg'); ?>" alt="<?php echo esc_attr(eot_translate('Фото психолога')); ?>" />
+            <img src="<?php echo eot_image_url('hero-5.jpg'); ?>" alt="<?php echo esc_attr__('Фото психолога', 'eot-theme'); ?>" />
           </div>
           <button class="hero-arrow hero-arrow-prev" type="button" aria-label="Назад">&#8249;</button>
           <button class="hero-arrow hero-arrow-next" type="button" aria-label="Вперёд">&#8250;</button>
@@ -73,31 +73,31 @@
 
   <section class="section soft" data-reveal>
     <div class="container">
-      <h2><?php echo esc_html(eot_translate('С какими запросами можно прийти')); ?></h2>
+      <h2><?php echo esc_html__('С какими запросами можно прийти', 'eot-theme'); ?></h2>
       <div class="grid cards-3">
         <article class="card">
-          <h3><?php echo esc_html(eot_translate('Тревога')); ?></h3>
-          <p><?php echo esc_html(eot_translate('Снижение внутреннего напряжения, восстановление опоры.')); ?></p>
+          <h3><?php echo esc_html__('Тревога', 'eot-theme'); ?></h3>
+          <p><?php echo esc_html__('Снижение внутреннего напряжения, восстановление опоры.', 'eot-theme'); ?></p>
         </article>
         <article class="card">
-          <h3><?php echo esc_html(eot_translate('Самооценка')); ?></h3>
-          <p><?php echo esc_html(eot_translate('Укрепление самоценности и уверенности в себе.')); ?></p>
+          <h3><?php echo esc_html__('Самооценка', 'eot-theme'); ?></h3>
+          <p><?php echo esc_html__('Укрепление самоценности и уверенности в себе.', 'eot-theme'); ?></p>
         </article>
         <article class="card">
-          <h3><?php echo esc_html(eot_translate('Страх проявленности')); ?></h3>
-          <p><?php echo esc_html(eot_translate('Преодоление внутренних барьеров, обретение смелости заявлять о себе и своих талантах.')); ?></p>
+          <h3><?php echo esc_html__('Страх проявленности', 'eot-theme'); ?></h3>
+          <p><?php echo esc_html__('Преодоление внутренних барьеров, обретение смелости заявлять о себе и своих талантах.', 'eot-theme'); ?></p>
         </article>
         <article class="card">
-          <h3><?php echo esc_html(eot_translate('Бессонница')); ?></h3>
-          <p><?php echo esc_html(eot_translate('Работа с причинами нарушения сна, нормализация режима и обретение ночного спокойствия.')); ?></p>
+          <h3><?php echo esc_html__('Бессонница', 'eot-theme'); ?></h3>
+          <p><?php echo esc_html__('Работа с причинами нарушения сна, нормализация режима и обретение ночного спокойствия.', 'eot-theme'); ?></p>
         </article>
         <article class="card">
-          <h3><?php echo esc_html(eot_translate('Психоблоки')); ?></h3>
-          <p><?php echo esc_html(eot_translate('Выявление скрытых барьеров и устранение внутренних препятствий на пути к вашим целям.')); ?></p>
+          <h3><?php echo esc_html__('Психоблоки', 'eot-theme'); ?></h3>
+          <p><?php echo esc_html__('Выявление скрытых барьеров и устранение внутренних препятствий на пути к вашим целям.', 'eot-theme'); ?></p>
         </article>
         <article class="card">
-          <h3><?php echo esc_html(eot_translate('Эмоциональные травмы')); ?></h3>
-          <p><?php echo esc_html(eot_translate('Бережная проработка болезненного опыта и возвращение психологической целостности.')); ?></p>
+          <h3><?php echo esc_html__('Эмоциональные травмы', 'eot-theme'); ?></h3>
+          <p><?php echo esc_html__('Бережная проработка болезненного опыта и возвращение психологической целостности.', 'eot-theme'); ?></p>
         </article>
       </div>
     </div>
@@ -105,16 +105,16 @@
 
   <section class="section" data-reveal>
     <div class="container">
-      <h2><?php echo esc_html(eot_translate('Что такое эмоционально-образная терапия?')); ?></h2>
+      <h2><?php echo esc_html__('Что такое эмоционально-образная терапия?', 'eot-theme'); ?></h2>
       <div class="grid cards-3 eot-cards">
         <article class="card step-card">
-          <p><?php echo esc_html(eot_translate('Эмоционально-образная терапия - современный и эффективный метод психологической помощи. В процессе ЭОТ человек учится работать со своими эмоциями и внутренними образами, которые стоят за сложными чувствами, страхами, тревогой или стрессом. Психолог помогает выявить причины дискомфорта и изменить внутренние реакции, что делает терапию глубокой и результативной.')); ?></p>
+          <p><?php echo esc_html__('Эмоционально-образная терапия - современный и эффективный метод психологической помощи. В процессе ЭОТ человек учится работать со своими эмоциями и внутренними образами, которые стоят за сложными чувствами, страхами, тревогой или стрессом. Психолог помогает выявить причины дискомфорта и изменить внутренние реакции, что делает терапию глубокой и результативной.', 'eot-theme'); ?></p>
         </article>
         <article class="card step-card">
-          <p><?php echo esc_html(eot_translate('Главная особенность ЭОТ - работа с чувствами, состояниями на самом глубинном уровне личности. Вместе с психологом клиент исследует образы своих эмоций и дискомфорта, находит внутренние ресурсы для разрешения сложных ситуаций. Такой подход особенно полезен, если кажется, что стандартные разговорные методы не дают результата, а напряжение, тревога или обиды как будто "живут внутри".')); ?></p>
+          <p><?php echo esc_html__('Главная особенность ЭОТ - работа с чувствами, состояниями на самом глубинном уровне личности. Вместе с психологом клиент исследует образы своих эмоций и дискомфорта, находит внутренние ресурсы для разрешения сложных ситуаций. Такой подход особенно полезен, если кажется, что стандартные разговорные методы не дают результата, а напряжение, тревога или обиды как будто "живут внутри".', 'eot-theme'); ?></p>
         </article>
         <article class="card step-card">
-          <p><?php echo esc_html(eot_translate('Причиной телесного дискомфорта, боли, недомогания или хронических заболеваний часто становятся подавленные чувства и нерешенные конфликты. Эмоционально-образная терапия (ЭОТ) помогает выявить и проработать эти скрытые причины, позволяя человеку осознать свои эмоции и снять внутренние блоки. Благодаря работе с образами и чувствами, ЭОТ способствует восстановлению гармонии между психикой и телом, что проявляется улучшением самочувствия и избавлением от психосоматических симптомов.')); ?></p>
+          <p><?php echo esc_html__('Причиной телесного дискомфорта, боли, недомогания или хронических заболеваний часто становятся подавленные чувства и нерешенные конфликты. Эмоционально-образная терапия (ЭОТ) помогает выявить и проработать эти скрытые причины, позволяя человеку осознать свои эмоции и снять внутренние блоки. Благодаря работе с образами и чувствами, ЭОТ способствует восстановлению гармонии между психикой и телом, что проявляется улучшением самочувствия и избавлением от психосоматических симптомов.', 'eot-theme'); ?></p>
         </article>
       </div>
     </div>
@@ -122,27 +122,27 @@
 
   <section class="section soft" data-reveal>
     <div class="container">
-      <h2><?php echo esc_html(eot_translate('Как проходит консультация')); ?></h2>
+      <h2><?php echo esc_html__('Как проходит консультация', 'eot-theme'); ?></h2>
       <div class="grid cards-4">
         <article class="card step-card">
           <span class="step-number">01</span>
-          <h3><?php echo esc_html(eot_translate('Заявка')); ?></h3>
-          <p><?php echo esc_html(eot_translate('Вы можете записаться на консультацию на этом сайте. Для этого войдите в раздел "Записаться". Выберите: услугу, дату, время, напишите свои данные.')); ?></p>
+          <h3><?php echo esc_html__('Заявка', 'eot-theme'); ?></h3>
+          <p><?php echo esc_html__('Вы можете записаться на консультацию на этом сайте. Для этого войдите в раздел "Записаться". Выберите: услугу, дату, время, напишите свои данные.', 'eot-theme'); ?></p>
         </article>
         <article class="card step-card">
           <span class="step-number">02</span>
-          <h3><?php echo esc_html(eot_translate('Обратная связь')); ?></h3>
-          <p><?php echo esc_html(eot_translate('На указанную Вами почту прийдет письмо с подтверждением записи.')); ?></p>
+          <h3><?php echo esc_html__('Обратная связь', 'eot-theme'); ?></h3>
+          <p><?php echo esc_html__('На указанную Вами почту прийдет письмо с подтверждением записи.', 'eot-theme'); ?></p>
         </article>
         <article class="card step-card">
           <span class="step-number">03</span>
-          <h3><?php echo esc_html(eot_translate('Сессия')); ?></h3>
-          <p><?php echo esc_html(eot_translate('За 10 минут до сессии Вам на почту прийдет ссылка, по которой вы подключитесь к Zoom.')); ?></p>
+          <h3><?php echo esc_html__('Сессия', 'eot-theme'); ?></h3>
+          <p><?php echo esc_html__('За 10 минут до сессии Вам на почту прийдет ссылка, по которой вы подключитесь к Zoom.', 'eot-theme'); ?></p>
         </article>
         <article class="card step-card">
           <span class="step-number">04</span>
-          <h3><?php echo esc_html(eot_translate('Оплата услуг')); ?></h3>
-          <p><?php echo wp_kses_post(eot_translate('Оплату учлуг Вы проводите после встречи. Оплата происходит через сайт <a class="inline-link" href="https://gipnocouch.com" target="_blank" rel="noopener noreferrer">gipnocouch.com</a>')); ?></p>
+          <h3><?php echo esc_html__('Оплата услуг', 'eot-theme'); ?></h3>
+          <p><?php echo wp_kses_post(__('Оплату учлуг Вы проводите после встречи. Оплата происходит через сайт <a class="inline-link" href="https://gipnocouch.com" target="_blank" rel="noopener noreferrer">gipnocouch.com</a>', 'eot-theme')); ?></p>
         </article>
       </div>
     </div>
@@ -152,37 +152,37 @@
     <div class="container">
       <div class="section-head between">
         <div>
-          <h2><?php echo esc_html(eot_translate('Услуги')); ?></h2>
-          <p class="muted"><?php echo esc_html(eot_translate('Подберите формат, который подходит вашему запросу.')); ?></p>
+          <h2><?php echo esc_html__('Услуги', 'eot-theme'); ?></h2>
+          <p class="muted"><?php echo esc_html__('Подберите формат, который подходит вашему запросу.', 'eot-theme'); ?></p>
         </div>
       </div>
       <div class="grid cards-3">
         <article class="card service-card">
           <div class="service-meta">
-            <span class="badge"><?php echo esc_html(eot_translate('30 минут')); ?></span>
+            <span class="badge"><?php echo esc_html__('30 минут', 'eot-theme'); ?></span>
           </div>
-          <h3><?php echo esc_html(eot_translate('Вводная встреча')); ?></h3>
-          <p><?php echo esc_html(eot_translate('Короткое знакомство и уточнение запроса.')); ?></p>
-          <p class="price"><?php echo esc_html(eot_translate('€0')); ?></p>
-          <a class="btn btn-primary btn-booking" href="<?php echo esc_url(add_query_arg('service', 'intro', eot_localized_url('contacts')) . '#booking'); ?>"><?php echo esc_html(eot_translate('Записаться')); ?></a>
+          <h3><?php echo esc_html__('Вводная встреча', 'eot-theme'); ?></h3>
+          <p><?php echo esc_html__('Короткое знакомство и уточнение запроса.', 'eot-theme'); ?></p>
+          <p class="price"><?php echo esc_html__('€0', 'eot-theme'); ?></p>
+          <a class="btn btn-primary btn-booking" href="<?php echo esc_url(add_query_arg('service', 'intro', eot_localized_url('contacts')) . '#booking'); ?>"><?php echo esc_html__('Записаться', 'eot-theme'); ?></a>
         </article>
         <article class="card service-card">
           <div class="service-meta">
-            <span class="badge"><?php echo esc_html(eot_translate('60–90 минут')); ?></span>
+            <span class="badge"><?php echo esc_html__('60–90 минут', 'eot-theme'); ?></span>
           </div>
-          <h3><?php echo esc_html(eot_translate('Индивидуальная сессия')); ?></h3>
-          <p><?php echo esc_html(eot_translate('Разбор одного запроса с опорой на ЭОТ.')); ?></p>
-          <p class="price"><?php echo esc_html(eot_translate('€60 в час')); ?></p>
-          <a class="btn btn-primary btn-booking" href="<?php echo esc_url(add_query_arg('service', 'individual', eot_localized_url('contacts')) . '#booking'); ?>"><?php echo esc_html(eot_translate('Записаться')); ?></a>
+          <h3><?php echo esc_html__('Индивидуальная сессия', 'eot-theme'); ?></h3>
+          <p><?php echo esc_html__('Разбор одного запроса с опорой на ЭОТ.', 'eot-theme'); ?></p>
+          <p class="price"><?php echo esc_html__('€60 в час', 'eot-theme'); ?></p>
+          <a class="btn btn-primary btn-booking" href="<?php echo esc_url(add_query_arg('service', 'individual', eot_localized_url('contacts')) . '#booking'); ?>"><?php echo esc_html__('Записаться', 'eot-theme'); ?></a>
         </article>
         <article class="card service-card">
           <div class="service-meta">
-            <span class="badge"><?php echo esc_html(eot_translate('4 часа')); ?></span>
+            <span class="badge"><?php echo esc_html__('4 часа', 'eot-theme'); ?></span>
           </div>
-          <h3><?php echo esc_html(eot_translate('Семинар возрождения внутренней силы')); ?></h3>
-          <p><?php echo esc_html(eot_translate('Тренировка практических навыков саморегуляции и снятия психоблоков. Индивидуальная и групповая работа в течение месяца. Две личных встречи. Три групповых сессии. Теоретические лекции в записи.')); ?></p>
-          <p class="price"><?php echo esc_html(eot_translate('€300')); ?></p>
-          <a class="btn btn-primary btn-booking" href="<?php echo esc_url(add_query_arg('service', 'package', eot_localized_url('contacts')) . '#booking'); ?>"><?php echo esc_html(eot_translate('Записаться')); ?></a>
+          <h3><?php echo esc_html__('Семинар возрождения внутренней силы', 'eot-theme'); ?></h3>
+          <p><?php echo esc_html__('Тренировка практических навыков саморегуляции и снятия психоблоков. Индивидуальная и групповая работа в течение месяца. Две личных встречи. Три групповых сессии. Теоретические лекции в записи.', 'eot-theme'); ?></p>
+          <p class="price"><?php echo esc_html__('€300', 'eot-theme'); ?></p>
+          <a class="btn btn-primary btn-booking" href="<?php echo esc_url(add_query_arg('service', 'package', eot_localized_url('contacts')) . '#booking'); ?>"><?php echo esc_html__('Записаться', 'eot-theme'); ?></a>
         </article>
       </div>
     </div>

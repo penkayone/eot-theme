@@ -7,52 +7,52 @@ get_header(); ?>
 <main>
   <section class="section">
     <div class="container">
-      <h1><?php echo esc_html(eot_translate('Обо мне')); ?></h1>
+      <h1><?php echo esc_html__('Обо мне', 'eot-theme'); ?></h1>
       <div class="grid two-columns about-grid">
         <article class="card">
-          <h2><?php echo esc_html(eot_translate('Путь в профессию')); ?></h2>
-          <p><?php echo esc_html(eot_translate('Я увлекаюсь психологией с детства. В моей юности профессия психолога была редкой. Я поступила в Донецкий государственный университет на специальность экономист и обучалась заочно.')); ?></p>
-          <p><?php echo esc_html(eot_translate('Работала на заводе экономистом и комсоргом. С 1992 года стала предпринимателем: работала директором магазина и коммерческим директором кирпичного завода, стала автором рецептур, изобретений, промышленных образцов и рационализаторских предложений в сфере кирпичного производства.')); ?></p>
-          <p><?php echo esc_html(eot_translate('На завод приглашала специалистов-психологов для проведения тренингов, исследований и тестирования. Медитациями и энергопрактиками занимаюсь с 1997 года. С 2022 года обучаюсь и практикую в сфере коучинга и психологии.')); ?></p>
+          <h2><?php echo esc_html__('Путь в профессию', 'eot-theme'); ?></h2>
+          <p><?php echo esc_html__('Я увлекаюсь психологией с детства. В моей юности профессия психолога была редкой. Я поступила в Донецкий государственный университет на специальность экономист и обучалась заочно.', 'eot-theme'); ?></p>
+          <p><?php echo esc_html__('Работала на заводе экономистом и комсоргом. С 1992 года стала предпринимателем: работала директором магазина и коммерческим директором кирпичного завода, стала автором рецептур, изобретений, промышленных образцов и рационализаторских предложений в сфере кирпичного производства.', 'eot-theme'); ?></p>
+          <p><?php echo esc_html__('На завод приглашала специалистов-психологов для проведения тренингов, исследований и тестирования. Медитациями и энергопрактиками занимаюсь с 1997 года. С 2022 года обучаюсь и практикую в сфере коучинга и психологии.', 'eot-theme'); ?></p>
         </article>
         <article class="card">
-          <h2><?php echo esc_html(eot_translate('Опыт и направления')); ?></h2>
-          <p><?php echo esc_html(eot_translate('Мой опыт включает:')); ?></p>
+          <h2><?php echo esc_html__('Опыт и направления', 'eot-theme'); ?></h2>
+          <p><?php echo esc_html__('Мой опыт включает:', 'eot-theme'); ?></p>
           <ul>
-            <li><?php echo esc_html(eot_translate('Коучинг и провокативный коучинг.')); ?></li>
-            <li><?php echo esc_html(eot_translate('Психологическое консультирование.')); ?></li>
-            <li><?php echo esc_html(eot_translate('Энергопрактики, медитации и звуковую терапию.')); ?></li>
-            <li><?php echo esc_html(eot_translate('Эмоционально-образную терапию (ЭОТ).')); ?></li>
-            <li><?php echo esc_html(eot_translate('Аромакоучинг, аромапсихологию и ольфактотерапию.')); ?></li>
-            <li><?php echo esc_html(eot_translate('Регрессивный гипноз.')); ?></li>
+            <li><?php echo esc_html__('Коучинг и провокативный коучинг.', 'eot-theme'); ?></li>
+            <li><?php echo esc_html__('Психологическое консультирование.', 'eot-theme'); ?></li>
+            <li><?php echo esc_html__('Энергопрактики, медитации и звуковую терапию.', 'eot-theme'); ?></li>
+            <li><?php echo esc_html__('Эмоционально-образную терапию (ЭОТ).', 'eot-theme'); ?></li>
+            <li><?php echo esc_html__('Аромакоучинг, аромапсихологию и ольфактотерапию.', 'eot-theme'); ?></li>
+            <li><?php echo esc_html__('Регрессивный гипноз.', 'eot-theme'); ?></li>
           </ul>
         </article>
         <article class="card">
-          <h2><?php echo esc_html(eot_translate('Обучение и школы')); ?></h2>
-          <p><?php echo esc_html(eot_translate('Я обучаюсь у сильных специалистов и в профильных институтах:')); ?></p>
+          <h2><?php echo esc_html__('Обучение и школы', 'eot-theme'); ?></h2>
+          <p><?php echo esc_html__('Я обучаюсь у сильных специалистов и в профильных институтах:', 'eot-theme'); ?></p>
           <ul>
-            <li><?php echo esc_html(eot_translate('Олег Шаповалов — интегральная парапсихология, айкидо.')); ?></li>
-            <li><?php echo esc_html(eot_translate('Светлана Бугела — гипнокоучинг, самогипноз.')); ?></li>
-            <li><?php echo esc_html(eot_translate('Алуника Добровольская, Андрей Яценко — самогипноз.')); ?></li>
-            <li><?php echo esc_html(eot_translate('Альфрид Ленгле — годовая программа, курсы по личностным расстройствам и депрессии.')); ?></li>
-            <li><?php echo esc_html(eot_translate('Александр Стручаев — коучинг.')); ?></li>
-            <li><?php echo esc_html(eot_translate('Академия экспоненциального коучинга — гранты.')); ?></li>
-            <li><?php echo esc_html(eot_translate('Андрей Треногов — зеркальная психология.')); ?></li>
-            <li><?php echo esc_html(eot_translate('Школа 3 волны КПТ Вячеслава Яковлева — полимодальный подход в работе с психологической травмой, ПТСР и кПТСР.')); ?></li>
-            <li><?php echo esc_html(eot_translate('Анна Мария Аре Буайе — ольфактотерапия, аромапсихология, аромакоучинг.')); ?></li>
-            <li><?php echo esc_html(eot_translate('Наталья Стишова — образно-полевой подход и метод расстановок.')); ?></li>
-            <li><?php echo esc_html(eot_translate('Леонид Тальпис — мировоззренческий семинар, метод «Две точки».')); ?></li>
-            <li><?php echo esc_html(eot_translate('Ксения Зиганшина — курс энергопрактик.')); ?></li>
-            <li><?php echo esc_html(eot_translate('Институт психологии творчества Павла Пискарева — нейрографика.')); ?></li>
-            <li><?php echo esc_html(eot_translate('Оксана Авдеева — нейрографика.')); ?></li>
-            <li><?php echo esc_html(eot_translate('Московский институт психоанализа — провокативный коучинг и психологическое консультирование.')); ?></li>
-            <li><?php echo esc_html(eot_translate('Институт эмоционально-образной терапии им. Николая Линде — психологическое консультирование.')); ?></li>
+            <li><?php echo esc_html__('Олег Шаповалов — интегральная парапсихология, айкидо.', 'eot-theme'); ?></li>
+            <li><?php echo esc_html__('Светлана Бугела — гипнокоучинг, самогипноз.', 'eot-theme'); ?></li>
+            <li><?php echo esc_html__('Алуника Добровольская, Андрей Яценко — самогипноз.', 'eot-theme'); ?></li>
+            <li><?php echo esc_html__('Альфрид Ленгле — годовая программа, курсы по личностным расстройствам и депрессии.', 'eot-theme'); ?></li>
+            <li><?php echo esc_html__('Александр Стручаев — коучинг.', 'eot-theme'); ?></li>
+            <li><?php echo esc_html__('Академия экспоненциального коучинга — гранты.', 'eot-theme'); ?></li>
+            <li><?php echo esc_html__('Андрей Треногов — зеркальная психология.', 'eot-theme'); ?></li>
+            <li><?php echo esc_html__('Школа 3 волны КПТ Вячеслава Яковлева — полимодальный подход в работе с психологической травмой, ПТСР и кПТСР.', 'eot-theme'); ?></li>
+            <li><?php echo esc_html__('Анна Мария Аре Буайе — ольфактотерапия, аромапсихология, аромакоучинг.', 'eot-theme'); ?></li>
+            <li><?php echo esc_html__('Наталья Стишова — образно-полевой подход и метод расстановок.', 'eot-theme'); ?></li>
+            <li><?php echo esc_html__('Леонид Тальпис — мировоззренческий семинар, метод «Две точки».', 'eot-theme'); ?></li>
+            <li><?php echo esc_html__('Ксения Зиганшина — курс энергопрактик.', 'eot-theme'); ?></li>
+            <li><?php echo esc_html__('Институт психологии творчества Павла Пискарева — нейрографика.', 'eot-theme'); ?></li>
+            <li><?php echo esc_html__('Оксана Авдеева — нейрографика.', 'eot-theme'); ?></li>
+            <li><?php echo esc_html__('Московский институт психоанализа — провокативный коучинг и психологическое консультирование.', 'eot-theme'); ?></li>
+            <li><?php echo esc_html__('Институт эмоционально-образной терапии им. Николая Линде — психологическое консультирование.', 'eot-theme'); ?></li>
           </ul>
         </article>
         <article class="card">
-          <h2><?php echo esc_html(eot_translate('Творчество и авторские практики')); ?></h2>
-          <p><?php echo esc_html(eot_translate('Пишу стихи, картины, песни. Интересуюсь физиологией, суплементологией, массажем, биоэнергетикой. Практикую авторские сессии «Энергосканер».')); ?></p>
-          <p class="about-education-note"><?php echo esc_html(eot_translate('Имею среднее медицинское и высшее экономическое образование.')); ?></p>
+          <h2><?php echo esc_html__('Творчество и авторские практики', 'eot-theme'); ?></h2>
+          <p><?php echo esc_html__('Пишу стихи, картины, песни. Интересуюсь физиологией, суплементологией, массажем, биоэнергетикой. Практикую авторские сессии «Энергосканер».', 'eot-theme'); ?></p>
+          <p class="about-education-note"><?php echo esc_html__('Имею среднее медицинское и высшее экономическое образование.', 'eot-theme'); ?></p>
         </article>
       </div>
     </div>
@@ -61,8 +61,8 @@ get_header(); ?>
   <section class="section soft">
     <div class="container">
       <div class="section-head">
-        <h2><?php echo esc_html(eot_translate('Сертификаты')); ?></h2>
-        <p class="muted"><?php echo esc_html(eot_translate('Подтверждение обучения и повышения квалификации.')); ?></p>
+        <h2><?php echo esc_html__('Сертификаты', 'eot-theme'); ?></h2>
+        <p class="muted"><?php echo esc_html__('Подтверждение обучения и повышения квалификации.', 'eot-theme'); ?></p>
       </div>
       <div class="gallery cert-gallery cert-pairs" data-gallery="certs">
         <?php
@@ -94,13 +94,13 @@ get_header(); ?>
             ?>
             <div class="cert-pair">
               <button class="gallery-item cert-item cert-item-main landscape" type="button" data-full="<?php echo eot_image_url('cert-' . $main . '.jpg'); ?>">
-                <img src="<?php echo eot_image_url('cert-' . $main . '.jpg'); ?>" alt="<?php echo esc_attr(eot_translate($cert_alt_map[$main] ?? '')); ?>" />
+                <img src="<?php echo eot_image_url('cert-' . $main . '.jpg'); ?>" alt="<?php echo esc_attr(__($cert_alt_map[$main] ?? '', 'eot-theme')); ?>" />
               </button>
               <?php if (isset($pair['appendix'])) :
                 $appendix = (int) $pair['appendix'];
                 ?>
                 <button class="gallery-item cert-item cert-item-appendix portrait" type="button" data-full="<?php echo eot_image_url('cert-' . $appendix . '.jpg'); ?>">
-                  <img src="<?php echo eot_image_url('cert-' . $appendix . '.jpg'); ?>" alt="<?php echo esc_attr(eot_translate($cert_alt_map[$appendix] ?? '')); ?>" />
+                  <img src="<?php echo eot_image_url('cert-' . $appendix . '.jpg'); ?>" alt="<?php echo esc_attr(__($cert_alt_map[$appendix] ?? '', 'eot-theme')); ?>" />
                 </button>
               <?php endif; ?>
             </div>
@@ -111,7 +111,7 @@ get_header(); ?>
             $main = (int) $main;
             ?>
             <button class="gallery-item cert-item cert-item-main landscape" type="button" data-full="<?php echo eot_image_url('cert-' . $main . '.jpg'); ?>">
-              <img src="<?php echo eot_image_url('cert-' . $main . '.jpg'); ?>" alt="<?php echo esc_attr(eot_translate($cert_alt_map[$main] ?? '')); ?>" />
+              <img src="<?php echo eot_image_url('cert-' . $main . '.jpg'); ?>" alt="<?php echo esc_attr(__($cert_alt_map[$main] ?? '', 'eot-theme')); ?>" />
             </button>
           <?php endforeach; ?>
         </div>
@@ -122,39 +122,39 @@ get_header(); ?>
   <section class="section" data-reveal>
     <div class="container">
       <div class="section-head">
-        <h2><?php echo esc_html(eot_translate('Картины')); ?></h2>
-        <p class="muted"><?php echo esc_html(eot_translate('Творчество помогает мне сохранять внутренний баланс и вдохновение.')); ?></p>
+        <h2><?php echo esc_html__('Картины', 'eot-theme'); ?></h2>
+        <p class="muted"><?php echo esc_html__('Творчество помогает мне сохранять внутренний баланс и вдохновение.', 'eot-theme'); ?></p>
       </div>
       <div class="gallery grid cards-3" data-gallery="art">
         <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-1.jpg'); ?>">
-          <img src="<?php echo eot_image_url('art-1.jpg'); ?>" alt="<?php echo esc_attr(eot_translate('Картина 1')); ?>" />
+          <img src="<?php echo eot_image_url('art-1.jpg'); ?>" alt="<?php echo esc_attr__('Картина 1', 'eot-theme'); ?>" />
         </button>
         <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-2.jpg'); ?>">
-          <img src="<?php echo eot_image_url('art-2.jpg'); ?>" alt="<?php echo esc_attr(eot_translate('Картина 2')); ?>" />
+          <img src="<?php echo eot_image_url('art-2.jpg'); ?>" alt="<?php echo esc_attr__('Картина 2', 'eot-theme'); ?>" />
         </button>
         <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-3.jpg'); ?>">
-          <img src="<?php echo eot_image_url('art-3.jpg'); ?>" alt="<?php echo esc_attr(eot_translate('Картина 3')); ?>" />
+          <img src="<?php echo eot_image_url('art-3.jpg'); ?>" alt="<?php echo esc_attr__('Картина 3', 'eot-theme'); ?>" />
         </button>
         <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-4.jpg'); ?>">
-          <img src="<?php echo eot_image_url('art-4.jpg'); ?>" alt="<?php echo esc_attr(eot_translate('Картина 4')); ?>" />
+          <img src="<?php echo eot_image_url('art-4.jpg'); ?>" alt="<?php echo esc_attr__('Картина 4', 'eot-theme'); ?>" />
         </button>
         <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-5.jpg'); ?>">
-          <img src="<?php echo eot_image_url('art-5.jpg'); ?>" alt="<?php echo esc_attr(eot_translate('Картина 5')); ?>" />
+          <img src="<?php echo eot_image_url('art-5.jpg'); ?>" alt="<?php echo esc_attr__('Картина 5', 'eot-theme'); ?>" />
         </button>
         <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-6.jpg'); ?>">
-          <img src="<?php echo eot_image_url('art-6.jpg'); ?>" alt="<?php echo esc_attr(eot_translate('Картина 6')); ?>" />
+          <img src="<?php echo eot_image_url('art-6.jpg'); ?>" alt="<?php echo esc_attr__('Картина 6', 'eot-theme'); ?>" />
         </button>
         <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-7.jpg'); ?>">
-          <img src="<?php echo eot_image_url('art-7.jpg'); ?>" alt="<?php echo esc_attr(eot_translate('Картина 7')); ?>" />
+          <img src="<?php echo eot_image_url('art-7.jpg'); ?>" alt="<?php echo esc_attr__('Картина 7', 'eot-theme'); ?>" />
         </button>
         <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-8.jpg'); ?>">
-          <img src="<?php echo eot_image_url('art-8.jpg'); ?>" alt="<?php echo esc_attr(eot_translate('Картина 8')); ?>" />
+          <img src="<?php echo eot_image_url('art-8.jpg'); ?>" alt="<?php echo esc_attr__('Картина 8', 'eot-theme'); ?>" />
         </button>
         <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-9.jpg'); ?>">
-          <img src="<?php echo eot_image_url('art-9.jpg'); ?>" alt="<?php echo esc_attr(eot_translate('Картина 9')); ?>" />
+          <img src="<?php echo eot_image_url('art-9.jpg'); ?>" alt="<?php echo esc_attr__('Картина 9', 'eot-theme'); ?>" />
         </button>
         <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-10.jpg'); ?>">
-          <img src="<?php echo eot_image_url('art-10.jpg'); ?>" alt="<?php echo esc_attr(eot_translate('Картина 10')); ?>" />
+          <img src="<?php echo eot_image_url('art-10.jpg'); ?>" alt="<?php echo esc_attr__('Картина 10', 'eot-theme'); ?>" />
         </button>
       </div>
     </div>

@@ -276,7 +276,7 @@ function eot_get_meta_value($field, $lang = null, $page = null) {
     $map = eot_get_meta_source_map();
     $source = $map[$page][$field] ?? '';
 
-    return $source !== '' ? eot_translate($source, '', $lang) : '';
+    return $source !== '' ? __($source, eot_get_theme_textdomain()) : '';
 }
 
 function eot_get_client_i18n_dictionary($lang = null) {
@@ -284,64 +284,64 @@ function eot_get_client_i18n_dictionary($lang = null) {
 
     return [
         'common' => [
-            'lightboxPrev' => eot_translate('Предыдущая', '', $lang),
-            'lightboxNext' => eot_translate('Следующая', '', $lang),
-            'lightboxClose' => eot_translate('Закрыть', '', $lang),
+            'lightboxPrev' => __('Предыдущая', 'eot-theme'),
+            'lightboxNext' => __('Следующая', 'eot-theme'),
+            'lightboxClose' => __('Закрыть', 'eot-theme'),
         ],
         'services' => [
             'items' => [
-                '1' => ['title' => eot_translate('Индивидуальная сессия', '', $lang)],
-                '2' => ['title' => eot_translate('Семинар возрождения внутренней силы', '', $lang)],
-                '3' => ['title' => eot_translate('Вводная встреча', '', $lang)],
+                '1' => ['title' => __('Индивидуальная сессия', 'eot-theme')],
+                '2' => ['title' => __('Семинар возрождения внутренней силы', 'eot-theme')],
+                '3' => ['title' => __('Вводная встреча', 'eot-theme')],
             ],
         ],
         'booking' => [
-            'serviceLabel' => eot_translate('Выберите услугу', '', $lang),
-            'chooseService' => eot_translate('Сначала выберите услугу.', '', $lang),
-            'chooseDay' => eot_translate('Выберите дату', '', $lang),
-            'chooseSlot' => eot_translate('Выберите слот для записи', '', $lang),
-            'selectedPrefix' => eot_translate('Вы выбрали', '', $lang),
-            'dateSelectedToast' => eot_translate('Вы выбрали дату {date}, теперь выберите время.', '', $lang),
-            'timeSelectedToast' => eot_translate('Вы выбрали время {time}, теперь заполните форму.', '', $lang),
-            'noDates' => eot_translate('Нет доступных дат', '', $lang),
-            'noSlots' => eot_translate('Нет доступных слотов', '', $lang),
-            'success' => eot_translate('Запись подтверждена. Я свяжусь с вами через email.', '', $lang),
-            'saving' => eot_translate('Сохраняю...', '', $lang),
+            'serviceLabel' => __('Выберите услугу', 'eot-theme'),
+            'chooseService' => __('Сначала выберите услугу.', 'eot-theme'),
+            'chooseDay' => __('Выберите дату', 'eot-theme'),
+            'chooseSlot' => __('Выберите слот для записи', 'eot-theme'),
+            'selectedPrefix' => __('Вы выбрали', 'eot-theme'),
+            'dateSelectedToast' => __('Вы выбрали дату {date}, теперь выберите время.', 'eot-theme'),
+            'timeSelectedToast' => __('Вы выбрали время {time}, теперь заполните форму.', 'eot-theme'),
+            'noDates' => __('Нет доступных дат', 'eot-theme'),
+            'noSlots' => __('Нет доступных слотов', 'eot-theme'),
+            'success' => __('Запись подтверждена. Я свяжусь с вами через email.', 'eot-theme'),
+            'saving' => __('Сохраняю...', 'eot-theme'),
             'errors' => [
-                'service' => eot_translate('Сначала выберите услугу.', '', $lang),
-                'time' => eot_translate('Сначала выберите время.', '', $lang),
-                'name' => eot_translate('Укажите корректное имя.', '', $lang),
-                'email' => eot_translate('Введите корректный email.', '', $lang),
-                'phone' => eot_translate('Телефон: только цифры и +, 7-15.', '', $lang),
-                'message' => eot_translate('Кратко опишите запрос.', '', $lang),
-                'server' => eot_translate('Не удалось отправить запись. Попробуйте позже.', '', $lang),
+                'service' => __('Сначала выберите услугу.', 'eot-theme'),
+                'time' => __('Сначала выберите время.', 'eot-theme'),
+                'name' => __('Укажите корректное имя.', 'eot-theme'),
+                'email' => __('Введите корректный email.', 'eot-theme'),
+                'phone' => __('Телефон: только цифры и +, 7-15.', 'eot-theme'),
+                'message' => __('Кратко опишите запрос.', 'eot-theme'),
+                'server' => __('Не удалось отправить запись. Попробуйте позже.', 'eot-theme'),
             ],
         ],
         'schema' => [
-            'name' => eot_translate('Психолог ЭОТ онлайн', '', $lang),
-            'description' => eot_translate('Психологическая поддержка методом эмоционально-образной терапии для русскоязычных за границей.', '', $lang),
+            'name' => __('Психолог ЭОТ онлайн', 'eot-theme'),
+            'description' => __('Психологическая поддержка методом эмоционально-образной терапии для русскоязычных за границей.', 'eot-theme'),
             'areaServed' => 'Worldwide',
             'availableLanguage' => ['ru', 'sk'],
             'url' => eot_localized_url('', $lang),
             'image' => '',
-            'serviceType' => eot_translate('Эмоционально-образная терапия', '', $lang),
-            'offerCatalogName' => eot_translate('Онлайн-услуги ЭОТ', '', $lang),
+            'serviceType' => __('Эмоционально-образная терапия', 'eot-theme'),
+            'offerCatalogName' => __('Онлайн-услуги ЭОТ', 'eot-theme'),
             'offers' => [
                 [
-                    'name' => eot_translate('Индивидуальная сессия', '', $lang),
-                    'description' => eot_translate('60 минут онлайн-сессии по методу ЭОТ.', '', $lang),
+                    'name' => __('Индивидуальная сессия', 'eot-theme'),
+                    'description' => __('60 минут онлайн-сессии по методу ЭОТ.', 'eot-theme'),
                     'price' => '60',
                     'currency' => 'EUR',
                 ],
                 [
-                    'name' => eot_translate('Пакет 4 сессии', '', $lang),
-                    'description' => eot_translate('Последовательная поддержка и сопровождение.', '', $lang),
+                    'name' => __('Пакет 4 сессии', 'eot-theme'),
+                    'description' => __('Последовательная поддержка и сопровождение.', 'eot-theme'),
                     'price' => '220',
                     'currency' => 'EUR',
                 ],
                 [
-                    'name' => eot_translate('Вводная встреча', '', $lang),
-                    'description' => eot_translate('Короткое знакомство и уточнение запроса.', '', $lang),
+                    'name' => __('Вводная встреча', 'eot-theme'),
+                    'description' => __('Короткое знакомство и уточнение запроса.', 'eot-theme'),
                     'price' => '0',
                     'currency' => 'EUR',
                 ],

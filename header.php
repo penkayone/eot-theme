@@ -33,25 +33,25 @@ $eot_meta_twitter_description = eot_get_meta_value('twitterDescription', $eot_la
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="<?php echo esc_url(eot_localized_url('', $eot_lang)); ?>" aria-label="<?php echo esc_attr(eot_translate('ЭОТ психолог')); ?>">
+    <a class="brand" href="<?php echo esc_url(eot_localized_url('', $eot_lang)); ?>" aria-label="<?php echo esc_attr__('ЭОТ психолог', 'eot-theme'); ?>">
       <span class="brand-mark" aria-hidden="true"></span>
-      <span class="brand-text"><?php echo esc_html(eot_translate('ЭОТ Онлайн')); ?></span>
+      <span class="brand-text"><?php echo esc_html__('ЭОТ Онлайн', 'eot-theme'); ?></span>
     </a>
-    <nav class="main-nav" aria-label="<?php echo esc_attr(eot_translate('Основное меню')); ?>">
+    <nav class="main-nav" aria-label="<?php echo esc_attr__('Основное меню', 'eot-theme'); ?>">
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list">
-        <span class="sr-only"><?php echo esc_html(eot_translate('Меню')); ?></span>
+        <span class="sr-only"><?php echo esc_html__('Меню', 'eot-theme'); ?></span>
         <span class="nav-toggle-line" aria-hidden="true"></span>
         <span class="nav-toggle-line" aria-hidden="true"></span>
         <span class="nav-toggle-line" aria-hidden="true"></span>
       </button>
       <ul class="nav-list" id="nav-list">
-        <li><a href="<?php echo esc_url(eot_localized_url('', $eot_lang)); ?>" data-nav="index"><?php echo esc_html(eot_translate('Главная')); ?></a></li>
-        <li><a href="<?php echo esc_url(eot_localized_url('about', $eot_lang)); ?>" data-nav="about"><?php echo esc_html(eot_translate('Обо мне')); ?></a></li>
-        <li><a href="<?php echo esc_url(eot_localized_url('services', $eot_lang)); ?>" data-nav="services"><?php echo esc_html(eot_translate('Услуги')); ?></a></li>
-        <li><a href="<?php echo esc_url(eot_localized_url('contacts', $eot_lang)); ?>" data-nav="contacts"><?php echo esc_html(eot_translate('Запись')); ?></a></li>
+        <li><a href="<?php echo esc_url(eot_localized_url('', $eot_lang)); ?>" data-nav="index"><?php echo esc_html__('Главная', 'eot-theme'); ?></a></li>
+        <li><a href="<?php echo esc_url(eot_localized_url('about', $eot_lang)); ?>" data-nav="about"><?php echo esc_html__('Обо мне', 'eot-theme'); ?></a></li>
+        <li><a href="<?php echo esc_url(eot_localized_url('services', $eot_lang)); ?>" data-nav="services"><?php echo esc_html__('Услуги', 'eot-theme'); ?></a></li>
+        <li><a href="<?php echo esc_url(eot_localized_url('contacts', $eot_lang)); ?>" data-nav="contacts"><?php echo esc_html__('Запись', 'eot-theme'); ?></a></li>
       </ul>
     </nav>
-    <div class="lang-switch" role="group" aria-label="<?php echo esc_attr(eot_translate('Выбор языка')); ?>">
+    <div class="lang-switch" role="group" aria-label="<?php echo esc_attr__('Выбор языка', 'eot-theme'); ?>">
       <?php foreach (eot_get_supported_languages() as $language_slug) :
         $language = $eot_languages[$language_slug] ?? [
           'slug' => $language_slug,
