@@ -15,13 +15,6 @@ const getNestedValue = (obj, key) =>
 
 const t = (key, fallback = "") => getNestedValue(state.dictionary, key) ?? fallback;
 
-const fetchPartial = async (selector, path) => {
-  const container = document.querySelector(selector);
-  if (!container || container.children.length > 0) return;
-  const response = await fetch(path);
-  container.innerHTML = await response.text();
-};
-
 const setActiveNav = () => {
   const currentPage = document.body.dataset.page;
   document.querySelectorAll(".nav-list a").forEach((link) => {
@@ -56,45 +49,6 @@ const updateLangButtons = () => {
 
 const initLanguageSwitcher = () => {
   updateLangButtons();
-};
-
-const buildSchema = (dictionary) => {
-  const base = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: getNestedValue(dictionary, "schema.name"),
-    description: getNestedValue(dictionary, "schema.description"),
-    areaServed: getNestedValue(dictionary, "schema.areaServed"),
-    availableLanguage: getNestedValue(dictionary, "schema.availableLanguage"),
-    url: getNestedValue(dictionary, "schema.url"),
-    image: getNestedValue(dictionary, "schema.image"),
-    serviceType: getNestedValue(dictionary, "schema.serviceType"),
-  };
-
-  if (document.body.dataset.page === "services") {
-    const offers = getNestedValue(dictionary, "schema.offers");
-    if (Array.isArray(offers)) {
-      base.hasOfferCatalog = {
-        "@type": "OfferCatalog",
-        name: getNestedValue(dictionary, "schema.offerCatalogName"),
-        itemListElement: offers.map((offer) => ({
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: offer.name,
-            description: offer.description,
-          },
-          price: offer.price,
-          priceCurrency: offer.currency,
-        })),
-      };
-    }
-  }
-
-  const script = document.getElementById("schema-json");
-  if (script) {
-    script.textContent = JSON.stringify(base, null, 2);
-  }
 };
 
 const initReveal = () => {
@@ -255,14 +209,10 @@ const initLightbox = () => {
 };
 
 const init = async () => {
-  await fetchPartial("#site-header", "partials/header.html");
-  await fetchPartial("#site-footer", "partials/footer.html");
-
   document.documentElement.lang = state.lang;
   window.__I18N__ = state.dictionary;
 
   updateLangButtons();
-  buildSchema(state.dictionary);
   document.dispatchEvent(new CustomEvent("languageChanged", { detail: { lang: state.lang } }));
 
   setActiveNav();
