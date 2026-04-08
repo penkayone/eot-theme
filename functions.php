@@ -4,6 +4,125 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+function eot_get_required_plugins() {
+    return [
+        'polylang/polylang.php' => 'Polylang',
+        'booking-consult/booking-consult.php' => 'Booking Consult',
+    ];
+}
+
+function eot_get_missing_required_plugins() {
+    if (!function_exists('is_plugin_active')) {
+        require_once ABSPATH . 'wp-admin/includes/plugin.php';
+    }
+
+    $missing = [];
+
+    foreach (eot_get_required_plugins() as $plugin_file => $plugin_name) {
+        if (!is_plugin_active($plugin_file)) {
+            $missing[$plugin_file] = $plugin_name;
+        }
+    }
+
+    return $missing;
+}
+
+function eot_get_theme_activation_fallback_stylesheet() {
+    $current_theme = wp_get_theme();
+    $parent_theme = $current_theme->parent();
+
+    if ($parent_theme instanceof WP_Theme && $parent_theme->exists()) {
+        return $parent_theme->get_stylesheet();
+    }
+
+    $default_themes = ['twentytwentyfive', 'twentytwentyfour', 'twentytwentythree'];
+
+    foreach ($default_themes as $stylesheet) {
+        $theme = wp_get_theme($stylesheet);
+
+        if ($theme->exists()) {
+            return $theme->get_stylesheet();
+        }
+    }
+
+    return '';
+}
+
+function eot_set_required_plugins_error_notice($missing, $context = 'runtime') {
+    $message = $context === 'activation'
+        ? __('Theme activation failed. Required plugins are not active: %s.', 'eot-theme')
+        : __('Theme was deactivated because required plugins are not active: %s.', 'eot-theme');
+
+    set_transient(
+        'eot_theme_activation_error',
+        sprintf($message, implode(', ', $missing)),
+        MINUTE_IN_SECONDS
+    );
+}
+
+function eot_deactivate_theme_if_required_plugins_missing($context = 'runtime') {
+    if (!is_admin()) {
+        return false;
+    }
+
+    $missing = eot_get_missing_required_plugins();
+
+    if ($missing === []) {
+        delete_transient('eot_theme_activation_error');
+        return false;
+    }
+
+    eot_set_required_plugins_error_notice($missing, $context);
+
+    $fallback_stylesheet = eot_get_theme_activation_fallback_stylesheet();
+
+    if ($fallback_stylesheet !== '') {
+        switch_theme($fallback_stylesheet);
+    }
+
+    unset($_GET['activated']);
+    return true;
+}
+
+function eot_handle_missing_required_plugins_on_activation() {
+    eot_deactivate_theme_if_required_plugins_missing('activation');
+}
+add_action('after_switch_theme', 'eot_handle_missing_required_plugins_on_activation');
+
+function eot_handle_missing_required_plugins_during_admin() {
+    eot_deactivate_theme_if_required_plugins_missing('runtime');
+}
+add_action('admin_init', 'eot_handle_missing_required_plugins_during_admin');
+
+function eot_handle_required_plugin_deactivation($plugin) {
+    if (!isset(eot_get_required_plugins()[$plugin])) {
+        return;
+    }
+
+    eot_deactivate_theme_if_required_plugins_missing('runtime');
+}
+add_action('deactivated_plugin', 'eot_handle_required_plugin_deactivation');
+
+function eot_show_theme_activation_error_notice() {
+    if (!is_admin()) {
+        return;
+    }
+
+    $message = get_transient('eot_theme_activation_error');
+
+    if (!$message) {
+        return;
+    }
+
+    delete_transient('eot_theme_activation_error');
+
+    printf(
+        '<div class="notice notice-error"><p>%s</p></div>',
+        esc_html($message)
+    );
+}
+add_action('admin_notices', 'eot_show_theme_activation_error_notice');
+
 function eot_get_supported_languages() {
     return ['ru', 'sk'];
 }
