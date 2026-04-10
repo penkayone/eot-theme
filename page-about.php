@@ -93,14 +93,14 @@ get_header(); ?>
             $main = (int) $pair['main'];
             ?>
             <div class="cert-pair">
-              <button class="gallery-item cert-item cert-item-main landscape" type="button" data-full="<?php echo eot_image_url('cert-' . $main . '.jpg'); ?>">
-                <img src="<?php echo eot_image_url('cert-' . $main . '.jpg'); ?>" alt="<?php echo esc_attr(__($cert_alt_map[$main] ?? '', 'eot-theme')); ?>" />
+              <button class="gallery-item cert-item cert-item-main landscape" type="button" data-full="<?php echo eot_image_url('cert-' . $main . '.webp'); ?>">
+                <img src="<?php echo eot_image_url('cert-' . $main . '.webp'); ?>" alt="<?php echo esc_attr(__($cert_alt_map[$main] ?? '', 'eot-theme')); ?>" />
               </button>
               <?php if (isset($pair['appendix'])) :
                 $appendix = (int) $pair['appendix'];
                 ?>
-                <button class="gallery-item cert-item cert-item-appendix portrait" type="button" data-full="<?php echo eot_image_url('cert-' . $appendix . '.jpg'); ?>">
-                  <img src="<?php echo eot_image_url('cert-' . $appendix . '.jpg'); ?>" alt="<?php echo esc_attr(__($cert_alt_map[$appendix] ?? '', 'eot-theme')); ?>" />
+                <button class="gallery-item cert-item cert-item-appendix portrait" type="button" data-full="<?php echo eot_image_url('cert-' . $appendix . '.webp'); ?>">
+                  <img src="<?php echo eot_image_url('cert-' . $appendix . '.webp'); ?>" alt="<?php echo esc_attr(__($cert_alt_map[$appendix] ?? '', 'eot-theme')); ?>" />
                 </button>
               <?php endif; ?>
             </div>
@@ -110,8 +110,8 @@ get_header(); ?>
           <?php foreach ($main_only_certs as $main) :
             $main = (int) $main;
             ?>
-            <button class="gallery-item cert-item cert-item-main landscape" type="button" data-full="<?php echo eot_image_url('cert-' . $main . '.jpg'); ?>">
-              <img src="<?php echo eot_image_url('cert-' . $main . '.jpg'); ?>" alt="<?php echo esc_attr(__($cert_alt_map[$main] ?? '', 'eot-theme')); ?>" />
+            <button class="gallery-item cert-item cert-item-main landscape" type="button" data-full="<?php echo eot_image_url('cert-' . $main . '.webp'); ?>">
+              <img src="<?php echo eot_image_url('cert-' . $main . '.webp'); ?>" alt="<?php echo esc_attr(__($cert_alt_map[$main] ?? '', 'eot-theme')); ?>" />
             </button>
           <?php endforeach; ?>
         </div>
@@ -126,35 +126,35 @@ get_header(); ?>
         <p class="muted"><?php echo esc_html__('Творчество помогает мне сохранять внутренний баланс и вдохновение.', 'eot-theme'); ?></p>
       </div>
       <div class="gallery grid cards-3" data-gallery="art">
-        <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-1.jpg'); ?>">
-          <img src="<?php echo eot_image_url('art-1.jpg'); ?>" alt="<?php echo esc_attr__('Картина 1', 'eot-theme'); ?>" />
+        <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-1.webp'); ?>">
+          <img src="<?php echo eot_image_url('art-1.webp'); ?>" alt="<?php echo esc_attr__('Картина 1', 'eot-theme'); ?>" />
         </button>
-        <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-2.jpg'); ?>">
-          <img src="<?php echo eot_image_url('art-2.jpg'); ?>" alt="<?php echo esc_attr__('Картина 2', 'eot-theme'); ?>" />
+        <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-2.webp'); ?>">
+          <img src="<?php echo eot_image_url('art-2.webp'); ?>" alt="<?php echo esc_attr__('Картина 2', 'eot-theme'); ?>" />
         </button>
-        <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-3.jpg'); ?>">
-          <img src="<?php echo eot_image_url('art-3.jpg'); ?>" alt="<?php echo esc_attr__('Картина 3', 'eot-theme'); ?>" />
+        <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-3.webp'); ?>">
+          <img src="<?php echo eot_image_url('art-3.webp'); ?>" alt="<?php echo esc_attr__('Картина 3', 'eot-theme'); ?>" />
         </button>
-        <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-4.jpg'); ?>">
-          <img src="<?php echo eot_image_url('art-4.jpg'); ?>" alt="<?php echo esc_attr__('Картина 4', 'eot-theme'); ?>" />
+        <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-4.webp'); ?>">
+          <img src="<?php echo eot_image_url('art-4.webp'); ?>" alt="<?php echo esc_attr__('Картина 4', 'eot-theme'); ?>" />
         </button>
-        <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-5.jpg'); ?>">
-          <img src="<?php echo eot_image_url('art-5.jpg'); ?>" alt="<?php echo esc_attr__('Картина 5', 'eot-theme'); ?>" />
+        <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-5.webp'); ?>">
+          <img src="<?php echo eot_image_url('art-5.webp'); ?>" alt="<?php echo esc_attr__('Картина 5', 'eot-theme'); ?>" />
         </button>
-        <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-6.jpg'); ?>">
-          <img src="<?php echo eot_image_url('art-6.jpg'); ?>" alt="<?php echo esc_attr__('Картина 6', 'eot-theme'); ?>" />
+        <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-6.webp'); ?>">
+          <img src="<?php echo eot_image_url('art-6.webp'); ?>" alt="<?php echo esc_attr__('Картина 6', 'eot-theme'); ?>" />
         </button>
-        <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-7.jpg'); ?>">
-          <img src="<?php echo eot_image_url('art-7.jpg'); ?>" alt="<?php echo esc_attr__('Картина 7', 'eot-theme'); ?>" />
+        <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-7.webp'); ?>">
+          <img src="<?php echo eot_image_url('art-7.webp'); ?>" alt="<?php echo esc_attr__('Картина 7', 'eot-theme'); ?>" />
         </button>
-        <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-8.jpg'); ?>">
-          <img src="<?php echo eot_image_url('art-8.jpg'); ?>" alt="<?php echo esc_attr__('Картина 8', 'eot-theme'); ?>" />
+        <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-8.webp'); ?>">
+          <img src="<?php echo eot_image_url('art-8.webp'); ?>" alt="<?php echo esc_attr__('Картина 8', 'eot-theme'); ?>" />
         </button>
-        <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-9.jpg'); ?>">
-          <img src="<?php echo eot_image_url('art-9.jpg'); ?>" alt="<?php echo esc_attr__('Картина 9', 'eot-theme'); ?>" />
+        <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-9.webp'); ?>">
+          <img src="<?php echo eot_image_url('art-9.webp'); ?>" alt="<?php echo esc_attr__('Картина 9', 'eot-theme'); ?>" />
         </button>
-        <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-10.jpg'); ?>">
-          <img src="<?php echo eot_image_url('art-10.jpg'); ?>" alt="<?php echo esc_attr__('Картина 10', 'eot-theme'); ?>" />
+        <button class="gallery-item" type="button" data-full="<?php echo eot_image_url('art-10.webp'); ?>">
+          <img src="<?php echo eot_image_url('art-10.webp'); ?>" alt="<?php echo esc_attr__('Картина 10', 'eot-theme'); ?>" />
         </button>
       </div>
     </div>
