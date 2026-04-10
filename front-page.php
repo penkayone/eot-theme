@@ -43,19 +43,19 @@
       <div class="hero-media">
         <div class="hero-slider" data-slider>
           <div class="hero-slide active">
-            <img src="<?php echo eot_image_url('hero-1.jpg'); ?>" alt="<?php echo esc_attr__('Фото психолога', 'eot-theme'); ?>" />
+            <img src="<?php echo eot_image_url('hero-1.webp'); ?>" alt="<?php echo esc_attr__('Фото психолога', 'eot-theme'); ?>" />
           </div>
           <div class="hero-slide">
-            <img src="<?php echo eot_image_url('hero-2.jpg'); ?>" alt="<?php echo esc_attr__('Фото психолога', 'eot-theme'); ?>" />
+            <img src="<?php echo eot_image_url('hero-2.webp'); ?>" alt="<?php echo esc_attr__('Фото психолога', 'eot-theme'); ?>" />
           </div>
           <div class="hero-slide">
-            <img src="<?php echo eot_image_url('hero-3.jpg'); ?>" alt="<?php echo esc_attr__('Фото психолога', 'eot-theme'); ?>" />
+            <img src="<?php echo eot_image_url('hero-3.webp'); ?>" alt="<?php echo esc_attr__('Фото психолога', 'eot-theme'); ?>" />
           </div>
           <div class="hero-slide">
-            <img src="<?php echo eot_image_url('hero-4.jpg'); ?>" alt="<?php echo esc_attr__('Фото психолога', 'eot-theme'); ?>" />
+            <img src="<?php echo eot_image_url('hero-4.webp'); ?>" alt="<?php echo esc_attr__('Фото психолога', 'eot-theme'); ?>" />
           </div>
           <div class="hero-slide">
-            <img src="<?php echo eot_image_url('hero-5.jpg'); ?>" alt="<?php echo esc_attr__('Фото психолога', 'eot-theme'); ?>" />
+            <img src="<?php echo eot_image_url('hero-5.webp'); ?>" alt="<?php echo esc_attr__('Фото психолога', 'eot-theme'); ?>" />
           </div>
           <button class="hero-arrow hero-arrow-prev" type="button" aria-label="Назад">&#8249;</button>
           <button class="hero-arrow hero-arrow-next" type="button" aria-label="Вперёд">&#8250;</button>
