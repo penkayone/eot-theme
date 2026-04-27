@@ -1,4 +1,6 @@
-<?php get_header(); ?>
+<?php get_header();
+$eot_lang = eot_get_current_lang();
+?>
 
 <main>
   <section class="hero section">
@@ -75,29 +77,35 @@
     <div class="container">
       <h2><?php echo esc_html__('С какими запросами можно прийти', 'eot-theme'); ?></h2>
       <div class="grid cards-3">
-        <article class="card">
+        <article class="card query-card">
           <h3><?php echo esc_html__('Тревога', 'eot-theme'); ?></h3>
           <p><?php echo esc_html__('Снижение внутреннего напряжения, восстановление опоры.', 'eot-theme'); ?></p>
+          <a class="btn btn-outline" href="<?php echo esc_url(eot_localized_url('anxiety', $eot_lang)); ?>"><?php echo esc_html__('Подробнее', 'eot-theme'); ?></a>
         </article>
-        <article class="card">
+        <article class="card query-card">
           <h3><?php echo esc_html__('Самооценка', 'eot-theme'); ?></h3>
           <p><?php echo esc_html__('Укрепление самоценности и уверенности в себе.', 'eot-theme'); ?></p>
+          <a class="btn btn-outline" href="<?php echo esc_url(eot_localized_url('self-esteem', $eot_lang)); ?>"><?php echo esc_html__('Подробнее', 'eot-theme'); ?></a>
         </article>
-        <article class="card">
+        <article class="card query-card">
           <h3><?php echo esc_html__('Страх проявленности', 'eot-theme'); ?></h3>
           <p><?php echo esc_html__('Преодоление внутренних барьеров, обретение смелости заявлять о себе и своих талантах.', 'eot-theme'); ?></p>
+          <a class="btn btn-outline" href="<?php echo esc_url(eot_localized_url('fear-of-visibility', $eot_lang)); ?>"><?php echo esc_html__('Подробнее', 'eot-theme'); ?></a>
         </article>
-        <article class="card">
+        <article class="card query-card">
           <h3><?php echo esc_html__('Бессонница', 'eot-theme'); ?></h3>
           <p><?php echo esc_html__('Работа с причинами нарушения сна, нормализация режима и обретение ночного спокойствия.', 'eot-theme'); ?></p>
+          <a class="btn btn-outline" href="<?php echo esc_url(eot_localized_url('insomnia', $eot_lang)); ?>"><?php echo esc_html__('Подробнее', 'eot-theme'); ?></a>
         </article>
-        <article class="card">
+        <article class="card query-card">
           <h3><?php echo esc_html__('Психоблоки', 'eot-theme'); ?></h3>
           <p><?php echo esc_html__('Выявление скрытых барьеров и устранение внутренних препятствий на пути к вашим целям.', 'eot-theme'); ?></p>
+          <a class="btn btn-outline" href="<?php echo esc_url(eot_localized_url('mental-blocks', $eot_lang)); ?>"><?php echo esc_html__('Подробнее', 'eot-theme'); ?></a>
         </article>
-        <article class="card">
+        <article class="card query-card">
           <h3><?php echo esc_html__('Эмоциональные травмы', 'eot-theme'); ?></h3>
           <p><?php echo esc_html__('Бережная проработка болезненного опыта и возвращение психологической целостности.', 'eot-theme'); ?></p>
+          <a class="btn btn-outline" href="<?php echo esc_url(eot_localized_url('emotional-trauma', $eot_lang)); ?>"><?php echo esc_html__('Подробнее', 'eot-theme'); ?></a>
         </article>
       </div>
     </div>
