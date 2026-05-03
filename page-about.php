@@ -159,6 +159,17 @@ get_header(); ?>
       </div>
     </div>
   </section>
+
+  <section class="section" data-reveal>
+    <div class="container">
+      <h2><?php echo esc_html__('Готовы начать работу?', 'eot-theme'); ?></h2>
+      <p class="lead"><?php echo esc_html__('Посмотрите форматы работы или запишитесь на бесплатную вводную встречу - познакомимся и обсудим ваш запрос.', 'eot-theme'); ?></p>
+      <div class="button-row">
+        <a class="btn btn-outline" href="<?php echo esc_url(eot_localized_url('services')); ?>"><?php echo esc_html__('Посмотреть услуги', 'eot-theme'); ?></a>
+        <a class="btn btn-primary btn-booking" href="<?php echo esc_url(eot_localized_url('contacts')); ?>?service=intro#booking"><?php echo esc_html__('Записаться на встречу', 'eot-theme'); ?></a>
+      </div>
+    </div>
+  </section>
 </main>
 
 <?php get_footer(); ?>
