@@ -14,6 +14,10 @@
       <a href="<?php echo esc_url(eot_localized_url('services')); ?>"><?php echo esc_html__('Услуги', 'eot-theme'); ?></a>
       <a href="<?php echo esc_url(eot_localized_url('contacts') . '#booking'); ?>"><?php echo esc_html__('Запись', 'eot-theme'); ?></a>
     </div>
+    <div class="footer-links">
+      <a href="<?php echo esc_url(eot_localized_url('what-is-eot')); ?>"><?php echo esc_html__('Что такое ЭОТ', 'eot-theme'); ?></a>
+      <a href="<?php echo esc_url(eot_localized_url('psychologist-for-emigrants')); ?>"><?php echo esc_html__('Психолог для эмигрантов', 'eot-theme'); ?></a>
+    </div>
     <div class="footer-meta">
       <p class="small"><?php echo esc_html__('Информация на сайте носит ознакомительный характер и не заменяет медицинскую помощь.', 'eot-theme'); ?></p>
       <p class="small">&copy; <span data-year><?php echo esc_html(date('Y')); ?></span> <span><?php echo esc_html__('ЭОТ Онлайн', 'eot-theme'); ?></span></p>
