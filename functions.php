@@ -455,3 +455,66 @@ function eot_hide_admin_sections() {
     remove_menu_page('edit-comments.php');
 }
 add_action('admin_menu', 'eot_hide_admin_sections', 999);
+
+function eot_get_sk_translations() {
+    return [
+        // Из блока "Для кого подходит работа со мной" на главной
+        'Для кого подходит работа со мной' => 'Pre koho je vhodná práca so mnou',
+        'Я работаю с русскоязычными людьми в Европе, для которых важно говорить о сложном на родном языке - бережно, профессионально и без необходимости объяснять культурный контекст.' => 'Pracujem s rusky hovoriacimi ľuďmi v Európe, pre ktorých je dôležité hovoriť o zložitom v rodnom jazyku - šetrne, profesionálne a bez potreby vysvetľovať kultúrny kontext.',
+        'Русскоязычные в Европе' => 'Rusky hovoriaci v Európe',
+        'Если вы переехали в Словакию, Чехию, Германию, Австрию или другую европейскую страну, и вам важно работать с психологом на родном языке - вы попали по адресу. Я понимаю контекст эмиграции, проблемы адаптации, потерю опоры и языковой барьер с местными специалистами.' => 'Ak ste sa presťahovali na Slovensko, do Česka, Nemecka, Rakúska alebo inej európskej krajiny a je pre vás dôležité pracovať s psychológom v rodnom jazyku - ste na správnom mieste. Rozumiem kontextu emigrácie, problémom adaptácie, strate opory a jazykovej bariére s miestnymi špecialistami.',
+        'Те, кому помогает онлайн-формат' => 'Tí, ktorým pomáha online formát',
+        'Все консультации проходят онлайн через Zoom. Это удобно, если у вас плотный график, маленький ребенок, ограниченная мобильность, или просто нет рядом подходящего русскоязычного специалиста. Эффективность онлайн-сессий не уступает очным.' => 'Všetky konzultácie prebiehajú online cez Zoom. Je to pohodlné, ak máte nabitý program, malé dieťa, obmedzenú mobilitu, alebo jednoducho v okolí nie je vhodný rusky hovoriaci špecialista. Účinnosť online sedení nie je nižšia ako pri osobných stretnutiach.',
+        'Те, кто пробовал и не получил результат' => 'Tí, ktorí to skúsili a nedosiahli výsledok',
+        'Если разговорные методы психотерапии не помогли, ЭОТ часто становится решением. Метод работает не через анализ и обсуждение, а через образы, в которых живут эмоции - это позволяет добраться до того, что обычные подходы не затрагивают.' => 'Ak rozhovorové metódy psychoterapie nepomohli, EOT sa často stáva riešením. Metóda funguje nie cez analýzu a diskusiu, ale cez obrazy, v ktorých žijú emócie - to umožňuje dostať sa k tomu, čoho sa bežné prístupy nedotýkajú.',
+
+        // Из блока "Что такое ЭОТ" - карточки 1 и 3 на главной
+        'Эмоционально-образная терапия (ЭОТ) - современный и эффективный метод психологической помощи. Я работаю как русскоязычный психолог онлайн с людьми, живущими в Европе и за рубежом. В процессе ЭОТ человек учится работать со своими эмоциями и внутренними образами, которые стоят за сложными чувствами, страхами, тревогой или стрессом. Психолог помогает выявить причины дискомфорта и изменить внутренние реакции, что делает терапию глубокой и результативной.' => 'Emocionálno-obrazová terapia (EOT) - moderná a účinná metóda psychologickej pomoci. Pracujem ako rusky hovoriaci psychológ online s ľuďmi žijúcimi v Európe a v zahraničí. V procese EOT sa človek učí pracovať so svojimi emóciami a vnútornými obrazmi, ktoré stoja za zložitými pocitmi, strachmi, úzkosťou alebo stresom. Psychológ pomáha odhaliť príčiny diskomfortu a zmeniť vnútorné reakcie, čo robí terapiu hlbokou a výsledkovo orientovanou.',
+        'Причиной телесного дискомфорта, боли, недомогания или хронических заболеваний часто становятся подавленные чувства и нерешенные конфликты. Эмоционально-образная терапия (ЭОТ) помогает выявить и проработать эти скрытые причины - тревогу, бессонницу, психоблоки, эмоциональные травмы. Через работу с образами и чувствами ЭОТ способствует восстановлению гармонии между психикой и телом, что проявляется улучшением самочувствия и избавлением от психосоматических симптомов.' => 'Príčinou telesného diskomfortu, bolesti, malátnosti alebo chronických ochorení sa často stávajú potlačené pocity a nevyriešené konflikty. Emocionálno-obrazová terapia (EOT) pomáha odhaliť a spracovať tieto skryté príčiny - úzkosť, nespavosť, psychické bloky, emocionálne traumy. Cez prácu s obrazmi a pocitmi EOT prispieva k obnoveniu harmónie medzi psychikou a telom, čo sa prejavuje zlepšením pohody a zbavením sa psychosomatických symptómov.',
+
+        // Из блока плиток "С какими запросами" - кнопка
+        'Подробнее' => 'Viac informácií',
+
+        // Ссылки в подвале
+        'Что такое ЭОТ' => 'Čo je EOT',
+        'Психолог для эмигрантов' => 'Psychológ pre emigrantov',
+
+        // CTA-блоки на page-about.php
+        'Готовы начать работу?' => 'Pripravení začať pracovať?',
+        'Посмотрите форматы работы или запишитесь на бесплатную вводную встречу - познакомимся и обсудим ваш запрос.' => 'Pozrite si formáty práce alebo si rezervujte bezplatné úvodné stretnutie - zoznámime sa a prediskutujeme vašu požiadavku.',
+        'Посмотреть услуги' => 'Pozrieť služby',
+        'Записаться на встречу' => 'Rezervovať stretnutie',
+
+        // CTA-блок на page-services.php
+        'Хотите узнать больше обо мне?' => 'Chcete sa o mne dozvedieť viac?',
+        'Познакомьтесь со специалистом или запишитесь на бесплатную вводную встречу - обсудим, подходит ли вам этот формат работы.' => 'Zoznámte sa so špecialistom alebo si rezervujte bezplatné úvodné stretnutie - prediskutujeme, či vám tento formát práce vyhovuje.',
+        'Обо мне' => 'O mne',
+    ];
+}
+
+function eot_filter_sk_translations($translation, $text, $domain) {
+    if ($domain !== 'eot-theme') {
+        return $translation;
+    }
+
+    static $is_sk = null;
+    if ($is_sk === null) {
+        $is_sk = eot_get_current_lang() === 'sk';
+    }
+
+    if (!$is_sk) {
+        return $translation;
+    }
+
+    static $translations = null;
+    if ($translations === null) {
+        $translations = eot_get_sk_translations();
+    }
+
+    if (isset($translations[$text])) {
+        return $translations[$text];
+    }
+
+    return $translation;
+}
+add_filter('gettext_eot-theme', 'eot_filter_sk_translations', 10, 3);
