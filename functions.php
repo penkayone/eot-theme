@@ -163,15 +163,17 @@ function eot_is_polylang_active() {
 
 function eot_page_key_to_default_slug($key) {
     $map = [
-        'about'              => 'about',
-        'services'           => 'services',
-        'contacts'           => 'contacts',
-        'anxiety'            => 'anxiety',
-        'self-esteem'        => 'self-esteem',
-        'fear-of-visibility' => 'fear-of-visibility',
-        'insomnia'           => 'insomnia',
-        'mental-blocks'      => 'mental-blocks',
-        'emotional-trauma'   => 'emotional-trauma',
+        'about'                      => 'about',
+        'services'                   => 'services',
+        'contacts'                   => 'contacts',
+        'anxiety'                    => 'anxiety',
+        'self-esteem'                => 'self-esteem',
+        'fear-of-visibility'         => 'fear-of-visibility',
+        'insomnia'                   => 'insomnia',
+        'mental-blocks'              => 'mental-blocks',
+        'emotional-trauma'           => 'emotional-trauma',
+        'what-is-eot'                => 'what-is-eot',
+        'psychologist-for-emigrants' => 'psychologist-for-emigrants',
     ];
 
     return $map[$key] ?? '';
