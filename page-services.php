@@ -41,6 +41,17 @@ get_header(); ?>
       <p class="disclaimer"><?php echo esc_html__('Психологическая помощь не является медицинской услугой.', 'eot-theme'); ?></p>
     </div>
   </section>
+
+  <section class="section soft" data-reveal>
+    <div class="container">
+      <h2><?php echo esc_html__('Хотите узнать больше обо мне?', 'eot-theme'); ?></h2>
+      <p class="lead"><?php echo esc_html__('Познакомьтесь со специалистом или запишитесь на бесплатную вводную встречу - обсудим, подходит ли вам этот формат работы.', 'eot-theme'); ?></p>
+      <div class="button-row">
+        <a class="btn btn-outline" href="<?php echo esc_url(eot_localized_url('about')); ?>"><?php echo esc_html__('Обо мне', 'eot-theme'); ?></a>
+        <a class="btn btn-primary btn-booking" href="<?php echo esc_url(add_query_arg('service', 'intro', eot_localized_url('contacts')) . '#booking'); ?>"><?php echo esc_html__('Записаться на встречу', 'eot-theme'); ?></a>
+      </div>
+    </div>
+  </section>
 </main>
 
 <?php get_footer(); ?>
