@@ -518,3 +518,27 @@ function eot_filter_sk_translations($translation, $text, $domain) {
     return $translation;
 }
 add_filter('gettext_eot-theme', 'eot_filter_sk_translations', 10, 3);
+
+function eot_inject_google_analytics() {
+    if (is_admin()) {
+        return;
+    }
+
+    if (current_user_can('edit_posts')) {
+        return;
+    }
+
+    $measurement_id = 'G-XDRF29EF1V';
+    ?>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo esc_attr($measurement_id); ?>"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', '<?php echo esc_js($measurement_id); ?>');
+    </script>
+    <?php
+}
+add_action('wp_head', 'eot_inject_google_analytics');
