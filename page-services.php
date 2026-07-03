@@ -12,7 +12,7 @@ get_header(); ?>
       <div class="grid cards-3">
         <article class="card service-card">
           <div class="service-meta">
-            <span class="badge"><?php echo esc_html__('30 минут', 'eot-theme'); ?></span>
+            <span class="badge"><?php echo esc_html__('1 час', 'eot-theme'); ?></span>
           </div>
           <h2><?php echo esc_html__('Первая сессия', 'eot-theme'); ?></h2>
           <p><?php echo esc_html__('Короткое знакомство и уточнение запроса.', 'eot-theme'); ?></p>
