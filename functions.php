@@ -272,7 +272,7 @@ function eot_get_client_i18n_dictionary($lang = null) {
             'items' => [
                 '1' => ['title' => __('Индивидуальная сессия', 'eot-theme')],
                 '2' => ['title' => __('Семинар возрождения внутренней силы', 'eot-theme')],
-                '3' => ['title' => __('Вводная встреча', 'eot-theme')],
+                '3' => ['title' => __('Первая сессия', 'eot-theme')],
             ],
         ],
         'booking' => [
@@ -320,9 +320,9 @@ function eot_get_client_i18n_dictionary($lang = null) {
                     'currency' => 'EUR',
                 ],
                 [
-                    'name' => __('Вводная встреча', 'eot-theme'),
+                    'name' => __('Первая сессия', 'eot-theme'),
                     'description' => __('Короткое знакомство и уточнение запроса.', 'eot-theme'),
-                    'price' => '0',
+                    'price' => '30',
                     'currency' => 'EUR',
                 ],
             ],
@@ -481,14 +481,18 @@ function eot_get_sk_translations() {
 
         // CTA-блоки на page-about.php
         'Готовы начать работу?' => 'Pripravení začať pracovať?',
-        'Посмотрите форматы работы или запишитесь на бесплатную вводную встречу - познакомимся и обсудим ваш запрос.' => 'Pozrite si formáty práce alebo si rezervujte bezplatné úvodné stretnutie - zoznámime sa a prediskutujeme vašu požiadavku.',
+        'Посмотрите форматы работы или запишитесь на первую сессию - познакомимся и обсудим ваш запрос.' => 'Pozrite si formáty práce alebo si rezervujte prvé sedenie - zoznámime sa a prediskutujeme vašu požiadavku.',
         'Посмотреть услуги' => 'Pozrieť služby',
         'Записаться на встречу' => 'Rezervovať stretnutie',
 
         // CTA-блок на page-services.php
         'Хотите узнать больше обо мне?' => 'Chcete sa o mne dozvedieť viac?',
-        'Познакомьтесь со специалистом или запишитесь на бесплатную вводную встречу - обсудим, подходит ли вам этот формат работы.' => 'Zoznámte sa so špecialistom alebo si rezervujte bezplatné úvodné stretnutie - prediskutujeme, či vám tento formát práce vyhovuje.',
+        'Познакомьтесь со специалистом или запишитесь на первую сессию - обсудим, подходит ли вам этот формат работы.' => 'Zoznámte sa so špecialistom alebo si rezervujte prvé sedenie - prediskutujeme, či vám tento formát práce vyhovuje.',
         'Обо мне' => 'O mne',
+
+        // Услуга "Первая сессия" (бывшая "Вводная встреча") - заголовок и описание карточки/выпадашки
+        'Первая сессия' => 'Prvé sedenie',
+        'Короткое знакомство и уточнение запроса.' => 'Krátke zoznámenie a spresnenie požiadavky.',
     ];
 }
 

@@ -14,9 +14,9 @@ get_header(); ?>
           <div class="service-meta">
             <span class="badge"><?php echo esc_html__('30 минут', 'eot-theme'); ?></span>
           </div>
-          <h2><?php echo esc_html__('Вводная встреча', 'eot-theme'); ?></h2>
+          <h2><?php echo esc_html__('Первая сессия', 'eot-theme'); ?></h2>
           <p><?php echo esc_html__('Короткое знакомство и уточнение запроса.', 'eot-theme'); ?></p>
-          <p class="price"><?php echo esc_html__('€0', 'eot-theme'); ?></p>
+          <p class="price"><?php echo esc_html__('€30', 'eot-theme'); ?></p>
           <a class="btn btn-primary btn-booking" href="<?php echo esc_url(add_query_arg('service', 'intro', eot_localized_url('contacts')) . '#booking'); ?>"><?php echo esc_html__('Записаться', 'eot-theme'); ?></a>
         </article>
         <article class="card service-card">
@@ -45,7 +45,7 @@ get_header(); ?>
   <section class="section soft" data-reveal>
     <div class="container">
       <h2><?php echo esc_html__('Хотите узнать больше обо мне?', 'eot-theme'); ?></h2>
-      <p class="lead"><?php echo esc_html__('Познакомьтесь со специалистом или запишитесь на бесплатную вводную встречу - обсудим, подходит ли вам этот формат работы.', 'eot-theme'); ?></p>
+      <p class="lead"><?php echo esc_html__('Познакомьтесь со специалистом или запишитесь на первую сессию - обсудим, подходит ли вам этот формат работы.', 'eot-theme'); ?></p>
       <div class="button-row">
         <a class="btn btn-outline" href="<?php echo esc_url(eot_localized_url('about')); ?>"><?php echo esc_html__('Обо мне', 'eot-theme'); ?></a>
         <a class="btn btn-primary btn-booking" href="<?php echo esc_url(add_query_arg('service', 'intro', eot_localized_url('contacts')) . '#booking'); ?>"><?php echo esc_html__('Записаться на встречу', 'eot-theme'); ?></a>
