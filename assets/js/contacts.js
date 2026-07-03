@@ -207,7 +207,9 @@
     }
 
     const headers = { ...(options.headers || {}), "Content-Type": "application/json" };
-    if (config.nonce) headers["X-WP-Nonce"] = config.nonce;
+    // Публичные эндпоинты бронирования (bc/v1) не требуют nonce. Заголовок X-WP-Nonce
+    // намеренно НЕ отправляется: под полностраничным кэшем на странице лежит протухший
+    // токен, из-за которого ядро WP отклоняло любой запрос как "Проверка куки не удалась".
 
     return fetch(`${restUrl}${path}`, { ...options, headers }).then(async (response) => {
       const data = await response.json().catch(() => ({}));
