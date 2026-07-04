@@ -190,8 +190,8 @@ $eot_lang = eot_get_current_lang();
           <div class="service-meta">
             <span class="badge"><?php echo esc_html__('1 час', 'eot-theme'); ?></span>
           </div>
-          <h3><?php echo esc_html__('Первая сессия', 'eot-theme'); ?></h3>
-          <p><?php echo esc_html__('Короткое знакомство и уточнение запроса.', 'eot-theme'); ?></p>
+          <h3><?php echo esc_html__('Первая сессия по специальной цене', 'eot-theme'); ?></h3>
+          <p><?php echo esc_html__('На первой встрече мы познакомимся, проясним ваш запрос и проведём полноценную часовую сессию с опорой на эмоционально-образную терапию. Стоимость первой встречи — 30 € вместо обычных 60 €. Последующие индивидуальные сессии — 60 € / час.', 'eot-theme'); ?></p>
           <p class="price"><?php echo esc_html__('€30', 'eot-theme'); ?></p>
           <a class="btn btn-primary btn-booking" href="<?php echo esc_url(add_query_arg('service', 'intro', eot_localized_url('contacts')) . '#booking'); ?>"><?php echo esc_html__('Записаться', 'eot-theme'); ?></a>
         </article>
@@ -206,7 +206,7 @@ $eot_lang = eot_get_current_lang();
         </article>
         <article class="card service-card">
           <div class="service-meta">
-            <span class="badge"><?php echo esc_html__('4 часа', 'eot-theme'); ?></span>
+            <span class="badge"><?php echo esc_html__('8 часов', 'eot-theme'); ?></span>
           </div>
           <h3><?php echo esc_html__('Семинар возрождения внутренней силы', 'eot-theme'); ?></h3>
           <p><?php echo esc_html__('Тренировка практических навыков саморегуляции и снятия психоблоков. Индивидуальная и групповая работа в течение месяца. Две личных встречи. Три групповых сессии. Теоретические лекции в записи.', 'eot-theme'); ?></p>
