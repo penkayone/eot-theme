@@ -9,6 +9,7 @@
   const state = {
     services: [],
     serviceId: null,
+    serviceLockedFromUrl: false,
     calendarDays: [],
     selectedDate: "",
     slots: [],
@@ -178,13 +179,20 @@
     const value = normalize(rawValue);
     if (!value || !state.services.length) return null;
 
-    // Accept direct numeric id or exact id-as-string first.
-    const direct = state.services.find((s) => String(s.id) === value);
-    if (direct) return String(direct.id);
+    // 1) Точное совпадение по slug — основной, стабильный ключ услуги.
+    const bySlug = state.services.find((s) => {
+      const slug = normalize(s.slug);
+      return slug && slug === value;
+    });
+    if (bySlug) return String(bySlug.id);
 
-    // Try semantic fields from API (if present) and title substring.
+    // 2) Прямой числовой id (поддержка ?service_id=… и ?service=<id>).
+    const byId = state.services.find((s) => String(s.id) === value);
+    if (byId) return String(byId.id);
+
+    // 3) Нечёткое совпадение по прочим семантическим полям / подстроке названия.
     const byField = state.services.find((s) => {
-      const candidates = [s.slug, s.code, s.key, s.name, s.title];
+      const candidates = [s.code, s.key, s.name, s.title];
       return candidates.some((candidate) => {
         const normalizedCandidate = normalize(candidate);
         return normalizedCandidate && (normalizedCandidate === value || normalizedCandidate.includes(value));
@@ -192,7 +200,8 @@
     });
     if (byField) return String(byField.id);
 
-    // Fallback to known website aliases and current card order.
+    // 4) Легаси-фолбэк: позиционные алиасы по порядку карточек. Только на самый
+    //    последний случай — ради обратной совместимости старых ссылок без slug.
     const aliasIndexMap = { intro: 0, individual: 1, package: 2 };
     if (aliasIndexMap[value] !== undefined && state.services[aliasIndexMap[value]]) {
       return String(state.services[aliasIndexMap[value]].id);
@@ -235,6 +244,13 @@
     const serviceMenu = qs("service-menu");
     const serviceTrigger = qs("service-trigger");
     if (!serviceMenu || !serviceTrigger) return;
+
+    // Услуга уже выбрана по ссылке (?service / ?service_id) — прячем выбор услуги.
+    // Inline-стиль перекрывает CSS-специфичность .booking-v2-field { display: flex }.
+    const serviceField = serviceTrigger.closest(".booking-v2-field");
+    if (serviceField) {
+      serviceField.style.display = state.serviceLockedFromUrl ? "none" : "";
+    }
 
     serviceMenu.innerHTML = "";
     state.services.forEach((service, index) => {
@@ -397,10 +413,13 @@
 
     if (fromUrlResolved) {
       state.serviceId = String(fromUrlResolved);
+      state.serviceLockedFromUrl = true;
     } else if (fromStorage && state.services.some((s) => String(s.id) === String(fromStorage))) {
       state.serviceId = String(fromStorage);
+      state.serviceLockedFromUrl = false;
     } else {
       state.serviceId = String(state.services[0].id);
+      state.serviceLockedFromUrl = false;
     }
 
     safeStorage.set(SELECTED_SERVICE_KEY, state.serviceId);
