@@ -60,10 +60,14 @@ get_header(); ?>
             <button type="button" class="booking-v2-change-date" id="change-date"><?php echo esc_html__('Выбрать другую дату', 'eot-theme'); ?></button>
           </div>
 
+          <p class="booking-v2-notice" id="slots-notice" role="status" aria-live="polite" hidden></p>
+
           <div class="booking-v2-slots" id="slots-block" hidden>
             <h3 class="booking-v2-subtitle"><?php echo esc_html__('Доступное время', 'eot-theme'); ?></h3>
             <div class="booking-v2-slots-grid" id="slots-grid" aria-live="polite"></div>
           </div>
+
+          <div class="booking-v2-plan" id="booking-plan" aria-live="polite" hidden></div>
 
           <form id="booking-form" class="booking-v2-form" novalidate>
             <p class="booking-v2-selected" id="booking-selected" aria-live="polite"></p>

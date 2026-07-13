@@ -502,7 +502,9 @@ h3 {
    как это уже сделано для .calendar-panel[hidden]. */
 .booking-v2-days[hidden],
 .booking-v2-picked-date[hidden],
-.booking-v2-slots[hidden] {
+.booking-v2-slots[hidden],
+.booking-v2-plan[hidden],
+.booking-v2-notice[hidden] {
   display: none;
 }
 
@@ -552,6 +554,17 @@ h3 {
 .booking-v2-change-date:focus-visible {
   outline: 2px solid #fff;
   outline-offset: 2px;
+}
+
+.booking-v2-notice {
+  margin: 0;
+  padding: 10px 14px;
+  border: 1px solid #f0c36d;
+  border-radius: 12px;
+  background: #fdf6e3;
+  color: #7a5310;
+  font-weight: 600;
+  line-height: 1.35;
 }
 
 .booking-v2-subtitle {
@@ -607,6 +620,104 @@ h3 {
   border-color: #1f7a31;
   outline: 3px solid rgba(73, 183, 101, 0.34);
   box-shadow: 0 14px 24px rgba(47, 157, 75, 0.3);
+}
+
+/* Время, уже отложенное в текущую заявку: видно, что оно занято именно вами. */
+.booking-v2-slot.picked {
+  background: linear-gradient(135deg, #1f7a31 0%, #17632a 100%);
+  color: #fff;
+  border-color: #17632a;
+  outline: 3px solid rgba(73, 183, 101, 0.34);
+  box-shadow: 0 14px 24px rgba(47, 157, 75, 0.3);
+  cursor: default;
+}
+
+.booking-v2-slot.picked::before {
+  content: "✓";
+  margin-right: 6px;
+  font-weight: 700;
+}
+
+.booking-v2-slot:disabled {
+  background: linear-gradient(180deg, #e7f1ff 0%, #dbeaff 100%);
+  color: #4f6d98;
+  border-color: #c6dcff;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.booking-v2-slot:disabled:hover {
+  transform: none;
+}
+
+.booking-v2-plan {
+  display: grid;
+  gap: 8px;
+  padding: 14px 16px;
+  border: 1px solid #cfe4ff;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #f9fcff 0%, #edf6ff 100%);
+}
+
+.booking-v2-plan-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #16345f;
+}
+
+.booking-v2-plan-service {
+  margin: 0;
+  color: #16345f;
+}
+
+.booking-v2-plan-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.booking-v2-plan-item {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  padding: 10px 12px;
+  border: 1px solid #bfe6cb;
+  border-radius: 12px;
+  background: #fff;
+  color: #1f7a31;
+  font-weight: 600;
+}
+
+.booking-v2-plan-remove {
+  margin-left: auto;
+  border: 1px solid #cfe4ff;
+  border-radius: 999px;
+  background: #fff;
+  color: #4f6d98;
+  font: inherit;
+  min-height: 36px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.booking-v2-plan-remove:hover {
+  border-color: #c73030;
+  color: #c73030;
+}
+
+.booking-v2-plan-status {
+  margin: 0;
+  font-weight: 700;
+  color: #16345f;
+}
+
+.booking-v2-plan-status.is-complete {
+  color: #1f7a31;
 }
 
 .booking-v2-slot:active,
@@ -1770,6 +1881,16 @@ h3 {
     margin-left: 0;
     width: 100%;
     min-height: 44px;
+  }
+  .booking-v2-plan {
+    padding: 12px;
+  }
+  .booking-v2-plan-item {
+    align-items: flex-start;
+  }
+  .booking-v2-plan-remove {
+    margin-left: 0;
+    min-height: 40px;
   }
   .booking-v2-days {
     grid-template-columns: repeat(3, minmax(0, 1fr));
