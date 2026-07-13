@@ -497,6 +497,63 @@ h3 {
   text-transform: lowercase;
 }
 
+/* Блоки записи скрываются атрибутом hidden из JS. Явный display в правилах выше
+   перебивает браузерный [hidden] { display: none }, поэтому гасим их вручную —
+   как это уже сделано для .calendar-panel[hidden]. */
+.booking-v2-days[hidden],
+.booking-v2-picked-date[hidden],
+.booking-v2-slots[hidden] {
+  display: none;
+}
+
+/* Свёрнутый календарь: после выбора даты вместо сетки остаётся эта плашка. */
+.booking-v2-picked-date {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  padding: 12px 14px;
+  border: 1px solid #258642;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #49b765 0%, #2f9d4b 100%);
+  color: #fff;
+  box-shadow: 0 10px 16px rgba(47, 157, 75, 0.24);
+}
+
+.booking-v2-picked-date-caption {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.booking-v2-picked-date-value {
+  font-size: 1.12rem;
+  font-weight: 700;
+}
+
+.booking-v2-change-date {
+  margin-left: auto;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  min-height: 40px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.booking-v2-change-date:hover {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: #fff;
+}
+
+.booking-v2-change-date:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
 .booking-v2-subtitle {
   margin: 0 0 6px;
   font-size: 1.05rem;
@@ -1701,6 +1758,18 @@ h3 {
   }
   .booking-v2-form-grid {
     grid-template-columns: 1fr;
+  }
+  /* Плашка выбранной даты: подпись, дата и кнопка — в столбик, кнопка во всю ширину. */
+  .booking-v2-picked-date {
+    display: grid;
+    justify-items: start;
+    gap: 8px;
+    padding: 12px;
+  }
+  .booking-v2-change-date {
+    margin-left: 0;
+    width: 100%;
+    min-height: 44px;
   }
   .booking-v2-days {
     grid-template-columns: repeat(3, minmax(0, 1fr));
