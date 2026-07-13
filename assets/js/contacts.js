@@ -14,6 +14,8 @@
     selectedDate: "",
     slots: [],
     selectedSlot: null,
+    // Сетка дат открыта, пока дата не выбрана; после выбора сворачивается.
+    datePickerOpen: true,
   };
   let daySelectionToastTimer = null;
 
@@ -287,7 +289,13 @@
     const grid = qs("days-grid");
     if (!grid) return;
 
+    // Дата выбрана — сетка дат сворачивается, вместо неё остаётся компактный
+    // блок с выбранной датой и кнопкой «Выбрать другую дату».
+    grid.hidden = !state.datePickerOpen;
+
     grid.innerHTML = "";
+    if (!state.datePickerOpen) return;
+
     const days = [...state.calendarDays].sort((a, b) => (a.date > b.date ? 1 : -1));
 
     if (!days.length) {
@@ -316,32 +324,60 @@
         <small>${new Intl.DateTimeFormat(getLocale(), { month: "short" }).format(date)}</small>
       `;
 
-      btn.addEventListener("click", async () => {
+      btn.addEventListener("click", () => {
         if (!d.has_slots) return;
-        state.selectedDate = d.date;
-        state.selectedSlot = null;
-        showDaySelectionToast(d.date);
-        await loadSlots();
-        renderAll();
+        selectDate(d.date);
       });
 
       grid.appendChild(btn);
     });
   }
 
+  async function selectDate(date) {
+    state.selectedDate = date;
+    state.selectedSlot = null;
+    state.datePickerOpen = false;
+    showDaySelectionToast(date);
+
+    await loadSlots();
+    renderAll();
+  }
+
+  function openDatePicker() {
+    state.datePickerOpen = true;
+    renderAll();
+  }
+
+  function renderPickedDate() {
+    const node = qs("picked-date");
+    const value = qs("picked-date-value");
+    if (!node || !value) return;
+
+    const visible = !state.datePickerOpen && !!state.selectedDate;
+    node.hidden = !visible;
+    if (!visible) return;
+
+    value.textContent = formatSelectedDate(state.selectedDate);
+
+    // Подписи берём из словаря, чтобы они менялись вместе с языком страницы.
+    const caption = node.querySelector(".booking-v2-picked-date-caption");
+    if (caption) caption.textContent = t("booking.selectedDateCaption", "Выбранная дата");
+
+    const change = qs("change-date");
+    if (change) change.textContent = t("booking.changeDate", "Выбрать другую дату");
+  }
+
   function renderSlots() {
+    const block = qs("slots-block");
     const grid = qs("slots-grid");
     if (!grid) return;
 
-    grid.innerHTML = "";
+    // Время показываем только после выбора даты.
+    const visible = !!state.selectedDate && !state.datePickerOpen;
+    if (block) block.hidden = !visible;
 
-    if (!state.selectedDate) {
-      const empty = document.createElement("p");
-      empty.className = "booking-v2-empty";
-      empty.textContent = t("booking.chooseDay", "Выберите дату");
-      grid.appendChild(empty);
-      return;
-    }
+    grid.innerHTML = "";
+    if (!visible) return;
 
     if (!state.slots.length) {
       const empty = document.createElement("p");
@@ -391,6 +427,7 @@
   function renderAll() {
     renderMenus();
     renderDays();
+    renderPickedDate();
     renderSlots();
     renderSelectedInfo();
   }
@@ -425,23 +462,27 @@
     safeStorage.set(SELECTED_SERVICE_KEY, state.serviceId);
   }
 
+  function resetSelection() {
+    state.selectedDate = "";
+    state.slots = [];
+    state.selectedSlot = null;
+    state.datePickerOpen = true;
+  }
+
   async function loadCalendar() {
+    resetSelection();
+
     if (!state.serviceId) {
       state.calendarDays = [];
-      state.selectedDate = "";
-      state.slots = [];
-      state.selectedSlot = null;
       renderAll();
       return;
     }
 
     const data = await api(`/calendar?service_id=${encodeURIComponent(state.serviceId)}`);
     state.calendarDays = Array.isArray(data.days) ? data.days : [];
-    const first = state.calendarDays.find((d) => d.has_slots);
-    state.selectedDate = first ? first.date : "";
 
-    state.selectedSlot = null;
-    await loadSlots();
+    // Дату за клиента больше не выбираем: сетка остаётся открытой, пока он не
+    // ткнёт в дату сам. Иначе календарь схлопывался бы раньше, чем его увидят.
     renderAll();
   }
 
@@ -577,6 +618,14 @@
       event.stopPropagation();
       toggleMenu("service");
     });
+
+    const changeDate = qs("change-date");
+    if (changeDate) {
+      changeDate.addEventListener("click", (event) => {
+        event.stopPropagation();
+        openDatePicker();
+      });
+    }
 
     document.addEventListener("click", () => closeMenus());
   }

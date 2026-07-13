@@ -54,14 +54,15 @@ get_header(); ?>
             <button type="button" class="booking-v2-day weekday-long"><span>воскресенье</span><strong>07</strong><small>янв</small></button>
           </div>
 
-          <div class="booking-v2-slots">
+          <div class="booking-v2-picked-date" id="picked-date" hidden>
+            <span class="booking-v2-picked-date-caption"><?php echo esc_html__('Выбранная дата', 'eot-theme'); ?></span>
+            <strong class="booking-v2-picked-date-value" id="picked-date-value"></strong>
+            <button type="button" class="booking-v2-change-date" id="change-date"><?php echo esc_html__('Выбрать другую дату', 'eot-theme'); ?></button>
+          </div>
+
+          <div class="booking-v2-slots" id="slots-block" hidden>
             <h3 class="booking-v2-subtitle"><?php echo esc_html__('Доступное время', 'eot-theme'); ?></h3>
-            <div class="booking-v2-slots-grid" id="slots-grid" aria-live="polite">
-              <button type="button" class="booking-v2-slot free">09:00</button>
-              <button type="button" class="booking-v2-slot free">10:00</button>
-              <button type="button" class="booking-v2-slot free">11:00</button>
-              <button type="button" class="booking-v2-slot free">12:00</button>
-            </div>
+            <div class="booking-v2-slots-grid" id="slots-grid" aria-live="polite"></div>
           </div>
 
           <form id="booking-form" class="booking-v2-form" novalidate>
