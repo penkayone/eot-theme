@@ -13,11 +13,34 @@
     calendarDays: [],
     selectedDate: "",
     slots: [],
-    selectedSlot: null,
+    // Выбранные встречи заявки. Для обычной услуги здесь максимум один слот,
+    // для услуги с несколькими встречами — до meetings_count слотов.
+    pickedSlots: [],
     // Сетка дат открыта, пока дата не выбрана; после выбора сворачивается.
     datePickerOpen: true,
   };
   let daySelectionToastTimer = null;
+
+  const slotKey = (slot) => `${slot.starts_at}|${slot.ends_at}`;
+
+  function meetingsCount() {
+    const service = selectedService();
+    return Math.max(1, parseInt(service?.meetings_count, 10) || 1);
+  }
+
+  function isPicked(slot) {
+    return state.pickedSlots.some((picked) => slotKey(picked) === slotKey(slot));
+  }
+
+  // Слоты, которые ещё можно взять на текущую дату: свободные по расписанию
+  // минус уже отложенные в эту же заявку (в БД их пока нет).
+  function remainingSlots() {
+    return state.slots.filter((slot) => !isPicked(slot));
+  }
+
+  function meetingsLeft() {
+    return Math.max(0, meetingsCount() - state.pickedSlots.length);
+  }
 
   const qs = (id) => document.getElementById(id);
   const safeStorage = {
@@ -267,8 +290,6 @@
         event.stopPropagation();
         state.serviceId = String(service.id);
         safeStorage.set(SELECTED_SERVICE_KEY, state.serviceId);
-        state.selectedSlot = null;
-        state.selectedDate = "";
         setFeedback("");
         closeMenus();
         await loadCalendar();
@@ -290,12 +311,11 @@
     if (!grid) return;
 
     // Дата выбрана — сетка дат сворачивается, вместо неё остаётся компактный
-    // блок с выбранной датой и кнопкой «Выбрать другую дату».
+    // блок с выбранной датой и ссылкой «Выбрать другую дату».
     grid.hidden = !state.datePickerOpen;
 
     grid.innerHTML = "";
     if (!state.datePickerOpen) return;
-
     const days = [...state.calendarDays].sort((a, b) => (a.date > b.date ? 1 : -1));
 
     if (!days.length) {
@@ -335,8 +355,8 @@
 
   async function selectDate(date) {
     state.selectedDate = date;
-    state.selectedSlot = null;
     state.datePickerOpen = false;
+    setSlotsNotice("");
     showDaySelectionToast(date);
 
     await loadSlots();
@@ -345,6 +365,7 @@
 
   function openDatePicker() {
     state.datePickerOpen = true;
+    setSlotsNotice("");
     renderAll();
   }
 
@@ -367,6 +388,14 @@
     if (change) change.textContent = t("booking.changeDate", "Выбрать другую дату");
   }
 
+  function setSlotsNotice(text) {
+    const notice = qs("slots-notice");
+    if (!notice) return;
+
+    notice.textContent = text || "";
+    notice.hidden = !text;
+  }
+
   function renderSlots() {
     const block = qs("slots-block");
     const grid = qs("slots-grid");
@@ -376,8 +405,12 @@
     const visible = !!state.selectedDate && !state.datePickerOpen;
     if (block) block.hidden = !visible;
 
+    if (!visible) {
+      grid.innerHTML = "";
+      return;
+    }
+
     grid.innerHTML = "";
-    if (!visible) return;
 
     if (!state.slots.length) {
       const empty = document.createElement("p");
@@ -387,24 +420,133 @@
       return;
     }
 
+    const total = meetingsCount();
+
     state.slots.forEach((slot) => {
+      const picked = isPicked(slot);
       const btn = document.createElement("button");
       btn.type = "button";
-      btn.className = "booking-v2-slot free";
+      btn.className = picked ? "booking-v2-slot picked" : "booking-v2-slot free";
       btn.textContent = slot.label || "";
-      if (state.selectedSlot && state.selectedSlot.starts_at === slot.starts_at) {
-        btn.classList.add("selected");
+      btn.setAttribute("aria-pressed", String(picked));
+
+      // Все встречи уже разобраны — оставшиеся слоты брать некуда.
+      // У обычной услуги клик по другому времени просто меняет выбор, поэтому
+      // там кнопки остаются активными.
+      if (!picked && total > 1 && meetingsLeft() === 0) {
+        btn.disabled = true;
       }
 
-      btn.addEventListener("click", () => {
-        state.selectedSlot = slot;
-        showTimeSelectionToast(slot.label || "");
-        renderSelectedInfo();
-        renderSlots();
-      });
+      btn.addEventListener("click", () => pickSlot(slot));
 
       grid.appendChild(btn);
     });
+
+    setSlotsNotice(
+      !remainingSlots().length && meetingsLeft() > 0
+        ? t("booking.noSlotsLeft", "На этот день свободного времени больше нет, выберите другую дату.")
+        : ""
+    );
+  }
+
+  function pickSlot(slot) {
+    if (isPicked(slot)) {
+      setSlotsNotice(t("booking.alreadyPicked", "Это время вы уже выбрали, выберите другое."));
+      return;
+    }
+
+    const total = meetingsCount();
+
+    if (total === 1) {
+      // Обычная услуга: повторный клик просто заменяет выбранное время.
+      state.pickedSlots = [slot];
+    } else {
+      if (state.pickedSlots.length >= total) return;
+      state.pickedSlots.push(slot);
+    }
+
+    setFeedback("");
+    showTimeSelectionToast(slot.label || "");
+
+    // Встречи ещё остались, но на этот день свободного времени больше нет —
+    // сразу возвращаем сетку дат, чтобы не пришлось искать, куда нажимать.
+    if (meetingsLeft() > 0 && !remainingSlots().length) {
+      state.datePickerOpen = true;
+      renderAll();
+      setSlotsNotice(t("booking.noSlotsLeft", "На этот день свободного времени больше нет, выберите другую дату."));
+      return;
+    }
+
+    renderAll();
+  }
+
+  // Подсказка для услуг с несколькими встречами: услуга, уже выбранные встречи
+  // и сколько осталось. Когда выбраны все — превращается в сводку перед отправкой.
+  function renderPlan() {
+    const node = qs("booking-plan");
+    if (!node) return;
+
+    const total = meetingsCount();
+
+    if (total < 2) {
+      node.hidden = true;
+      node.innerHTML = "";
+      return;
+    }
+
+    const service = selectedService();
+    const serviceIndex = service ? state.services.findIndex((s) => String(s.id) === String(service.id)) : -1;
+
+    node.hidden = false;
+    node.innerHTML = "";
+
+    const title = document.createElement("p");
+    title.className = "booking-v2-plan-title";
+    title.textContent = t("booking.planTitle", "Ваша запись");
+    node.appendChild(title);
+
+    const serviceLine = document.createElement("p");
+    serviceLine.className = "booking-v2-plan-service";
+    serviceLine.textContent = `${t("booking.planServiceLabel", "Услуга")}: ${getLocalizedServiceTitle(service, serviceIndex)}`;
+    node.appendChild(serviceLine);
+
+    if (state.pickedSlots.length) {
+      const list = document.createElement("ul");
+      list.className = "booking-v2-plan-list";
+
+      state.pickedSlots.forEach((picked, i) => {
+        const item = document.createElement("li");
+        item.className = "booking-v2-plan-item";
+
+        const label = document.createElement("span");
+        const meeting = t("booking.meetingLabel", "Встреча {n}").replace("{n}", String(i + 1));
+        label.textContent = `${meeting}: ${formatSelectedDate(picked.starts_at.slice(0, 10))}, ${picked.label}`;
+        item.appendChild(label);
+
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.className = "booking-v2-plan-remove";
+        remove.textContent = t("booking.removeMeeting", "Убрать");
+        remove.addEventListener("click", () => {
+          state.pickedSlots.splice(i, 1);
+          setFeedback("");
+          renderAll();
+        });
+        item.appendChild(remove);
+
+        list.appendChild(item);
+      });
+
+      node.appendChild(list);
+    }
+
+    const left = meetingsLeft();
+    const status = document.createElement("p");
+    status.className = "booking-v2-plan-status" + (left ? "" : " is-complete");
+    status.textContent = left
+      ? t("booking.meetingsLeft", "Осталось выбрать встреч: {count}").replace("{count}", String(left))
+      : t("booking.planComplete", "Все встречи выбраны. Проверьте и нажмите «Забронировать».");
+    node.appendChild(status);
   }
 
   function renderSelectedInfo() {
@@ -416,12 +558,19 @@
       return;
     }
 
-    if (!state.selectedDate || !state.selectedSlot) {
+    // У мультивстреч выбранное показывает блок плана — дублировать не нужно.
+    if (meetingsCount() > 1) {
+      node.textContent = "";
+      return;
+    }
+
+    const picked = state.pickedSlots[0];
+    if (!picked) {
       node.textContent = t("booking.chooseSlot", "Выберите слот для записи");
       return;
     }
 
-    node.textContent = `${t("booking.selectedPrefix", "Вы выбрали")}: ${formatSelectedDate(state.selectedDate)} ${state.selectedSlot.label}`;
+    node.textContent = `${t("booking.selectedPrefix", "Вы выбрали")}: ${formatSelectedDate(picked.starts_at.slice(0, 10))} ${picked.label}`;
   }
 
   function renderAll() {
@@ -429,6 +578,7 @@
     renderDays();
     renderPickedDate();
     renderSlots();
+    renderPlan();
     renderSelectedInfo();
   }
 
@@ -465,8 +615,9 @@
   function resetSelection() {
     state.selectedDate = "";
     state.slots = [];
-    state.selectedSlot = null;
+    state.pickedSlots = [];
     state.datePickerOpen = true;
+    setSlotsNotice("");
   }
 
   async function loadCalendar() {
@@ -489,7 +640,6 @@
   async function loadSlots() {
     if (!state.serviceId || !state.selectedDate) {
       state.slots = [];
-      state.selectedSlot = null;
       return;
     }
 
@@ -498,10 +648,6 @@
     );
 
     state.slots = Array.isArray(data.slots) ? data.slots : [];
-
-    if (!state.slots.some((s) => state.selectedSlot && s.starts_at === state.selectedSlot.starts_at)) {
-      state.selectedSlot = null;
-    }
   }
 
   async function submitBooking(payload) {
@@ -547,10 +693,19 @@
         setFeedback(t("booking.errors.service", "Сначала выберите услугу."), true);
         return;
       }
-      if (!state.selectedSlot) {
-        setFeedback(t("booking.errors.time", "Сначала выберите время."), true);
+
+      const total = meetingsCount();
+      if (state.pickedSlots.length !== total) {
+        const left = meetingsLeft();
+        setFeedback(
+          total > 1
+            ? t("booking.errors.meetingsIncomplete", "Выберите все встречи: осталось {count}.").replace("{count}", String(left))
+            : t("booking.errors.time", "Сначала выберите время."),
+          true
+        );
         return;
       }
+
       if (!isValidName(name)) {
         setFeedback(t("booking.errors.name", "Укажите корректное имя."), true);
         return;
@@ -570,8 +725,11 @@
 
       const payload = {
         service_id: parseInt(state.serviceId, 10),
-        starts_at: state.selectedSlot.starts_at,
-        ends_at: state.selectedSlot.ends_at,
+        slots: state.pickedSlots.map((slot) => ({ starts_at: slot.starts_at, ends_at: slot.ends_at })),
+        // Дублируем первую встречу в старых полях — на случай, если на сервере
+        // ещё крутится версия плагина, которая про slots[] не знает.
+        starts_at: state.pickedSlots[0].starts_at,
+        ends_at: state.pickedSlots[0].ends_at,
         customer_name: name,
         customer_email: email,
         customer_phone: phone,
@@ -586,7 +744,7 @@
         await submitBooking(payload);
         setFeedback(t("booking.success", "Запись подтверждена. Я свяжусь с вами через email."));
         form.reset();
-        state.selectedSlot = null;
+        // loadCalendar() сам сбрасывает выбор: дата, слоты и отложенные встречи.
         await loadCalendar();
       } catch (error) {
         setFeedback(error?.message || t("booking.errors.server", "Не удалось отправить запись. Попробуйте позже."), true);

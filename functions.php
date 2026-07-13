@@ -289,6 +289,14 @@ function eot_get_client_i18n_dictionary($lang = null) {
             'saving' => __('Сохраняю...', 'eot-theme'),
             'selectedDateCaption' => __('Выбранная дата', 'eot-theme'),
             'changeDate' => __('Выбрать другую дату', 'eot-theme'),
+            'alreadyPicked' => __('Это время вы уже выбрали, выберите другое.', 'eot-theme'),
+            'noSlotsLeft' => __('На этот день свободного времени больше нет, выберите другую дату.', 'eot-theme'),
+            'planTitle' => __('Ваша запись', 'eot-theme'),
+            'planServiceLabel' => __('Услуга', 'eot-theme'),
+            'meetingLabel' => __('Встреча {n}', 'eot-theme'),
+            'meetingsLeft' => __('Осталось выбрать встреч: {count}', 'eot-theme'),
+            'planComplete' => __('Все встречи выбраны. Проверьте и нажмите «Забронировать».', 'eot-theme'),
+            'removeMeeting' => __('Убрать', 'eot-theme'),
             'errors' => [
                 'service' => __('Сначала выберите услугу.', 'eot-theme'),
                 'time' => __('Сначала выберите время.', 'eot-theme'),
@@ -297,6 +305,7 @@ function eot_get_client_i18n_dictionary($lang = null) {
                 'phone' => __('Телефон: только цифры и +, 7-15.', 'eot-theme'),
                 'message' => __('Кратко опишите запрос.', 'eot-theme'),
                 'server' => __('Не удалось отправить запись. Попробуйте позже.', 'eot-theme'),
+                'meetingsIncomplete' => __('Выберите все встречи: осталось {count}.', 'eot-theme'),
             ],
         ],
         'schema' => [
