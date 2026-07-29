@@ -412,6 +412,16 @@ function eot_theme_setup() {
 }
 add_action('after_setup_theme', 'eot_theme_setup');
 
+function eot_singular_has_booking_shortcode() {
+    if (!is_singular()) {
+        return false;
+    }
+
+    $post = get_post();
+
+    return $post instanceof WP_Post && has_shortcode($post->post_content, 'booking_consult');
+}
+
 function eot_enqueue_assets() {
     $theme_version = wp_get_theme()->get('Version');
     $style_ver = file_exists(get_theme_file_path('style.css')) ? (string) filemtime(get_theme_file_path('style.css')) : $theme_version;
@@ -422,8 +432,9 @@ function eot_enqueue_assets() {
 
     wp_enqueue_script('eot-main', get_theme_file_uri('assets/js/main.js'), [], $main_js_ver, true);
 
-    // Booking UI может быть выведен не только на slug=contacts, поэтому подключаем на всех singular.
-    if (is_singular()) {
+    // Booking UI выводится шаблоном page-contacts.php (RU /contacts/, SK /sk/kontakt/)
+    // либо шорткодом [booking_consult] в контенте произвольной страницы.
+    if (is_page_template('page-contacts.php') || eot_singular_has_booking_shortcode()) {
         wp_enqueue_script('eot-contacts', get_theme_file_uri('assets/js/contacts.js'), ['eot-main'], $contacts_js_ver, true);
 
         wp_localize_script('eot-contacts', 'eotBookingData', [
