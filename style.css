@@ -3,7 +3,7 @@ Theme Name: EOT Theme
 Theme URI: https://coach-psycholog.com
 Author: Anton G. | Sergey G.
 Description: Тема разработана для двуязычного сайта психолога и коуча с лендинговой структурой страниц, онлайн-записью и SEO-ориентированной языковой навигацией
-Version: 1.0.8
+Version: 1.0.9
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
@@ -2354,4 +2354,73 @@ h3 {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+.reviews-grid {
+  align-items: stretch;
+}
+
+.review-card-v2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.review-quote {
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 0;
+}
+
+.review-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.review-author {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.review-proof {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  color: var(--primary);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+  box-shadow: none;
+}
+
+.review-proof:hover {
+  background: #f1f4fa;
+  border-color: #b9c3d6;
+  transform: none;
+  box-shadow: none;
+}
+
+#reviews {
+  scroll-margin-top: 90px;
+}
+
+#reviews .section-head {
+  margin-bottom: var(--space-3);
+}
+
+#reviews .section-head h2 {
+  margin-bottom: 0.5rem;
+}
+
+#reviews .section-head p {
+  margin-top: 0;
 }

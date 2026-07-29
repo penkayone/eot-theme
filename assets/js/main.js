@@ -166,7 +166,7 @@ const initCertificatesLayout = () => {
 };
 
 const initLightbox = () => {
-  const galleries = document.querySelectorAll(".gallery");
+  const galleries = document.querySelectorAll(".gallery, .reviews-grid");
   if (!galleries.length) return;
 
   galleries.forEach((gallery) => {
@@ -176,8 +176,8 @@ const initLightbox = () => {
         const images = items.map((item) => {
           const img = item.querySelector("img");
           return {
-            src: item.dataset.full || img.src,
-            alt: img.alt,
+            src: item.dataset.full || (img ? img.src : ""),
+            alt: img ? img.alt : (item.dataset.alt || ""),
           };
         });
         openLightbox(images, index);

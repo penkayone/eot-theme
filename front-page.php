@@ -21,7 +21,7 @@ $eot_lang = eot_get_current_lang();
         </div>
         <div class="button-row">
           <a class="btn btn-primary btn-booking" href="<?php echo esc_url(eot_localized_url('contacts') . '#booking'); ?>"><?php echo esc_html__('Записаться', 'eot-theme'); ?></a>
-          <a class="btn btn-outline" href="https://t.me/larysamotz"><?php echo esc_html__('Отзывы', 'eot-theme'); ?></a>
+          <a class="btn btn-outline" href="#reviews"><?php echo esc_html__('Отзывы', 'eot-theme'); ?></a>
         </div>
         <div class="hero-social-row">
           <a class="btn btn-social social-telegram" href="https://t.me/LaraLorein" target="_blank" rel="noopener noreferrer">
@@ -172,6 +172,59 @@ $eot_lang = eot_get_current_lang();
           <span class="step-number">04</span>
           <h3><?php echo esc_html__('Оплата услуг', 'eot-theme'); ?></h3>
           <p><?php echo wp_kses_post(__('Оплату учлуг Вы проводите после встречи. Оплата происходит через сайт <a class="inline-link" href="https://gipnocouch.com" target="_blank" rel="noopener noreferrer">gipnocouch.com</a>', 'eot-theme')); ?></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft" id="reviews" data-reveal>
+    <div class="container">
+      <div class="section-head">
+        <h2><?php echo esc_html__('Отзывы', 'eot-theme'); ?></h2>
+        <p class="muted"><?php echo esc_html__('Живые отзывы клиентов из Telegram.', 'eot-theme'); ?></p>
+      </div>
+      <div class="grid cards-3 reviews-grid">
+        <article class="card review-card-v2">
+          <p class="review-quote"><?php echo esc_html__('«Лариса подвела меня к моим эмоциям и чувствам. Главное осознание: без контроля впереди неизвестность, а не катастрофа. Она увидела мои слепые зоны»', 'eot-theme'); ?></p>
+          <div class="review-foot">
+            <span class="review-author"><?php echo esc_html__('Клиент', 'eot-theme'); ?></span>
+            <button class="review-proof gallery-item" type="button" data-full="https://coach-psycholog.com/wp-content/uploads/2026/07/review-1.webp"><?php echo esc_html__('Смотреть отзыв', 'eot-theme'); ?></button>
+          </div>
+        </article>
+        <article class="card review-card-v2">
+          <p class="review-quote"><?php echo esc_html__('«Лариса распаковала мою свободу. Я реально почувствовала изменения. Раньше сомневалась, говорить или нет, а теперь сказала и написала. Чудеса»', 'eot-theme'); ?></p>
+          <div class="review-foot">
+            <span class="review-author"><?php echo esc_html__('Клиент', 'eot-theme'); ?></span>
+            <button class="review-proof gallery-item" type="button" data-full="https://coach-psycholog.com/wp-content/uploads/2026/07/review-2.webp"><?php echo esc_html__('Смотреть отзыв', 'eot-theme'); ?></button>
+          </div>
+        </article>
+        <article class="card review-card-v2">
+          <p class="review-quote"><?php echo esc_html__('«Благодарю за раскрытие моих даров. Вы работали как профессиональный коуч, задавали тысячи вопросов, помогли увидеть, как я создаю свою жизнь. Вы вернули мне мою силу»', 'eot-theme'); ?></p>
+          <div class="review-foot">
+            <span class="review-author"><?php echo esc_html__('Клиент', 'eot-theme'); ?></span>
+            <button class="review-proof gallery-item" type="button" data-full="https://coach-psycholog.com/wp-content/uploads/2026/07/review-3.webp"><?php echo esc_html__('Смотреть отзыв', 'eot-theme'); ?></button>
+          </div>
+        </article>
+        <article class="card review-card-v2">
+          <p class="review-quote"><?php echo esc_html__('«Прошло переосмысление, я разрешила в голове всё. Чётко увидела, где был мой стопор, и научилась его снимать. Стала увереннее»', 'eot-theme'); ?></p>
+          <div class="review-foot">
+            <span class="review-author"><?php echo esc_html__('Клиент', 'eot-theme'); ?></span>
+            <button class="review-proof gallery-item" type="button" data-full="https://coach-psycholog.com/wp-content/uploads/2026/07/review-4.webp"><?php echo esc_html__('Смотреть отзыв', 'eot-theme'); ?></button>
+          </div>
+        </article>
+        <article class="card review-card-v2">
+          <p class="review-quote"><?php echo esc_html__('«Работа была проделана глубочайшая. Подсознание выдало такой путь, что я бы и не подумала. Сейчас есть возможность задать новый вектор в своей жизни»', 'eot-theme'); ?></p>
+          <div class="review-foot">
+            <span class="review-author"><?php echo esc_html__('Клиент', 'eot-theme'); ?></span>
+            <button class="review-proof gallery-item" type="button" data-full="https://coach-psycholog.com/wp-content/uploads/2026/07/review-5.webp"><?php echo esc_html__('Смотреть отзыв', 'eot-theme'); ?></button>
+          </div>
+        </article>
+        <article class="card review-card-v2">
+          <p class="review-quote"><?php echo esc_html__('«Лариса помогла убрать мой потолок. В итоге за неделю денежный поток начал движение с ускорением. Понимаю, что это только первый шаг. Рекомендую»', 'eot-theme'); ?></p>
+          <div class="review-foot">
+            <span class="review-author"><?php echo esc_html__('Клиент', 'eot-theme'); ?></span>
+            <button class="review-proof gallery-item" type="button" data-full="https://coach-psycholog.com/wp-content/uploads/2026/07/review-6.webp"><?php echo esc_html__('Смотреть отзыв', 'eot-theme'); ?></button>
+          </div>
         </article>
       </div>
     </div>

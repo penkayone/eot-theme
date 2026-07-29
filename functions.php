@@ -522,6 +522,18 @@ function eot_get_sk_translations() {
 
         // Семинар возрождения внутренней силы - длительность
         '8 часов' => '8 hodín',
+
+        // Секция отзывов на главной
+        'Отзывы' => 'Recenzie',
+        'Живые отзывы клиентов из Telegram.' => 'Skutočné recenzie klientov z Telegramu.',
+        'Клиент' => 'Klient',
+        'Смотреть отзыв' => 'Pozrieť recenziu',
+        '«Лариса подвела меня к моим эмоциям и чувствам. Главное осознание: без контроля впереди неизвестность, а не катастрофа. Она увидела мои слепые зоны»' => '„Larisa ma priviedla k mojim emóciám a pocitom. Hlavné uvedomenie: bez kontroly ma nečaká katastrofa, ale neznáme. Videla moje slepé miesta“',
+        '«Лариса распаковала мою свободу. Я реально почувствовала изменения. Раньше сомневалась, говорить или нет, а теперь сказала и написала. Чудеса»' => '„Larisa vo mne odomkla slobodu. Naozaj som pocítila zmenu. Predtým som váhala, či niečo povedať, a teraz som to povedala aj napísala. Zázraky“',
+        '«Благодарю за раскрытие моих даров. Вы работали как профессиональный коуч, задавали тысячи вопросов, помогли увидеть, как я создаю свою жизнь. Вы вернули мне мою силу»' => '„Ďakujem za odhalenie mojich darov. Pracovali ste ako profesionálny kouč, kládli ste tisíce otázok a pomohli mi uvidieť, ako si tvorím svoj život. Vrátili ste mi moju silu“',
+        '«Прошло переосмысление, я разрешила в голове всё. Чётко увидела, где был мой стопор, и научилась его снимать. Стала увереннее»' => '„Prehodnotila som veci a v hlave sa mi všetko usporiadalo. Jasne som uvidela, kde bol môj blok, a naučila sa ho uvoľniť. Som si istejšia“',
+        '«Работа была проделана глубочайшая. Подсознание выдало такой путь, что я бы и не подумала. Сейчас есть возможность задать новый вектор в своей жизни»' => '„Odviedli sme veľmi hlbokú prácu. Podvedomie mi ukázalo cestu, ktorá by mi ani nenapadla. Teraz mám možnosť dať svojmu životu nový smer“',
+        '«Лариса помогла убрать мой потолок. В итоге за неделю денежный поток начал движение с ускорением. Понимаю, что это только первый шаг. Рекомендую»' => '„Larisa mi pomohla odstrániť môj strop. Do týždňa sa finančný tok rozhýbal a naberá na obrátkach. Viem, že je to len prvý krok. Odporúčam“',
     ];
 }
 
